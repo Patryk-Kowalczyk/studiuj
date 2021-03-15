@@ -3,6 +3,8 @@ import authService from "../lib/authService";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setMessage } from "../src/actions/message";
+import { motion } from "framer-motion";
+import Router from "next/router";
 
 import Avatar from "@material-ui/core/Avatar";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -17,6 +19,7 @@ import LoadingButton from "../components/LoadingButton";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
+    overflow: "hidden",
   },
   imageSection: {
     backgroundColor: theme.palette.primary.light,
@@ -78,17 +81,17 @@ export default function SignInSide() {
 
   const onSubmit = async (data) => {
     setLoadingForm(true);
+
     const isSuccess = await login(data.email, data.password);
     if (isSuccess) {
-      console.log("rediresc");
+      Router.push("/user/dashboard");
+      dispatch(setMessage("Pomyślnie się zalogowałeś."));
     } else {
       setError("serverError", "err");
       dispatch(setMessage("Nieprawidłowe dane. Spróbuj jeszcze raz."));
     }
     setLoadingForm(false);
   };
-
-  console.log(errors);
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -100,7 +103,17 @@ export default function SignInSide() {
           className={classes.image}
         />
       </Grid>
-      <Grid item xs={12} sm={8} md={5} className={classes.gridBox}>
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={5}
+        className={classes.gridBox}
+        component={motion.div}
+        initial={{ x: 400, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
@@ -122,7 +135,6 @@ export default function SignInSide() {
                   id="email"
                   label="Adres email"
                   autoComplete="email"
-                  autoFocus
                   onChange={(e) => {
                     props.onChange(e.target.value);
                     clearErrors();

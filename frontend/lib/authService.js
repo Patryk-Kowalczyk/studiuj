@@ -1,4 +1,4 @@
-import { gql, useMutation } from "@apollo/client";
+import { gql } from "@apollo/client";
 import { useApollo } from "./apolloClient";
 import { login as loginAction } from "../src/actions/auth";
 import { useDispatch } from "react-redux";
@@ -18,6 +18,29 @@ mutation login(
 }
 `;
 
+const REGISTER = gql`
+  mutation register(
+    $name: String!
+    $email: String!
+    $password: String!
+    $password_confirmation: String!
+  ) {
+    register(
+      input: {
+        name: $name
+        email: $email
+        password: $password
+        password_confirmation: $password_confirmation
+      }
+    ) {
+      tokens {
+        access_token
+      }
+      status
+    }
+  }
+`;
+
 function authService() {
   const client = useApollo();
   const dispatch = useDispatch();
@@ -29,25 +52,33 @@ function authService() {
       })
       .then((res) => {
         dispatch(loginAction(res.data));
+        localStorage.setItem("user", JSON.stringify(res.data));
         return true;
       })
       .catch((err) => {
+        console.log(err);
         return false;
       });
     return result;
+  };
 
-    // return axios
-    //   .post(API_URL + "auth/login", {
-    //     email: id,
-    //     password: password,
-    //     status: status,
-    //   })
-    //   .then((response) => {
-    //     if (response.data.access_token) {
-    //       localStorage.setItem("user", JSON.stringify(response.data));
-    //     }
-    //     return response.data;
-    //   });
+  const register = async (name, email, password, password_confirmation) => {
+    const result = await client
+      .mutate({
+        mutation: REGISTER,
+        variables: { name, email, password, password_confirmation },
+      })
+      .then((res) => {
+        return [true, ""];
+      })
+      .catch((err) => {
+        const isEmailError =
+          err.graphQLErrors[0].extensions.validation["input.email"] || false;
+        if (isEmailError) {
+          return [false, "emailError"];
+        }
+      });
+    return result;
   };
 
   const logout = () => {
@@ -55,6 +86,7 @@ function authService() {
   };
   return {
     login,
+    register,
     logout,
   };
 }

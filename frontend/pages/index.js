@@ -1,110 +1,47 @@
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setMessage } from "../src/actions/message";
-import Snackbar from "@material-ui/core/Snackbar";
-import CloseIcon from "@material-ui/icons/Close";
-
-import authService from "../lib/authService";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Container,
+  Typography,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import blueGrey from "@material-ui/core/colors/blueGrey";
+import ButtonLink from "../components/ButtonLink";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    width: "100%",
+    minHeight: "100vh",
+    backgroundColor: theme.palette.primary.light,
+    color: blueGrey[50],
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
+  buttons: {
+    marginTop: theme.spacing(3),
   },
 }));
 
-function LoginButton() {
-  const { login } = authService();
-
-  return (
-    <Button
-      color="inherit"
-      onClick={() => login("myemail@email.com", "123456789qq")}
-    >
-      Set message
-    </Button>
-  );
-}
-
 function Home() {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const message = useSelector((state) => state.message);
-
-  const [open, setOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    if (message.message) {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  }, [message]);
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
-
   return (
-    <>
-      <Snackbar
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        message={message ? message.message : undefined}
-        action={
-          <React.Fragment>
-            <Button color="secondary" size="small" onClick={handleClose}>
-              UNDO
-            </Button>
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              onClick={handleClose}
-            >
-              <CloseIcon />
-            </IconButton>
-          </React.Fragment>
-        }
-      />
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              News
-            </Typography>
-            <LoginButton />
-          </Toolbar>
-        </AppBar>
-      </div>
-    </>
+    <Box className={classes.root}>
+      <Container>
+        <Typography variant="h2" component="h1">
+          Studiuj.pl
+        </Typography>
+        <Typography variant="h4">
+          Z miłości do dzielenia się <b>wiedzą</b>
+        </Typography>
+        <ButtonGroup size="large" color="inherit" className={classes.buttons}>
+          <ButtonLink href="/login">Zaloguj się</ButtonLink>
+          <ButtonLink href="/register">Dołącz do nas</ButtonLink>
+        </ButtonGroup>
+      </Container>
+    </Box>
   );
 }
 

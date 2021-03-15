@@ -12,15 +12,15 @@
    x="0px"
    y="0px"
    width="642.59998"
-   height="519.79999"
-   viewBox="0 0 642.59998 519.79999"
+   height="573.8562"
+   viewBox="0 0 642.59998 573.8562"
    enable-background="new 0 0 1400 980"
    xml:space="preserve"
    sodipodi:docname="login_vector.svg"
    inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"><metadata
    id="metadata1467"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
    id="defs1465" /><sodipodi:namedview
    pagecolor="#ffffff"
    bordercolor="#666666"
@@ -37,19 +37,26 @@
    fit-margin-top="0"
    fit-margin-left="0"
    fit-margin-right="0"
-   fit-margin-bottom="0"
-   inkscape:zoom="0.575"
-   inkscape:cx="403.81476"
-   inkscape:cy="267.92022"
+   fit-margin-bottom="3"
+   inkscape:zoom="0.8131728"
+   inkscape:cx="223.6682"
+   inkscape:cy="332.20016"
    inkscape:window-x="-9"
    inkscape:window-y="-9"
    inkscape:window-maximized="1"
-   inkscape:current-layer="XMLID_50_" />
+   inkscape:current-layer="XMLID_50_"
+   inkscape:document-rotation="0" />
 <g
    id="XMLID_50_"
    transform="translate(-290.5,-229.4)">
 	
-	<g
+	<ellipse
+   style="fill:#666666;fill-opacity:0.207477;stroke:none;stroke-width:2.39546;stroke-linejoin:round;paint-order:stroke fill markers"
+   id="path984"
+   cx="595.47821"
+   cy="748.96985"
+   rx="292.96451"
+   ry="35.331669" /><g
    id="XMLID_43_">
 		<g
    id="XMLID_379_">
@@ -64,21 +71,21 @@
 			<polygon
    id="XMLID_374_"
    fill="#dba97f"
-   points="627.7,714.9 637.1,714.9 639.8,729.2 630.8,729.2 " />
+   points="639.8,729.2 630.8,729.2 627.7,714.9 637.1,714.9 " />
 			<g
    id="XMLID_94_">
 				<polygon
    id="XMLID_91_"
    fill="#ca527b"
-   points="608.6,506.8 608.6,571.7 677.2,588.3 677.2,512 " />
+   points="677.2,588.3 677.2,512 608.6,506.8 608.6,571.7 " />
 				<polygon
    id="XMLID_92_"
    fill="#bcbec0"
-   points="685.3,508.8 685.3,585 677.2,588.3 677.2,512 " />
+   points="677.2,588.3 677.2,512 685.3,508.8 685.3,585 " />
 				<polygon
    id="XMLID_93_"
    fill="#f1f2f2"
-   points="677.2,512 608.6,506.8 616.7,503.5 685.3,508.8 " />
+   points="616.7,503.5 685.3,508.8 677.2,512 608.6,506.8 " />
 			</g>
 			<path
    id="XMLID_373_"
@@ -99,15 +106,15 @@
 			<polygon
    id="XMLID_369_"
    fill="#dba97f"
-   points="572.8,714.9 562.6,714.9 563.8,729.2 572.8,729.2 " />
+   points="563.8,729.2 572.8,729.2 572.8,714.9 562.6,714.9 " />
 			<polygon
    id="XMLID_368_"
    fill="#092e1c"
-   points="577.3,540.1 549.2,537.4 555.9,717 576.5,717 " />
+   points="555.9,717 576.5,717 577.3,540.1 549.2,537.4 " />
 			<polygon
    id="XMLID_366_"
    fill="#092e1c"
-   points="618.8,537.4 595.2,545.2 620.9,717 642.9,717 " />
+   points="620.9,717 642.9,717 618.8,537.4 595.2,545.2 " />
 			<path
    id="XMLID_365_"
    fill="#092e1c"
@@ -242,7 +249,7 @@
 				<polygon
    id="XMLID_137_"
    fill="#ffffff"
-   points="554.3,468.2 574.2,447.5 594,468.2 613.9,447.5 633.4,468.1 633.8,479.9 613.9,459.2 594,479.9 574.2,459.2 554.3,479.9 538,462.9 538,450.5 " />
+   points="538,462.9 538,450.5 554.3,468.2 574.2,447.5 594,468.2 613.9,447.5 633.4,468.1 633.8,479.9 613.9,459.2 594,479.9 574.2,459.2 554.3,479.9 " />
 			</g>
 		</g>
 		
@@ -451,12 +458,12 @@
    id="XMLID_219_"
    opacity="0.3"
    fill="#ffffff"
-   points="428,335.6 419.5,337.3 410.2,335.9 404.3,331.5 400.4,321.2 400.4,314.5 403.3,311.5 415.5,308.8 424.8,308.8 437.3,312.7 437.3,322.8 433.5,331.5 " />
+   points="437.3,322.8 433.5,331.5 428,335.6 419.5,337.3 410.2,335.9 404.3,331.5 400.4,321.2 400.4,314.5 403.3,311.5 415.5,308.8 424.8,308.8 437.3,312.7 " />
 				<polygon
    id="XMLID_218_"
    opacity="0.3"
    fill="#ffffff"
-   points="361.4,335.6 370,337.3 379.3,335.9 385.1,331.5 389.1,321.2 389.1,314.5 386.2,311.5 374,308.8 364.7,308.8 352.2,312.7 352.2,322.8 355.9,331.5 " />
+   points="352.2,322.8 355.9,331.5 361.4,335.6 370,337.3 379.3,335.9 385.1,331.5 389.1,321.2 389.1,314.5 386.2,311.5 374,308.8 364.7,308.8 352.2,312.7 " />
 				<path
    id="XMLID_498_"
    fill="#21170e"
@@ -473,11 +480,11 @@
 			<polygon
    id="XMLID_136_"
    fill="#eec19c"
-   points="1112.5,619.2 1118.5,729.9 1130.6,729.2 1132.7,619.2 " />
+   points="1130.6,729.2 1132.7,619.2 1112.5,619.2 1118.5,729.9 " />
 			<polygon
    id="XMLID_135_"
    fill="#eec19c"
-   points="1174.5,619.2 1166.1,730.5 1154.5,729.2 1152.4,619.2 " />
+   points="1154.5,729.2 1152.4,619.2 1174.5,619.2 1166.1,730.5 " />
 			<path
    id="XMLID_134_"
    fill="#eec19c"
@@ -602,7 +609,7 @@
 			<polygon
    id="XMLID_570_"
    fill="#eec19c"
-   points="1160.1,397.4 1159.5,390.3 1158.5,377 1157.4,364.1 1132.7,366.5 1132.8,370.1 1133.4,387.6 1133.7,393.7 " />
+   points="1158.5,377 1157.4,364.1 1132.7,366.5 1132.8,370.1 1133.4,387.6 1133.7,393.7 1160.1,397.4 1159.5,390.3 " />
 			<path
    id="XMLID_566_"
    fill="#dba97f"
@@ -676,11 +683,11 @@
 			<polygon
    id="XMLID_88_"
    fill="#ffffff"
-   points="1167.2,731 1169.6,697 1152.4,697 1154.1,731 " />
+   points="1152.4,697 1154.1,731 1167.2,731 1169.6,697 " />
 			<polygon
    id="XMLID_90_"
    fill="#ffffff"
-   points="1117.9,731 1115.4,697 1132.7,697 1130.9,731 " />
+   points="1132.7,697 1130.9,731 1117.9,731 1115.4,697 " />
 		</g>
 		
 		
