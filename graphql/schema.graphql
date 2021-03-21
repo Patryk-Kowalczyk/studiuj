@@ -10,6 +10,9 @@ type Query {
 
     advertisements: [Advertisement!]! @all
     advertisement(id: Int! @eq): Advertisement @find
+
+    comments: [Comment!]! @all
+    comments(id: Int! @eq): Comment @find
 }
 
 type User {
@@ -30,6 +33,16 @@ type Advertisement {
     created_at: DateTime!
     updated_at: DateTime!
     user: User! @belongsTo
+    comments: [Comment!]! @hasMany
+}
+
+type Comment {
+    id: ID!
+    description: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+    user: User! @belongsTo
+    advertisement: Advertisement! @belongsTo
 }
 
 type Mutation {
@@ -42,4 +55,10 @@ type Mutation {
     socialLogin(input: SocialLoginInput! @spread): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\SocialLogin@resolve")
     verifyEmail(input: VerifyEmailInput! @spread): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\VerifyEmail@resolve")
     updatePassword(input: UpdatePassword! @spread): UpdatePasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\UpdatePassword@resolve") @guard(with: ["api"])
+
+    #####################################
+
+    createAdvertisement(name: String!, description: String! ,price: Int!,user_id: Int!): Advertisement! @create
+    createComment(description: String!, user_id: Int!, advertisement_id:Int!): Comment! @create
 }
+

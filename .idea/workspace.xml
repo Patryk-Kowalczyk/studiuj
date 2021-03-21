@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1d1bea25-75a8-4e3c-9889-fa2687cecb94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.rnd" beforeDir="false" afterPath="$PROJECT_DIR$/.rnd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Advertisement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Advertisement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_19_000000_update_social_provider_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_19_000000_update_social_provider_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_16_200414_create_advertisements_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_16_200414_create_advertisements_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graphql/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/graphql/schema.graphql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -199,6 +199,7 @@
       <workItem from="1615822522549" duration="41000" />
       <workItem from="1615923677073" duration="4032000" />
       <workItem from="1615977419985" duration="689000" />
+      <workItem from="1616328435460" duration="5336000" />
     </task>
     <servers />
   </component>

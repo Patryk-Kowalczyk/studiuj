@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Advertisement extends Model
+class Comment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
         'description',
-        'price',
-        'user_id'
+        'user_id',
+        'advertisement_id'
     ];
 
     public function user(): BelongsTo
@@ -23,9 +21,8 @@ class Advertisement extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function comments(): HasMany
+    public function advertisement(): BelongsTo
     {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Advertisement::class);
     }
-
 }
