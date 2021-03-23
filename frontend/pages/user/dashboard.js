@@ -14,6 +14,7 @@ const GET_USERS = gql`
 
 export default function Dashboard() {
   const { loading, error, data } = useQuery(GET_USERS);
+  console.log(error, data);
   if (!loading && error) {
     Router.push("/login");
   }

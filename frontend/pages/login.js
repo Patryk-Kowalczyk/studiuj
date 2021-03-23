@@ -14,7 +14,10 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 import LoadingButton from "../components/LoadingButton";
+import GoogleLogo from "../components/GoogleLogo";
+import blue from "@material-ui/core/colors/blue";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,6 +65,10 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  googleButton: {
+    width: "100%",
+    marginBottom: theme.spacing(1),
+  },
 }));
 
 export default function SignInSide() {
@@ -91,6 +98,10 @@ export default function SignInSide() {
       dispatch(setMessage("Nieprawidłowe dane. Spróbuj jeszcze raz."));
     }
     setLoadingForm(false);
+  };
+
+  const handleGoogleLogin = () => {
+    window.location.assign(`http://127.0.0.1:8000/redirect/google`);
   };
 
   return (
@@ -178,6 +189,14 @@ export default function SignInSide() {
             >
               Zaloguj
             </LoadingButton>
+            <Button
+              variant="contained"
+              startIcon={<GoogleLogo />}
+              onClick={handleGoogleLogin}
+              className={classes.googleButton}
+            >
+              Zaloguj się przez Google
+            </Button>
             <Grid container spacing={3}>
               <Grid item xs>
                 <Link href="#" variant="body2">
