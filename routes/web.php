@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/redirect/{social}','App\Http\Controllers\Auth\LoginController@socialLogin')->where('social','google');
+Route::get('/auth/{social}/callback','App\Http\Controllers\Auth\LoginController@handleProviderCallback')->where('social','google');
+
 Route::get('/', function () {
     return view('welcome');
 });
