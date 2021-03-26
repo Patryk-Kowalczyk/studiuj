@@ -4,11 +4,12 @@ import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setMessage } from "../src/actions/message";
 import { motion } from "framer-motion";
+import GoogleLoginButton from "../components/GoogleLoginButton";
+import Link from "next/link";
 
 import Avatar from "@material-ui/core/Avatar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import Typography from "@material-ui/core/Typography";
@@ -37,8 +38,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "50%",
     left: "50%",
-    top: "50%",
-    transform: "translate(-50%,-35%)",
+    top: "55%",
+    transform: "translate(-50%,-50%)",
   },
   gridBox: {
     display: "flex",
@@ -60,6 +61,19 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  imageSectionInfo: {
+    position: "absolute",
+    width: "80%",
+    left: "50%",
+    top: "20%",
+    transform: "translate(-50%,-35%)",
+    color: "white",
+  },
+  link: {
+    color: theme.palette.primary.main,
+    cursor: "pointer",
+    textDecoration: "none",
   },
 }));
 
@@ -105,8 +119,16 @@ export default function SignInSide() {
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.imageSection}>
+        <div className={classes.imageSectionInfo}>
+          <Typography variant="h4" gutterBottom>
+            Dołącz do naszej społeczności
+          </Typography>
+          <Typography variant="h5">Rozwijaj swoje umiejętności</Typography>
+          <Typography variant="h5">Pomóż rozwijać się innym</Typography>
+        </div>
+
         <img
-          src="/login_vector.svg"
+          src="/images/register_vector.svg"
           alt="login page image"
           className={classes.image}
         />
@@ -280,17 +302,20 @@ export default function SignInSide() {
               color="primary"
               className={classes.submit}
             >
-              Zaloguj
+              Dołącz do nas!
             </LoadingButton>
+            <GoogleLoginButton />
             <Grid container spacing={3}>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Polityka prywatności.
+                  <a className={classes.link}>Polityka prywatności</a>
                 </Link>
               </Grid>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  {"Masz już konto? Zaloguj się"}
+              <Grid item xs style={{ textAlign: "right" }}>
+                <Link href="/login" variant="body2">
+                  <a className={classes.link}>
+                    {"Masz już konto? Zaloguj się"}
+                  </a>
                 </Link>
               </Grid>
             </Grid>
@@ -300,95 +325,3 @@ export default function SignInSide() {
     </Grid>
   );
 }
-
-// export default function SignUp() {
-//   const classes = useStyles();
-
-//   return (
-//     <Container component="main" maxWidth="xs">
-//       <div className={classes.paper}>
-//         <Avatar className={classes.avatar}>
-//           <LockOutlinedIcon />
-//         </Avatar>
-//         <Typography component="h1" variant="h5">
-//           Sign up
-//         </Typography>
-//         <form className={classes.form} noValidate>
-//           <Grid container spacing={2}>
-//             <Grid item xs={12} sm={6}>
-//               <TextField
-//                 autoComplete="fname"
-//                 name="firstName"
-//                 variant="outlined"
-//                 required
-//                 fullWidth
-//                 id="firstName"
-//                 label="First Name"
-//                 autoFocus
-//               />
-//             </Grid>
-//             <Grid item xs={12} sm={6}>
-//               <TextField
-//                 variant="outlined"
-//                 required
-//                 fullWidth
-//                 id="lastName"
-//                 label="Last Name"
-//                 name="lastName"
-//                 autoComplete="lname"
-//               />
-//             </Grid>
-//             <Grid item xs={12}>
-//               <TextField
-//                 variant="outlined"
-//                 required
-//                 fullWidth
-//                 id="email"
-//                 label="Email Address"
-//                 name="email"
-//                 autoComplete="email"
-//               />
-//             </Grid>
-//             <Grid item xs={12}>
-//               <TextField
-//                 variant="outlined"
-//                 required
-//                 fullWidth
-//                 name="password"
-//                 label="Password"
-//                 type="password"
-//                 id="password"
-//                 autoComplete="current-password"
-//               />
-//             </Grid>
-//             <Grid item xs={12}>
-//               <FormControlLabel
-//                 control={<Checkbox value="allowExtraEmails" color="primary" />}
-//                 label="I want to receive inspiration, marketing promotions and updates via email."
-//               />
-//             </Grid>
-//           </Grid>
-//           <Button
-//             type="submit"
-//             fullWidth
-//             variant="contained"
-//             color="primary"
-//             className={classes.submit}
-//           >
-//             Sign Up
-//           </Button>
-//           <Grid container justify="flex-end">
-//             <Grid item>
-//               <Link href="#" variant="body2">
-//                 Already have an account? Sign in
-//               </Link>
-//             </Grid>
-//           </Grid>
-//         </form>
-//       </div>
-//       <Box mt={5}>
-//         <Copyright />
-//       </Box>
-//     </Container>
-//   );
-// }

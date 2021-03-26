@@ -2,6 +2,7 @@ import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import Router from "next/router";
 import Skeleton from "@material-ui/lab/Skeleton";
+import DashboardContainer from "../../components/DashboardContainer";
 
 const GET_USERS = gql`
   query users {
@@ -18,9 +19,7 @@ export default function Dashboard() {
   if (!loading && error) {
     Router.push("/login");
   }
-  if (data) {
-    return <h1>Dashboard</h1>;
-  } else {
+  if (!data) {
     return (
       <>
         <Skeleton variant="rect" width={"50%"} height={200} />
@@ -28,6 +27,12 @@ export default function Dashboard() {
         <Skeleton variant="text" />
         <Skeleton variant="text" />
       </>
+    );
+  } else {
+    return (
+      <DashboardContainer>
+        <h1>Dashboard</h1>
+      </DashboardContainer>
     );
   }
 }

@@ -5,19 +5,19 @@ import { useDispatch } from "react-redux";
 import { setMessage } from "../src/actions/message";
 import { motion } from "framer-motion";
 import Router from "next/router";
+import GoogleLoginButton from "../components/GoogleLoginButton";
+import Link from "next/link";
+import ForgotPasswordDialog from "../components/ForgotPasswordDialog";
 
 import Avatar from "@material-ui/core/Avatar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import LoadingButton from "../components/LoadingButton";
-import GoogleLogo from "../components/GoogleLogo";
-import blue from "@material-ui/core/colors/blue";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,14 +65,16 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  googleButton: {
-    width: "100%",
-    marginBottom: theme.spacing(1),
+  link: {
+    color: theme.palette.primary.main,
+    cursor: "pointer",
+    textDecoration: "none",
   },
 }));
 
 export default function SignInSide() {
   const classes = useStyles();
+
   const [loadingForm, setLoadingForm] = React.useState(false);
   const {
     register,
@@ -83,9 +85,23 @@ export default function SignInSide() {
     clearErrors,
   } = useForm();
 
+  const [
+    openedForgotPasswordDialog,
+    setOpenedForgotPasswordDialog,
+  ] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpenedForgotPasswordDialog(true);
+  };
+
+  const handleClose = () => {
+    setOpenedForgotPasswordDialog(false);
+  };
+
   const { login } = authService();
   const dispatch = useDispatch();
 
+  // Login
   const onSubmit = async (data) => {
     setLoadingForm(true);
 
@@ -100,16 +116,19 @@ export default function SignInSide() {
     setLoadingForm(false);
   };
 
-  const handleGoogleLogin = () => {
-    window.location.assign(`http://127.0.0.1:8000/redirect/google`);
-  };
-
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.imageSection}>
+      <Grid
+        item
+        xs={false}
+        sm={4}
+        md={7}
+        className={classes.imageSection}
+        component={motion.div}
+      >
         <img
-          src="/login_vector.svg"
+          src="/images/login_vector.svg"
           alt="login page image"
           className={classes.image}
         />
@@ -189,29 +208,36 @@ export default function SignInSide() {
             >
               Zaloguj
             </LoadingButton>
-            <Button
-              variant="contained"
-              startIcon={<GoogleLogo />}
-              onClick={handleGoogleLogin}
-              className={classes.googleButton}
-            >
-              Zaloguj się przez Google
-            </Button>
+            <GoogleLoginButton />
             <Grid container spacing={3}>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Typography
+                  variant="body2"
+                  onClick={handleClickOpen}
+                  className={classes.link}
+                >
                   Zapomniałeś hasła?
-                </Link>
+                </Typography>
               </Grid>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  {"Nie masz jeszcze konta? Dołącz do nas!"}
+              <Grid item xs style={{ textAlign: "right" }}>
+                <Link
+                  href="/register"
+                  variant="body2"
+                  style={{ textAlign: "right" }}
+                >
+                  <a className={classes.link}>
+                    Nie masz jeszcze konta? Dołącz do nas!
+                  </a>
                 </Link>
               </Grid>
             </Grid>
           </form>
         </div>
       </Grid>
+      <ForgotPasswordDialog
+        open={openedForgotPasswordDialog}
+        handleClose={handleClose}
+      />
     </Grid>
   );
 }
