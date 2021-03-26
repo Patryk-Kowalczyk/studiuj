@@ -19,3 +19,4 @@ Route::get('/auth/{social}/callback','App\Http\Controllers\Auth\LoginController@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('password/forgot', 'App\Http\Controllers\Auth\ForgotPasswordController@forgot')->name('password.reset');
