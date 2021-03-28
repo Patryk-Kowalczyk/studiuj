@@ -1,6 +1,10 @@
 import { gql } from "@apollo/client";
 import { useApollo } from "./apolloClient";
-import { login as loginAction } from "../src/actions/auth";
+import { useRouter } from "next/router";
+import {
+  login as loginAction,
+  logout as logoutAction,
+} from "../src/actions/auth";
 import { useDispatch } from "react-redux";
 
 //prettier-ignore
@@ -41,9 +45,19 @@ const REGISTER = gql`
   }
 `;
 
+const LOGOUT = gql`
+  mutation logout {
+    logout {
+      status
+      message
+    }
+  }
+`;
+
 function authService() {
   const client = useApollo();
   const dispatch = useDispatch();
+
   const login = async (username, password) => {
     const result = await client
       .mutate({
@@ -81,8 +95,19 @@ function authService() {
     return result;
   };
 
-  const logout = () => {
-    localStorage.removeItem("user");
+  const logout = async () => {
+    const result = await client
+      .mutate({
+        mutation: LOGOUT,
+      })
+      .then((res) => {
+        dispatch(logoutAction());
+        localStorage.removeItem("user");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    return result;
   };
   return {
     login,

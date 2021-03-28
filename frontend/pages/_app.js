@@ -11,8 +11,8 @@ import { useApollo } from "../lib/apolloClient";
 import { useSelector } from "react-redux";
 import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
+import EmptyLayout from "../layouts/EmptyLayout";
 
 function Message() {
   const message = useSelector((state) => state.message);
@@ -60,6 +60,8 @@ function MyApp({ Component, pageProps }) {
 
   const apolloClient = useApollo(pageProps.initialApolloState);
 
+  const Layout = Component.Layout || EmptyLayout;
+
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
@@ -80,7 +82,9 @@ function MyApp({ Component, pageProps }) {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Message />
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </ThemeProvider>
       </Provider>
     </ApolloProvider>

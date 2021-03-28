@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, REGISTER } from "../actions/types";
+import { LOGIN, LOGOUT, REGISTER, SET_USER_INFO } from "../actions/types";
 
 const ISSERVER = typeof window === "undefined";
 
@@ -18,7 +18,14 @@ function authReducer(state = inistalState, action) {
         isLoggedIn: true,
         user: payload.user,
       };
-
+    case SET_USER_INFO:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          data: payload.userInfo,
+        },
+      };
     case LOGOUT:
       return {
         ...state,
