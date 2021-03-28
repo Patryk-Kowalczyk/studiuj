@@ -13,6 +13,9 @@ import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
+import NProgress from 'nprogress';
+import '../styles/nprogress.css';
+import Router from 'next/router';
 
 function Message() {
   const message = useSelector((state) => state.message);
@@ -54,6 +57,11 @@ function Message() {
     />
   );
 }
+
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
+
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
