@@ -1,9 +1,10 @@
 /* Make clicks pass-through */
 :root {
     --nProgressColor: white;
-    --nProgressSpinner:rgb(119,137,222);
+    --nProgressSpinner: rgb(119, 137, 222);
 
 }
+
 #nprogress {
     pointer-events: none;
 }
@@ -14,7 +15,7 @@
     z-index: 1031;
     top: 0;
     left: 0;
-    border-bottom: 1px solid rgb(119,137,222) ;
+    border-bottom: 4px solid rgb(119, 137, 222);
     width: 100%;
     height: 5px;
 }
@@ -68,10 +69,19 @@
 }
 
 @-webkit-keyframes nprogress-spinner {
-    0%   { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
+
 @keyframes nprogress-spinner {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
