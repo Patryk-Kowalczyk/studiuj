@@ -4,8 +4,6 @@ export const containerStyles = makeStyles((theme) => ({
     root: {
         height: "100vh",
         overflow: "hidden",
-        maxWidth: "1800px",
-        margin: "0 auto",
     },
     firstContent: {
         display: "grid",
