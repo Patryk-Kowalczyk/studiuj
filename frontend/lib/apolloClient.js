@@ -10,7 +10,7 @@ import { TokenKind } from "graphql";
 let apolloClient;
 
 const httpLink = new HttpLink({
-  uri: "http://127.0.0.1:8000/graphql",
+  uri: `${process.env.BACKEND_HOST}/graphql`,
 });
 
 const authLink = setContext((_, { headers }) => {
