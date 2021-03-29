@@ -19,10 +19,10 @@ export default function Header() {
                     <Typography className={classes.logoText}> <span
                         className={classes.colorS}>S</span>tudiuj.pl</Typography>
                 </Box>
-                <ButtonGroup variant={"text"} size="large" className={classes.text}>
-                    <ButtonLink className={classes.text} href="/login">Zaloguj się</ButtonLink>
-                    <ButtonLink className={classes.text} href="/register">Dołącz do nas</ButtonLink>
-                </ButtonGroup>
+                <Box>
+                    <ButtonLink className={classes.buttonHeader} href="/login">logowanie</ButtonLink>
+                    <ButtonLink className={classes.buttonHeader} href="/register">rejestrajca</ButtonLink>
+                </Box>
             </Box>
         </Box>
     )

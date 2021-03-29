@@ -8,11 +8,14 @@ export default function FirstContent() {
     return (
         <>
             <Box className={classes.leftSideBox}>
-                <img
-                    src="/images/kosmos_vector.svg"
-                    alt="login page image"
-                    className={classes.image}
-                />
+                <Box className={classes.sizes}></Box>
+                <div className={classes.circle}>
+                    <img
+                        src="/images/kosmos_vector.svg"
+                        alt="login page image"
+                        className={classes.image}
+                    />
+                </div>
             </Box>
             <Box className={classes.rightSideBox}></Box>
 

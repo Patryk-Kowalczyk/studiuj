@@ -2,7 +2,6 @@ import {makeStyles} from "@material-ui/core/styles";
 
 export const headerStyles = makeStyles((theme) => ({
     headerBox: {
-        borderBottom: "1px solid black",
         width: "100%",
         padding: "10px",
 
@@ -59,9 +58,20 @@ export const headerStyles = makeStyles((theme) => ({
 
     },
     colorS: {
-        // color: theme.palette.primary.dark,
         fontWeight: "600",
         fontSize: "19px",
     },
+    buttonHeader: {
+        textTransform: "lowercase",
+        fontFamily: "Montserrat, sans-serif",
+        marginTop: "5px",
+        fontWeight: "600",
+        marginRight: "7px",
+        position: "relative",
+        "&:nth-child(2)": {
+            color: theme.palette.primary.dark,
+
+        }
+    }
 
 }));
