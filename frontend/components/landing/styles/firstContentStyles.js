@@ -7,6 +7,8 @@ export const firstContentStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
+        zIndex: "2",
+
 
     },
 
@@ -14,7 +16,9 @@ export const firstContentStyles = makeStyles((theme) => ({
         gridArea: "right",
         '@media (max-width: 1000px)': {
             height: "70vh",
-        }
+        },
+        zIndex: "2",
+
     },
     image: {
         position: "absolute",
@@ -30,19 +34,19 @@ export const firstContentStyles = makeStyles((theme) => ({
         height: "100vh",
         background: theme.palette.primary.light,
         borderRadius: "50%",
-        transform: "translate(-30%,30%)",
+        transform: "translate(-40%,40%)",
         '@media (min-height: 1000px) and (min-width: 1000px)': {
             transform: "translate(-40%,50%)"
         },
 
         '@media (max-width: 1000px)': {
-            transform: "translate(-55%,-10%)"
+            transform: "translate(-45%,-30%)"
         },
-        '@media (min-width: 1200px)': {
-            transform: "translate(-35%,40%)"
+        '@media (min-width: 1050px)': {
+            transform: "translate(-45%,40%)"
         },
         '@media (max-width: 1000px) and (min-height: 1000px)': {
-            transform: "translate(-45%,-20%)"
+            transform: "translate(-65%,-10%)"
         },
         '@media (max-width: 550px) and (min-height: 1000px)': {
             transform: "translate(-70%,-12%)"
@@ -53,6 +57,7 @@ export const firstContentStyles = makeStyles((theme) => ({
     },
 
     boxMaxWidth: {
+        position: "relative",
         display: "grid",
         overflow: "hidden",
         gridTemplateColumns: "250px 1fr",
@@ -92,8 +97,60 @@ export const firstContentStyles = makeStyles((theme) => ({
         fontSize: "35px",
         fontWeight: "900",
         '@media (max-width: 1000px)': {
-            fontSize: "20px",
+            fontSize: "30px",
 
         }
-    }
+    },
+
+
+    // Icons
+    plane: {
+        position: "absolute",
+        fontSize: "70px",
+        opacity: "0.5",
+        bottom: "55%",
+        left: "45%",
+        zIndex: "1",
+    },
+    book: {
+        position: "absolute",
+        fontSize: "70px",
+        opacity: "0.5",
+        top: "25%",
+        left: "10%",
+        zIndex: "1",
+    },
+    ruler: {
+        position: "absolute",
+        fontSize: "70px",
+        opacity: "0.5",
+        top: "30%",
+        right: "20%",
+        zIndex: "1",
+    },
+    scissors: {
+        position: "absolute",
+        fontSize: "70px",
+        opacity: "0.5",
+        bottom: "10%",
+        transform: "rotate(20deg)",
+        left: "50%",
+        zIndex: "1",
+    },
+    compass: {
+        position: "absolute",
+        fontSize: "70px",
+        opacity: "0.5",
+        top: "50%",
+        right: "10%",
+        zIndex: "1",
+    },
+    pencil: {
+        position: "absolute",
+        fontSize: "70px",
+        opacity: "0.5",
+        bottom: "5%",
+        right: "10%",
+        zIndex: "1",
+    },
 }));
