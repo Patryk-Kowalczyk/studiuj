@@ -1,24 +1,31 @@
 import React from "react";
 import {firstContentStyles} from "./styles/firstContentStyles";
-import {Box} from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
+import {Box, Typography} from "@material-ui/core";
 
 export default function FirstContent() {
     const classes = firstContentStyles();
     return (
-        <>
-            <Box className={classes.leftSideBox}>
-                <Box className={classes.sizes}></Box>
-                <div className={classes.circle}>
-                    <img
-                        src="/images/kosmos_vector.svg"
-                        alt="login page image"
-                        className={classes.image}
-                    />
-                </div>
-            </Box>
-            <Box className={classes.rightSideBox}></Box>
+        <Box className={classes.headerBox}>
+            <Box className={classes.boxMaxWidth}>
+                <Box className={classes.leftSideBox}>
+                    <div className={classes.circle}>
+                        <img
+                            src="/images/kosmos_vector.svg"
+                            alt="login page image"
+                            className={classes.image}
+                        />
+                    </div>
+                </Box>
+                <Box className={classes.rightSideBox}>
+                    <Typography className={classes.h1}>
+                        {`"Inwestowanie w wiedzę, zawsze 
+                        przynosi
+                        największe zyski" - Bejnamin Franklin`}
+                    </Typography>
+                </Box>
 
-        </>
+            </Box>
+        </Box>
+
     )
 }

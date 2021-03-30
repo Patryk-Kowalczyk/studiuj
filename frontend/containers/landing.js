@@ -1,16 +1,14 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import {containerStyles} from "../components/landing/styles/containerStyles";
+import {landingStyles} from "./styles/landingStyles";
 import {Header, FirstPageContent} from "../components/landing";
 
 export default function LandingPage() {
-    const classes = containerStyles();
+    const classes = landingStyles();
     return (
         <Box className={classes.root}>
             <Header/>
-            <Box className={classes.firstContent}>
-                <FirstPageContent/>
-            </Box>
+            <FirstPageContent/>
         </Box>
     );
 }

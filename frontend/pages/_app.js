@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ThemeProvider } from "@material-ui/core/styles";
+import {ThemeProvider} from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 import Head from "next/head";
-import { Provider } from "react-redux";
-import { useStore } from "../src/store";
-import { ApolloProvider } from "@apollo/client";
-import { useApollo } from "../lib/apolloClient";
-import { useSelector } from "react-redux";
+import {Provider} from "react-redux";
+import {useStore} from "../src/store";
+import {ApolloProvider} from "@apollo/client";
+import {useApollo} from "../lib/apolloClient";
+import {useSelector} from "react-redux";
 import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
@@ -18,89 +18,91 @@ import "../styles/nprogress.css";
 import Router from "next/router";
 
 function Message() {
-  const message = useSelector((state) => state.message);
+    const message = useSelector((state) => state.message);
 
-  const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    if (message.message) {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  }, [message]);
+    React.useEffect(() => {
+        if (message.message) {
+            setOpen(true);
+        } else {
+            setOpen(false);
+        }
+    }, [message]);
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
+    const handleClose = (event, reason) => {
+        if (reason === "clickaway") {
+            return;
+        }
+        setOpen(false);
+    };
 
-  return (
-    <Snackbar
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "left",
-      }}
-      open={open}
-      autoHideDuration={6000}
-      onClose={handleClose}
-      message={message ? message.message : undefined}
-      action={
-        <React.Fragment>
-          <IconButton aria-label="close" color="inherit" onClick={handleClose}>
-            <CloseIcon />
-          </IconButton>
-        </React.Fragment>
-      }
-    />
-  );
+    return (
+        <Snackbar
+            anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+            }}
+            open={open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            message={message ? message.message : undefined}
+            action={
+                <React.Fragment>
+                    <IconButton aria-label="close" color="inherit" onClick={handleClose}>
+                        <CloseIcon/>
+                    </IconButton>
+                </React.Fragment>
+            }
+        />
+    );
 }
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
-function MyApp({ Component, pageProps }) {
-  const store = useStore(pageProps.initialReduxState);
+function MyApp({Component, pageProps}) {
+    const store = useStore(pageProps.initialReduxState);
 
-  const apolloClient = useApollo(pageProps.initialApolloState);
+    const apolloClient = useApollo(pageProps.initialApolloState);
 
-  const Layout = Component.Layout || EmptyLayout;
+    const Layout = Component.Layout || EmptyLayout;
 
-  React.useEffect(() => {
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
-  }, []);
+    React.useEffect(() => {
+        const jssStyles = document.querySelector("#jss-server-side");
+        if (jssStyles) {
+            jssStyles.parentElement.removeChild(jssStyles);
+        }
+    }, []);
 
-  return (
-    <ApolloProvider client={apolloClient}>
-      <Provider store={store}>
-        <Head>
-          <title>Studiuj</title>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width"
-          />
-        </Head>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Message />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
-      </Provider>
-    </ApolloProvider>
-  );
+    return (
+        <ApolloProvider client={apolloClient}>
+            <Provider store={store}>
+                <Head>
+                    <title>Studiuj</title>
+                    <meta
+                        name="viewport"
+                        content="minimum-scale=1, initial-scale=1, width=device-width"
+                    />
+                    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap"
+                          rel="stylesheet"/>
+                </Head>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline/>
+                    <Message/>
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </ThemeProvider>
+            </Provider>
+        </ApolloProvider>
+    );
 }
 
 MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired,
+    Component: PropTypes.elementType.isRequired,
+    pageProps: PropTypes.object.isRequired,
 };
 
 export default MyApp;
