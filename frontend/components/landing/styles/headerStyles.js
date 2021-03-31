@@ -9,7 +9,7 @@ export const headerStyles = makeStyles((theme) => ({
     boxMaxWidth: {
         display: "grid",
         gridTemplateColumns: "1fr auto",
-        maxWidth: "1200px",
+        maxWidth: "1600px",
         margin: "0 auto",
     },
     text: {
@@ -27,12 +27,12 @@ export const headerStyles = makeStyles((theme) => ({
     },
     logo: {
         marginRight: "5px",
-        fontSize: "18px",
+        fontSize: "25px",
 
     },
     logoText: {
-        fontSize: "18px",
-        lineHeight: "21.5px",
+        fontSize: "24px",
+        lineHeight: "27.5px",
         fontFamily: "Montserrat, sans-serif",
         fontWeight: "600",
         letterSpacing: "0.5px",
@@ -59,12 +59,13 @@ export const headerStyles = makeStyles((theme) => ({
     },
     colorS: {
         fontWeight: "600",
-        fontSize: "19px",
+        fontSize: "25px",
     },
     buttonHeader: {
         textTransform: "lowercase",
         fontFamily: "Montserrat, sans-serif",
         marginTop: "5px",
+        fontSize: "21px",
         fontWeight: "600",
         marginRight: "7px",
         position: "relative",
@@ -75,3 +76,5 @@ export const headerStyles = makeStyles((theme) => ({
     }
 
 }));
+
+export default headerStyles;

@@ -8,6 +8,6 @@ module.exports = {
         return config;
     },
     env: {
-        // BACKEND_HOST: "http://createosm.pl/studiuj/public",
+        BACKEND_HOST: "http://createosm.pl/studiuj/public",
     },
 };

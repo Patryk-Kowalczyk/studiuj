@@ -2,8 +2,8 @@ import {Box, Typography} from "@material-ui/core";
 import {motion} from "framer-motion";
 import ButtonLink from "../ButtonLink";
 import React from "react";
-import {headerStyles} from "./styles/headerStyles";
 import {BsBookHalf} from "react-icons/bs";
+import {headerStyles} from "./styles";
 
 export default function Header() {
     const classes = headerStyles();
@@ -21,7 +21,7 @@ export default function Header() {
                 </Box>
                 <Box>
                     <ButtonLink className={classes.buttonHeader} href="/login">logowanie</ButtonLink>
-                    <ButtonLink className={classes.buttonHeader} href="/register">rejestrajca</ButtonLink>
+                    <ButtonLink className={classes.buttonHeader} href="/register">rejestracja</ButtonLink>
                 </Box>
             </Box>
         </Box>

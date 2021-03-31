@@ -1,11 +1,12 @@
 import React from "react";
-import {firstContentStyles} from "./styles/firstContentStyles";
 import {Box, Typography} from "@material-ui/core";
 import {BiPaperPlane} from "react-icons/bi";
 import {RiCompasses2Fill, RiPencilLine, RiScissorsLine, RiRulerLine, RiBookOpenLine} from "react-icons/ri";
+import {backgroundIcons, firstContentStyles} from "./styles";
 
 export default function FirstContent() {
     const classes = firstContentStyles();
+    const icons = backgroundIcons();
     return (
         <>
             <Box className={classes.headerBox}>
@@ -25,16 +26,33 @@ export default function FirstContent() {
                         przynosi
                         największe zyski" - Bejnamin Franklin`}
                         </Typography>
+                        <Box className={classes.rightContent}>
+                            <Box className={classes.contentArea}>
+                                <Box className={classes.contentAreaText}>
+                                    <p className={classes.contentAreaTextP}> #studiujznami</p>
+                                    <div className={classes.contentAreaTextDiv1}>udzielaj się i zdobywaj reputację,
+                                    </div>
+                                    <div className={classes.contentAreaTextDiv1}>twórz spotkania i korzystaj z naszej
+                                        platformy <span
+                                            className={classes.contentAreaTextSpan}>korepetycji online</span>
+                                    </div>
+                                    <div className={classes.contentAreaTextDiv2}>dołącz już dziś i twórz z nami
+                                        społeczność
+                                    </div>
+                                    <button className={classes.button}>zarejstruj konto</button>
+                                </Box>
+                            </Box>
+                        </Box>
                     </Box>
                 </Box>
 
             </Box>
-            <BiPaperPlane className={classes.plane}/>
-            <RiCompasses2Fill className={classes.compass}/>
-            <RiPencilLine className={classes.pencil}/>
-            <RiScissorsLine className={classes.scissors}/>
-            <RiRulerLine className={classes.ruler}/>
-            <RiBookOpenLine className={classes.book}/>
+            <BiPaperPlane className={icons.plane}/>
+            <RiCompasses2Fill className={icons.compass}/>
+            <RiPencilLine className={icons.pencil}/>
+            <RiScissorsLine className={icons.scissors}/>
+            <RiRulerLine className={icons.ruler}/>
+            <RiBookOpenLine className={icons.book}/>
         </>
     )
 }
