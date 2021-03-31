@@ -4,7 +4,6 @@ export const headerStyles = makeStyles((theme) => ({
     headerBox: {
         width: "100%",
         padding: "10px",
-
     },
     boxMaxWidth: {
         display: "grid",
@@ -12,32 +11,24 @@ export const headerStyles = makeStyles((theme) => ({
         maxWidth: "1600px",
         margin: "0 auto",
     },
-    text: {
-        color: "black",
-    },
     logoBox: {
         display: "flex",
         flexDirection: "row",
         marginLeft: "25px",
         marginTop: "15px",
-
-        '&$hover': {
-            backgroundColor: "red",
-        }
     },
     logo: {
-        marginRight: "5px",
         fontSize: "25px",
-
+        marginRight: "5px",
     },
     logoText: {
-        fontSize: "24px",
-        lineHeight: "27.5px",
+        position: "relative",
         fontFamily: "Montserrat, sans-serif",
+        fontSize: theme.fonts.sizes.logoText,
         fontWeight: "600",
+        lineHeight: "24.5px",
         letterSpacing: "0.5px",
         cursor: "pointer",
-        position: "relative",
 
         "&::after": {
             content: "''",
@@ -55,23 +46,18 @@ export const headerStyles = makeStyles((theme) => ({
             }
         }
 
-
     },
-    colorS: {
-        fontWeight: "600",
-        fontSize: "25px",
-    },
-    buttonHeader: {
-        textTransform: "lowercase",
-        fontFamily: "Montserrat, sans-serif",
-        marginTop: "5px",
-        fontSize: "21px",
-        fontWeight: "600",
-        marginRight: "7px",
+    navigationHeader: {
         position: "relative",
+        marginTop: "5px",
+        marginRight: "7px",
+        fontFamily: "Montserrat, sans-serif",
+        fontSize: theme.fonts.sizes.navigationHeader,
+        fontWeight: theme.fonts.weight.bold,
+        textTransform: "lowercase",
+        
         "&:nth-child(2)": {
             color: theme.palette.primary.dark,
-
         }
     }
 

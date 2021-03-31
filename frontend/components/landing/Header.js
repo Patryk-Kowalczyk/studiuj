@@ -17,11 +17,11 @@ export default function Header() {
                 <Box className={classes.logoBox}>
                     <Typography className={classes.logo}> <BsBookHalf/></Typography>
                     <Typography className={classes.logoText}> <span
-                        className={classes.colorS}>S</span>tudiuj.pl</Typography>
+                        style={{fontSize: "27px"}}>S</span>tudiuj.pl</Typography>
                 </Box>
                 <Box>
-                    <ButtonLink className={classes.buttonHeader} href="/login">logowanie</ButtonLink>
-                    <ButtonLink className={classes.buttonHeader} href="/register">rejestracja</ButtonLink>
+                    <ButtonLink className={classes.navigationHeader} href="/login">logowanie</ButtonLink>
+                    <ButtonLink className={classes.navigationHeader} href="/register">rejestracja</ButtonLink>
                 </Box>
             </Box>
         </Box>

@@ -1,15 +1,36 @@
 import {makeStyles} from "@material-ui/core/styles";
 
 export const firstContentStyles = makeStyles((theme) => ({
+        headerBox: {
+            backgroundColor: "#FBFBFB",
+        },
+        boxMaxWidth: {
+            position: "relative",
+            maxWidth: "1800px",
+            margin: "0 auto",
+            overflow: "hidden",
+
+            display: "grid",
+            gridTemplateColumns: "250px 1fr",
+            gridTemplateAreas: "'left right'",
+
+            '@media (max-width: 1300px)': {
+                gridTemplateColumns: "150px 1fr",
+
+            },
+            '@media (max-width: 1000px)': {
+                gridTemplateColumns: "1fr",
+                gridTemplateRows: "auto ",
+                gridTemplateAreas: `"right" "left"`,
+            }
+        },
+
         leftSideBox: {
             gridArea: "left",
-            // backgroundColor: "#FBFBFB",
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-end",
             zIndex: "2",
-
-
         },
 
         rightSideBox: {
@@ -21,7 +42,6 @@ export const firstContentStyles = makeStyles((theme) => ({
 
             display: "flex",
             flexDirection: "column",
-            // alignItems: "space-between",
             justifyContent: "space-evenly",
 
         },
@@ -115,38 +135,7 @@ export const firstContentStyles = makeStyles((theme) => ({
             },
         },
 
-        boxMaxWidth: {
-            position: "relative",
-            display: "grid",
-            overflow: "hidden",
-            gridTemplateColumns: "250px 1fr",
-            gridTemplateAreas: "'left right'",
-            gridTemplateRows: "auto 1fr",
 
-            width: "100%",
-            height: "100%",
-            maxWidth: "1800px",
-            margin: "0 auto",
-            '@media (max-width: 1300px)': {
-                gridTemplateColumns: "150px 1fr",
-
-            },
-            '@media (max-width: 1000px)': {
-                gridTemplateColumns: "1fr",
-                gridTemplateRows: "auto ",
-
-                gridTemplateAreas: `
-            "right"
-            "left"
-            `,
-            }
-        },
-        headerBox: {
-            width: "100%",
-            height: "100vh",
-            overflow: "hidden",
-            backgroundColor: "#FBFBFB",
-        },
         h1: {
             fontFamily: "Caveat, cursive",
             fontSize: "35px",
