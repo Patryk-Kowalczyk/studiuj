@@ -6,10 +6,12 @@ export const headerStyles = makeStyles((theme) => ({
         padding: "10px",
     },
     boxMaxWidth: {
-        display: "grid",
-        gridTemplateColumns: "1fr auto",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
         maxWidth: "1600px",
         margin: "0 auto",
+     
     },
     logoBox: {
         display: "flex",
@@ -20,6 +22,9 @@ export const headerStyles = makeStyles((theme) => ({
     logo: {
         fontSize: "25px",
         marginRight: "5px",
+        ['@media (max-width:450px)']: {
+            fontSize: "20px",
+        },
     },
     logoText: {
         position: "relative",
@@ -44,7 +49,19 @@ export const headerStyles = makeStyles((theme) => ({
             "&::after": {
                 width: "90%",
             }
-        }
+        },
+        ['@media (max-width:450px)']: {
+            fontSize: theme.fonts.sizes.logoTextMobile,
+            lineHeight: "19.5px",
+        },
+
+
+    },
+    span: {
+        fontSize: "27px",
+        ['@media (max-width:450px)']: {
+            fontSize: "22px",
+        },
 
     },
     navigationHeader: {
@@ -55,10 +72,13 @@ export const headerStyles = makeStyles((theme) => ({
         fontSize: theme.fonts.sizes.navigationHeader,
         fontWeight: theme.fonts.weight.bold,
         textTransform: "lowercase",
-        
+        ['@media (max-width:450px)']: {
+            fontSize: theme.fonts.sizes.navigationHeaderMobile,
+        },
         "&:nth-child(2)": {
             color: theme.palette.primary.dark,
         }
+
     }
 
 }));

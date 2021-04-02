@@ -17,7 +17,7 @@ export default function Header() {
                 <Box className={classes.logoBox}>
                     <Typography className={classes.logo}> <BsBookHalf/></Typography>
                     <Typography className={classes.logoText}> <span
-                        style={{fontSize: "27px"}}>S</span>tudiuj.pl</Typography>
+                        className={classes.span}>S</span>tudiuj.pl</Typography>
                 </Box>
                 <Box>
                     <ButtonLink className={classes.navigationHeader} href="/login">logowanie</ButtonLink>

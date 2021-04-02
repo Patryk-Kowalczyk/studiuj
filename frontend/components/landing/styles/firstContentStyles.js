@@ -1,75 +1,74 @@
 import {makeStyles} from "@material-ui/core/styles";
 
 export const firstContentStyles = makeStyles((theme) => ({
-        headerBox: {
+        bgc: {
             backgroundColor: "#FBFBFB",
         },
-        boxMaxWidth: {
+        maxWidth_Grid: {
             position: "relative",
             maxWidth: "1800px",
+            height: "100vh",
             margin: "0 auto",
             overflow: "hidden",
-
             display: "grid",
             gridTemplateColumns: "250px 1fr",
             gridTemplateAreas: "'left right'",
-
-            '@media (max-width: 1300px)': {
-                gridTemplateColumns: "150px 1fr",
-
-            },
-            '@media (max-width: 1000px)': {
+            [theme.breakpoints.down('md')]: {
                 gridTemplateColumns: "1fr",
                 gridTemplateRows: "auto ",
                 gridTemplateAreas: `"right" "left"`,
-            }
+            },
         },
 
-        leftSideBox: {
+        // ----------------------------- leftSideBox
+        leftSide: {
             gridArea: "left",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            zIndex: "2",
+        },
+        image: {
+            position: "absolute",
+            right: "0",
+            top: "0",
+            transform: "translate(20%,-25%) rotate(-5deg)",
+            zIndex: "999",
+            height: "40vh",
+            maxHeight: "600px",
+        },
+        circle: {
+            width: "100vh",
+            height: "100vh",
+            maxWidth: "800px",
+            maxHeight: "800px",
+            background: theme.palette.primary.light,
+            borderRadius: "50%",
+            transform: "translate(-40%,40%)",
         },
 
-        rightSideBox: {
+        // ----------------------------- rightSideBox
+
+        rightSide: {
             gridArea: "right",
-            '@media (max-width: 1000px)': {
-                height: "70vh",
-            },
             zIndex: "2",
-
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-
         },
+
+
         rightContent: {
-
-            flexBasis: "60%",
             display: "flex",
-            justifyContent: "flex-end",
-
-
-        },
-        contentArea: {
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "start",
+            justifyContent: "center",
             alignItems: "center",
-            flexBasis: "80%",
-            marginRight: "4%",
-            marginTop: "1%",
-            '@media (max-width: 600px)': {
-                flexBasis: "100%",
-            },
+            height: "70%",
+        },
+        h1: {
+            fontFamily: "Caveat, cursive",
+            fontSize: "35px",
+            width: "100vw",
+            fontWeight: "900",
+           
+        },
+
+        contentArea: {
             fontFamily: "Montserrat, sans-serif",
             fontSize: "25px",
-        },
-        contentAreaText: {
-            maxWidth: "900px",
-
+            maxWidth: "50vw",
             borderLeft: "3px solid",
             borderColor: theme.palette.primary.light,
             paddingLeft: "15px",
@@ -96,57 +95,7 @@ export const firstContentStyles = makeStyles((theme) => ({
             marginTop: "20px",
         },
 
-        image: {
-            position: "absolute",
-            right: "0",
-            top: "0",
-            transform: "translate(20%,-25%) rotate(-5deg)",
-            zIndex: "999",
-            height: "40vh",
 
-        },
-        circle: {
-            width: "100vh",
-            height: "100vh",
-            background: theme.palette.primary.light,
-            borderRadius: "50%",
-            transform: "translate(-40%,40%)",
-            '@media (min-height: 1000px) and (min-width: 1000px)': {
-                transform: "translate(-40%,50%)"
-            },
-
-            '@media (max-width: 1000px)': {
-                transform: "translate(-45%,-30%)"
-            },
-            '@media (max-width: 800px) and (max-height: 1000px)': {
-                transform: "translate(-55%,-20%)"
-            },
-            '@media (min-width: 1050px)': {
-                transform: "translate(-45%,40%)"
-            },
-            '@media (max-width: 1000px) and (min-height: 1000px)': {
-                transform: "translate(-65%,-10%)"
-            },
-            '@media (max-width: 550px) and (min-height: 1000px)': {
-                transform: "translate(-70%,-12%)"
-            },
-            '@media (max-width: 550px) and (max-height: 1000px)': {
-                transform: "translate(-65%,-20%)"
-            },
-        },
-
-
-        h1: {
-            fontFamily: "Caveat, cursive",
-            fontSize: "35px",
-            width: "100vw",
-            fontWeight: "900",
-            '@media (max-width: 1000px)': {
-                fontSize: "30px",
-
-            },
-            // marginBottom: "10%",
-        },
         button: {
             display: "block",
             backgroundColor: theme.palette.primary.light,

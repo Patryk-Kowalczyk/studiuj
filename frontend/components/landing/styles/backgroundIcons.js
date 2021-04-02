@@ -8,7 +8,6 @@ const backgroundIcons = makeStyles((theme) => ({
         fontSize: "70px",
         opacity: "0.08",
         zIndex: "1",
-
     },
 }));
 

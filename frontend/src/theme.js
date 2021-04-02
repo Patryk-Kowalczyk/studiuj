@@ -7,7 +7,9 @@ const theme = createMuiTheme(
         fonts: {
             sizes: {
                 navigationHeader: "21px",
+                navigationHeaderMobile: "12px",
                 logoText: "25px",
+                logoTextMobile: "20px",
             },
             weight: {
                 normal: "400",
