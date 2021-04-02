@@ -4,6 +4,7 @@ import {red, blueGrey} from "@material-ui/core/colors";
 // Create a theme instance.
 const theme = createMuiTheme(
     {
+
         fonts: {
             sizes: {
                 navigationHeader: "21px",

@@ -2,8 +2,18 @@ import {makeStyles} from "@material-ui/core/styles";
 
 export const headerStyles = makeStyles((theme) => ({
     headerBox: {
+        position: "fixed",
+        top: "0",
+        left: "0",
         width: "100%",
         padding: "10px",
+        height: "60px",
+        zIndex: "999",
+        backgroundColor: "white",
+        [theme.breakpoints.down('xs')]: {
+            padding: "2px",
+
+        }
     },
     boxMaxWidth: {
         display: "flex",
@@ -11,7 +21,10 @@ export const headerStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
         maxWidth: "1600px",
         margin: "0 auto",
-     
+        ['@media (max-width:320px)']: {
+            flexDirection: "column",
+        },
+
     },
     logoBox: {
         display: "flex",
@@ -74,6 +87,8 @@ export const headerStyles = makeStyles((theme) => ({
         textTransform: "lowercase",
         ['@media (max-width:450px)']: {
             fontSize: theme.fonts.sizes.navigationHeaderMobile,
+            marginTop: "12px",
+
         },
         "&:nth-child(2)": {
             color: theme.palette.primary.dark,

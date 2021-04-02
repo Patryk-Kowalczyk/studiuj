@@ -4,25 +4,24 @@ export const firstContentStyles = makeStyles((theme) => ({
         bgc: {
             backgroundColor: "#FBFBFB",
         },
-        maxWidth_Grid: {
+        maxWidthBox: {
             position: "relative",
             maxWidth: "1800px",
             height: "100vh",
             margin: "0 auto",
+            marginTop: "60px",
             overflow: "hidden",
-            display: "grid",
-            gridTemplateColumns: "250px 1fr",
-            gridTemplateAreas: "'left right'",
+            display: "flex",
             [theme.breakpoints.down('md')]: {
-                gridTemplateColumns: "1fr",
-                gridTemplateRows: "auto ",
-                gridTemplateAreas: `"right" "left"`,
+                flexDirection: "column",
             },
         },
-
         // ----------------------------- leftSideBox
         leftSide: {
-            gridArea: "left",
+            maxWidth: "800px",
+            [theme.breakpoints.down('md')]: {
+                order: "2",
+            },
         },
         image: {
             position: "absolute",
@@ -32,67 +31,115 @@ export const firstContentStyles = makeStyles((theme) => ({
             zIndex: "999",
             height: "40vh",
             maxHeight: "600px",
+            [theme.breakpoints.down('xs')]: {
+                maxHeight: "400px",
+
+            },
         },
         circle: {
             width: "100vh",
             height: "100vh",
-            maxWidth: "800px",
-            maxHeight: "800px",
+            maxWidth: "900px",
+            maxHeight: "900px",
             background: theme.palette.primary.light,
             borderRadius: "50%",
-            transform: "translate(-40%,40%)",
+            transform: "translate(-40%,60%)",
+            [theme.breakpoints.down('md')]: {
+                transform: "translate(-40%,20%)",
+            },
+            [theme.breakpoints.down('xs')]: {
+                transform: "translate(-30%,28%)",
+                maxWidth: "400px",
+                maxHeight: "400px",
+                ['@media (min-height:700px)']: {
+                    transform: "translate(-20%,34%)",
+                },
+            },
+
         },
 
         // ----------------------------- rightSideBox
-
         rightSide: {
-            gridArea: "right",
             zIndex: "2",
+            display: "flex",
+            flexDirection: "column",
+        },
+        h1: {
+            marginLeft: "-600px",
+            fontFamily: "Caveat, cursive",
+            fontSize: "38px",
+            fontWeight: "900",
+            marginTop: "100px",
+
+            [theme.breakpoints.down('md')]: {
+                padding: "0 5px",
+                margin: "25px 0 35px 0",
+
+            },
+            [theme.breakpoints.down('xs')]: {
+                fontSize: "16px",
+                margin: "5px 0 5px 0",
+                ['@media (min-height:700px)']: {
+                    fontSize: "18px",
+                    margin: "10px 0 10px 0",
+                },
+            }
         },
 
 
         rightContent: {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "70%",
-        },
-        h1: {
-            fontFamily: "Caveat, cursive",
-            fontSize: "35px",
-            width: "100vw",
-            fontWeight: "900",
-           
-        },
-
-        contentArea: {
             fontFamily: "Montserrat, sans-serif",
-            fontSize: "25px",
-            maxWidth: "50vw",
-            borderLeft: "3px solid",
+            fontSize: "40px",
+            fontWeight: "600",
+            maxWidth: "900px",
+            borderLeft: "8px dotted",
             borderColor: theme.palette.primary.light,
             paddingLeft: "15px",
+            marginTop: "23%",
+            [theme.breakpoints.down('md')]: {
+                fontSize: "30px",
+                maxWidth: "100%",
+                marginTop: "2%",
+                borderLeft: "8px solid",
+                borderColor: theme.palette.primary.light,
+
+
+            },
+            [theme.breakpoints.down('xs')]: {
+                fontSize: "16px",
+                maxWidth: "100%",
+                ['@media (min-height:700px)']: {
+                    fontSize: "18px",
+                    marginTop: "5%",
+                },
+            },
         },
-        contentAreaTextP: {
+        p: {
             color: theme.palette.primary.light,
             fontSize: "20px",
             fontStyle: "italic",
             fontWeight: "500",
+            [theme.breakpoints.down('xs')]: {
+                fontSize: "13px",
+                maxWidth: "100%",
+                ['@media (min-height:700px)']: {
+                    fontSize: "15px",
+                    marginTop: "10%",
+                },
+            },
         },
-        contentAreaTextSpan: {
+        span: {
             color: theme.palette.primary.light,
-            fontSize: "40px",
-            fontWeight: "600",
             textDecoration: "underline",
         },
-        contentAreaTextDiv1: {
-            fontSize: "40px",
-            fontWeight: "600",
-        },
-        contentAreaTextDiv2: {
-            fontSize: "40px",
+
+        divWeight: {
             fontWeight: "500",
             marginTop: "20px",
+            [theme.breakpoints.down('xs')]: {
+                marginTop: "10px",
+
+            },
         },
 
 
@@ -112,6 +159,16 @@ export const firstContentStyles = makeStyles((theme) => ({
             color: "white",
             textAlign: "center",
             lineHeight: "67px",
+            [theme.breakpoints.down('xs')]: {
+                fontSize: "15px",
+                height: "30px",
+                lineHeight: "30px",
+                ['@media (min-height:700px)']: {
+                    fontSize: "18px",
+                    height: "40px",
+                    lineHeight: "40px",
+                },
+            },
 
         },
 
