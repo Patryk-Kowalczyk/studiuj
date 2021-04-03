@@ -1,6 +1,6 @@
 import {Box, Typography} from "@material-ui/core";
 import {BackgroundIcons, firstContentStyles} from "./styles";
-import {SiHipchat} from "react-icons/si";
+import {SiHipchat, SiInstagram, SiFacebook, SiTwitter} from "react-icons/si";
 import {motion} from "framer-motion";
 import React from "react";
 
@@ -29,19 +29,24 @@ export default function FirstContent() {
                         <button className={classes.button}>zarejestruj konto</button>
                     </Box>
                 </Box>
+                <BackgroundIcons/>
+                <Box className={classes.socialMediaContainer}>
+                    <SiFacebook className={classes.hover}/>
+                    <SiInstagram className={classes.hover}/>
+                    <SiTwitter className={classes.hover}/>
+                </Box>
             </Box>
-            <BackgroundIcons/>
             <Box className={classes.messageContainer}
                  component={motion.div}
-                 initial={{scale: 1, opacity: 0.5}}
-                 animate={{scale: 1.2, opacity: 1}}
+                 initial={{scale: 1, opacity: 0.4}}
+                 animate={{scale: 1.2, opacity: 0.8}}
                  transition={{
                      repeat: Infinity, duration: 4,
                  }}
-
             >
                 <SiHipchat className={classes.messageButton}/>
             </Box>
+
 
         </Box>
     )

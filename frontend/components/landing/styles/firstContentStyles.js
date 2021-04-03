@@ -208,11 +208,33 @@ export const firstContentStyles = makeStyles((theme) => ({
             position: "absolute",
             top: "50%",
             left: "50%",
-            transform: "translate(-50%,-50%)",
             fontSize: "35px",
             color: theme.palette.primary.light,
+            transform: "translate(-50%,-50%)",
 
         },
+        socialMediaContainer: {
+            position: "absolute",
+            top: "20%",
+            right: "2%",
+            height: "200px",
+            zIndex: "2",
+            color: theme.palette.primary.light,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+        },
+        hover: {
+            fontSize: "45px",
+            padding: "2px",
+            transition: ".3s",
+            cursor: "pointer",
+            '&:hover': {
+                color: "black",
+                border: "2px solid black",
+            },
+
+        }
     }))
 ;
 
