@@ -16,7 +16,15 @@ const theme = createMuiTheme(
                 normal: "400",
                 medium: "500",
                 bold: "600",
-                maxBold: "700",
+                semiBold: "700",
+                maxBold: "900",
+            },
+            family: {
+                navigation: "Montserrat, sans-serif",
+                content: "Montserrat, sans-serif",
+                h1FirstContent: "Caveat, cursive",
+
+
             }
         },
 
@@ -33,6 +41,7 @@ const theme = createMuiTheme(
             },
             background: {
                 default: "#fff",
+                firstContent: "#FBFBFB",
             },
             lightFont: {
                 main: blueGrey[50],

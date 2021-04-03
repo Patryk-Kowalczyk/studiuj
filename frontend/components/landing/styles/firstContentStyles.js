@@ -2,20 +2,21 @@ import {makeStyles} from "@material-ui/core/styles";
 
 export const firstContentStyles = makeStyles((theme) => ({
         bgc: {
-            backgroundColor: "#FBFBFB",
+            backgroundColor: theme.palette.background.firstContent,
         },
         maxWidthBox: {
             position: "relative",
             maxWidth: "1800px",
             height: "100vh",
             margin: "0 auto",
-            marginTop: "60px",
+            marginTop: "50px",
             overflow: "hidden",
             display: "flex",
             [theme.breakpoints.down('md')]: {
                 flexDirection: "column",
             },
         },
+
         // ----------------------------- leftSideBox
         leftSide: {
             maxWidth: "800px",
@@ -46,6 +47,9 @@ export const firstContentStyles = makeStyles((theme) => ({
             transform: "translate(-40%,60%)",
             [theme.breakpoints.down('md')]: {
                 transform: "translate(-40%,20%)",
+                ['@media (max-height:400px)']: {
+                    transform: "translate(-50%,34%)",
+                },
             },
             [theme.breakpoints.down('xs')]: {
                 transform: "translate(-30%,28%)",
@@ -66,14 +70,19 @@ export const firstContentStyles = makeStyles((theme) => ({
         },
         h1: {
             marginLeft: "-600px",
-            fontFamily: "Caveat, cursive",
+            fontFamily: theme.fonts.family.h1FirstContent,
             fontSize: "38px",
-            fontWeight: "900",
+            fontWeight: theme.fonts.weight.semiBold,
             marginTop: "100px",
 
             [theme.breakpoints.down('md')]: {
                 padding: "0 5px",
                 margin: "25px 0 35px 0",
+                ['@media (max-height:400px)']: {
+                    fontSize: "16px",
+                    margin: "15px 0 5px 0",
+
+                },
 
             },
             [theme.breakpoints.down('xs')]: {
@@ -83,14 +92,13 @@ export const firstContentStyles = makeStyles((theme) => ({
                     fontSize: "18px",
                     margin: "10px 0 10px 0",
                 },
+
             }
         },
-
-
         rightContent: {
-            fontFamily: "Montserrat, sans-serif",
+            fontFamily: theme.fonts.family.content,
             fontSize: "40px",
-            fontWeight: "600",
+            fontWeight: theme.fonts.weight.bold,
             maxWidth: "900px",
             borderLeft: "8px dotted",
             borderColor: theme.palette.primary.light,
@@ -102,6 +110,11 @@ export const firstContentStyles = makeStyles((theme) => ({
                 marginTop: "2%",
                 borderLeft: "8px solid",
                 borderColor: theme.palette.primary.light,
+                ['@media (max-height:400px)']: {
+                    fontSize: "16px",
+                    marginLeft: "35%",
+                    marginTop: "0%",
+                },
 
 
             },
@@ -118,7 +131,7 @@ export const firstContentStyles = makeStyles((theme) => ({
             color: theme.palette.primary.light,
             fontSize: "20px",
             fontStyle: "italic",
-            fontWeight: "500",
+            fontWeight: theme.fonts.weight.medium,
             [theme.breakpoints.down('xs')]: {
                 fontSize: "13px",
                 maxWidth: "100%",
@@ -132,17 +145,14 @@ export const firstContentStyles = makeStyles((theme) => ({
             color: theme.palette.primary.light,
             textDecoration: "underline",
         },
-
         divWeight: {
-            fontWeight: "500",
+            fontWeight: theme.fonts.weight.medium,
             marginTop: "20px",
             [theme.breakpoints.down('xs')]: {
                 marginTop: "10px",
 
             },
         },
-
-
         button: {
             display: "block",
             backgroundColor: theme.palette.primary.light,
@@ -151,27 +161,58 @@ export const firstContentStyles = makeStyles((theme) => ({
             marginTop: "30px",
             border: "none",
             borderRadius: "50px",
-            fontFamily: "Montserrat,sans-serif",
-            fontWeight: "600",
+            fontFamily: theme.fonts.family.content,
+            fontWeight: theme.fonts.weight.bold,
             fontSize: "25px",
             textTransform: "lowercase",
             textDecoration: "none",
             color: "white",
             textAlign: "center",
             lineHeight: "67px",
-            [theme.breakpoints.down('xs')]: {
-                fontSize: "15px",
-                height: "30px",
-                lineHeight: "30px",
-                ['@media (min-height:700px)']: {
-                    fontSize: "18px",
-                    height: "40px",
-                    lineHeight: "40px",
+            [theme.breakpoints.down('md')]: {
+                ['@media (max-height:400px)']: {
+                    fontSize: "16px",
+                    height: "30px",
+                    lineHeight: "30px",
+                    marginTop: "10px",
                 },
             },
+            [theme.breakpoints.down('xs')]: {
+                fontSize: "18px",
+                height: "40px",
+                lineHeight: "40px",
+                marginTop: "20px",
+
+                ['@media (min-height:700px)']: {
+                    fontSize: "20px",
+                    height: "50px",
+                    lineHeight: "50px",
+                    marginTop: "20px",
+
+                },
+            },
+        },
+        messageContainer: {
+            position: "fixed",
+            bottom: "40px",
+            right: "40px",
+            height: "60px",
+            width: "60px",
+            borderRadius: "50%",
+            border: "3px solid",
+            borderColor: theme.palette.primary.light,
+            webkitBoxShadow: "0px 0px 1px 1px rgba(122,138,216,0.4), 0px 0px 1px 1px rgba(122,138,216,0.4)",
+            boxShadow: "0px 0px 1px 1px rgba(122,138,216,0.7), 0px 0px 1px 1px rgba(122,138,216,0.7)",
+        },
+        messageButton: {
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%,-50%)",
+            fontSize: "35px",
+            color: theme.palette.primary.light,
 
         },
-
     }))
 ;
 

@@ -7,12 +7,16 @@ export const headerStyles = makeStyles((theme) => ({
         left: "0",
         width: "100%",
         padding: "10px",
-        height: "60px",
+        minHeight: "50px",
         zIndex: "999",
         backgroundColor: "white",
+        [theme.breakpoints.down('md')]: {
+            ['@media (max-height:400px)']: {
+                height: "50px"
+            },
+        },
         [theme.breakpoints.down('xs')]: {
             padding: "2px",
-
         }
     },
     boxMaxWidth: {
@@ -31,19 +35,35 @@ export const headerStyles = makeStyles((theme) => ({
         flexDirection: "row",
         marginLeft: "25px",
         marginTop: "15px",
+        [theme.breakpoints.down('md')]: {
+            ['@media (max-height:400px)']: {
+                marginLeft: "10px",
+                marginTop: "2px",
+            },
+        },
+        [theme.breakpoints.down('xs')]: {
+            marginLeft: "10px",
+            marginTop: "10px",
+        }
+
     },
     logo: {
         fontSize: "25px",
         marginRight: "5px",
-        ['@media (max-width:450px)']: {
+        [theme.breakpoints.down('md')]: {
+            ['@media (max-height:400px)']: {
+                fontSize: "20px",
+            },
+        },
+        [theme.breakpoints.down('xs')]: {
             fontSize: "20px",
         },
     },
     logoText: {
         position: "relative",
-        fontFamily: "Montserrat, sans-serif",
+        fontFamily: theme.fonts.family.navigation,
         fontSize: theme.fonts.sizes.logoText,
-        fontWeight: "600",
+        fontWeight: theme.fonts.weight.bold,
         lineHeight: "24.5px",
         letterSpacing: "0.5px",
         cursor: "pointer",
@@ -56,39 +76,64 @@ export const headerStyles = makeStyles((theme) => ({
             width: "55%",
             height: "2px",
             background: theme.palette.primary.dark,
-            transition: "0.3s"
+            transition: "0.3s",
+            [theme.breakpoints.down('md')]: {
+                ['@media (max-height:400px)']: {
+                    left: "3px",
+                    bottom: "5px",
+                },
+            },
+            [theme.breakpoints.down('xs')]: {
+                left: "3px",
+                bottom: "5px",
+            }
+
         },
         "&:hover": {
             "&::after": {
                 width: "90%",
             }
         },
-        ['@media (max-width:450px)']: {
-            fontSize: theme.fonts.sizes.logoTextMobile,
-            lineHeight: "19.5px",
+        [theme.breakpoints.down('md')]: {
+            ['@media (max-height:400px)']: {
+                fontSize: theme.fonts.sizes.logoTextMobile,
+                lineHeight: "21.5px",
+            },
         },
-
+        [theme.breakpoints.down('xs')]: {
+            fontSize: theme.fonts.sizes.logoTextMobile,
+            lineHeight: "21.5px",
+        },
 
     },
     span: {
         fontSize: "27px",
-        ['@media (max-width:450px)']: {
+        [theme.breakpoints.down('md')]: {
+            ['@media (max-height:400px)']: {
+                fontSize: "22px",
+            },
+        },
+        [theme.breakpoints.down('xs')]: {
             fontSize: "22px",
         },
-
     },
     navigationHeader: {
         position: "relative",
         marginTop: "5px",
         marginRight: "7px",
-        fontFamily: "Montserrat, sans-serif",
+        fontFamily: theme.fonts.family.navigation,
         fontSize: theme.fonts.sizes.navigationHeader,
         fontWeight: theme.fonts.weight.bold,
         textTransform: "lowercase",
-        ['@media (max-width:450px)']: {
+        [theme.breakpoints.down('md')]: {
+            ['@media (max-height:400px)']: {
+                fontSize: theme.fonts.sizes.navigationHeaderMobile,
+                marginTop: "2px",
+            },
+        },
+        [theme.breakpoints.down('xs')]: {
             fontSize: theme.fonts.sizes.navigationHeaderMobile,
-            marginTop: "12px",
-
+            marginTop: "7px",
         },
         "&:nth-child(2)": {
             color: theme.palette.primary.dark,

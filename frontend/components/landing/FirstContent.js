@@ -1,5 +1,8 @@
 import {Box, Typography} from "@material-ui/core";
 import {BackgroundIcons, firstContentStyles} from "./styles";
+import {SiHipchat} from "react-icons/si";
+import {motion} from "framer-motion";
+import React from "react";
 
 export default function FirstContent() {
     const classes = firstContentStyles();
@@ -28,6 +31,17 @@ export default function FirstContent() {
                 </Box>
             </Box>
             <BackgroundIcons/>
+            <Box className={classes.messageContainer}
+                 component={motion.div}
+                 initial={{scale: 1, opacity: 0.5}}
+                 animate={{scale: 1.2, opacity: 1}}
+                 transition={{
+                     repeat: Infinity, duration: 4,
+                 }}
+
+            >
+                <SiHipchat className={classes.messageButton}/>
+            </Box>
 
         </Box>
     )
