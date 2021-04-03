@@ -1,8 +1,9 @@
 import {Box, Typography} from "@material-ui/core";
 import {BackgroundIcons, firstContentStyles} from "./styles";
-import {SiHipchat, SiInstagram, SiFacebook, SiTwitter} from "react-icons/si";
+import {SiWechat, SiInstagram, SiFacebook, SiTwitter} from "react-icons/si";
 import {motion} from "framer-motion";
 import React from "react";
+import Grid from "@material-ui/core/Grid";
 
 export default function FirstContent() {
     const classes = firstContentStyles();
@@ -36,17 +37,10 @@ export default function FirstContent() {
                     <SiTwitter className={classes.hover}/>
                 </Box>
             </Box>
-            <Box className={classes.messageContainer}
-                 component={motion.div}
-                 initial={{scale: 1, opacity: 0.4}}
-                 animate={{scale: 1.2, opacity: 0.8}}
-                 transition={{
-                     repeat: Infinity, duration: 4,
-                 }}
-            >
-                <SiHipchat className={classes.messageButton}/>
-            </Box>
 
+            <Box className={classes.messageContainer}>
+                <SiWechat className={classes.messageButton}/>
+            </Box>
 
         </Box>
     )

@@ -192,25 +192,35 @@ export const firstContentStyles = makeStyles((theme) => ({
                 },
             },
         },
+
         messageContainer: {
             position: "fixed",
-            bottom: "40px",
-            right: "40px",
-            height: "60px",
-            width: "60px",
-            borderRadius: "50%",
-            border: "3px solid",
-            borderColor: theme.palette.primary.light,
-            webkitBoxShadow: "0px 0px 1px 1px rgba(122,138,216,0.4), 0px 0px 1px 1px rgba(122,138,216,0.4)",
-            boxShadow: "0px 0px 1px 1px rgba(122,138,216,0.7), 0px 0px 1px 1px rgba(122,138,216,0.7)",
+            bottom: "20px",
+            right: "20px",
+            zIndex: "9999",
+            [theme.breakpoints.down('md')]: {
+
+                ['@media (max-height:400px)']: {},
+
+            },
+            [theme.breakpoints.down('xs')]: {
+                ['@media (min-height:700px)']: {},
+            },
+
+
         },
         messageButton: {
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            fontSize: "35px",
-            color: theme.palette.primary.light,
-            transform: "translate(-50%,-50%)",
+            position: "relative",
+            cursor: "pointer",
+            padding: "5px",
+            fontSize: "80px",
+            opacity: "0.7",
+
+            transition: ".4s",
+            '&:hover': {
+                fontSize: "110px",
+                opacity: "1",
+            },
 
         },
         socialMediaContainer: {
@@ -223,6 +233,14 @@ export const firstContentStyles = makeStyles((theme) => ({
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
+            [theme.breakpoints.down('md')]: {
+                top: "10%",
+                flexDirection: "column",
+            },
+            [theme.breakpoints.down('xs')]: {
+                top: "5%",
+                flexDirection: "row",
+            },
         },
         hover: {
             fontSize: "45px",
@@ -233,7 +251,10 @@ export const firstContentStyles = makeStyles((theme) => ({
                 color: "black",
                 border: "2px solid black",
             },
-
+            [theme.breakpoints.down('xs')]: {
+                fontSize: "25px",
+                marginRight: "10px",
+            },
         }
     }))
 ;

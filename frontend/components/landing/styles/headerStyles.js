@@ -64,7 +64,7 @@ export const headerStyles = makeStyles((theme) => ({
         fontFamily: theme.fonts.family.navigation,
         fontSize: theme.fonts.sizes.logoText,
         fontWeight: theme.fonts.weight.bold,
-        lineHeight: "24.5px",
+        lineHeight: "26.5px",
         letterSpacing: "0.5px",
         cursor: "pointer",
 
