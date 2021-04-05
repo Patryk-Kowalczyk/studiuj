@@ -7,14 +7,12 @@ export const secondContentStyles = makeStyles((theme) => ({
         borderTop: "20px solid",
         margin: "0 auto",
         position: "relative",
-
         borderColor: theme.palette.primary.light,
 
 
     },
     maxWidthBox: {
         maxWidth: "1400px",
-
         height: "100%",
         margin: "0 auto",
         display: "flex",
@@ -45,6 +43,7 @@ export const secondContentStyles = makeStyles((theme) => ({
     },
     span: {
         color: theme.palette.primary.light,
+        fontWeight: theme.fonts.weight.medium,
 
     },
     pContent: {

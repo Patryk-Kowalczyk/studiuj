@@ -75,7 +75,7 @@ export const headerStyles = makeStyles((theme) => ({
             bottom: "3px",
             width: "55%",
             height: "2px",
-            background: theme.palette.primary.dark,
+            background: theme.palette.primary.light,
             transition: "0.3s",
             [theme.breakpoints.down('md')]: {
                 ['@media (max-height:400px)']: {
