@@ -8,6 +8,7 @@ export const firstContentStyles = makeStyles((theme) => ({
             position: "relative",
             maxWidth: "1800px",
             height: "100%", //jak cos to zmienic na vh
+            maxHeight: "1000px",
             margin: "0 auto",
             overflow: "hidden",
             marginTop: "50px",
