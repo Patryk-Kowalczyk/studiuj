@@ -108,7 +108,7 @@ export const firstContentStyles = makeStyles((theme) => ({
             fontFamily: theme.fonts.family.content,
             fontSize: "40px",
             fontWeight: theme.fonts.weight.bold,
-            maxWidth: "900px",
+            maxWidth: "800px",
             borderLeft: "8px dotted",
             borderColor: theme.palette.primary.light,
             paddingLeft: "15px",

@@ -2,7 +2,7 @@ import {makeStyles} from "@material-ui/core/styles";
 
 export const thirdContentStyles = makeStyles((theme) => ({
     bgc: {
-        backgroundColor: theme.palette.background.thirdContent,
+        backgroundColor: theme.palette.background.fourthContent,
     },
     maxWidthBox: {
         position: "relative",

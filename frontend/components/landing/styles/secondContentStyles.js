@@ -14,13 +14,14 @@ export const secondContentStyles = makeStyles((theme) => ({
     },
     maxWidthBox: {
         maxWidth: "1400px",
+
         height: "100%",
         margin: "0 auto",
         display: "flex",
         flexDirection: "column",
     },
     image: {
-        maxHeight: "420px",
+        maxHeight: "360px",
     },
     content: {
         margin: "30px",
@@ -30,8 +31,32 @@ export const secondContentStyles = makeStyles((theme) => ({
         borderBottom: "1px solid black",
     },
     text: {
-        width: "50%",
-    }
+        width: "60%",
+    },
+    p: {
+        color: theme.palette.primary.light,
+        fontSize: "16px",
+        fontStyle: "italic",
+        fontWeight: theme.fonts.weight.medium,
+    },
+    h1: {
+        fontFamily: theme.fonts.family.content,
+        fontWeight: theme.fonts.weight.medium,
+    },
+    span: {
+        color: theme.palette.primary.light,
+
+    },
+    pContent: {
+        fontFamily: theme.fonts.family.content,
+        fontSize: "24px",
+        fontWeight: theme.fonts.weight.normal,
+
+    },
+    spanUnderline: {
+        color: theme.palette.primary.light,
+        textDecoration: "underline",
+    },
 
 }))
 
