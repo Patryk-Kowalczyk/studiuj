@@ -9,6 +9,7 @@
     pointer-events: none;
 }
 
+
 #nprogress .bar {
     background: var(--nProgressColor);
     position: fixed;

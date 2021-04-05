@@ -4,7 +4,36 @@ import {red, blueGrey} from "@material-ui/core/colors";
 // Create a theme instance.
 const theme = createMuiTheme(
     {
-
+        overrides: {
+            MuiStepper: {
+                alternativeLabel: {
+                    backgroundColor: "#F8EFE0",
+                },
+            },
+            MuiStepLabel: {
+                iconContainer: {
+                    fontSize: "40px",
+                }
+            },
+            MuiStepConnector: {
+                alternativeLabel: {
+                    top: "19px",
+                    left: "calc(-50% + 30px)",
+                    right: "calc(50% + 30px)",
+                },
+                lineHorizontal: {
+                    borderTopWidth: "3px"
+                }
+            },
+            MuiStepIcon: {
+                root: {
+                    fontSize: "40px",
+                },
+                active: {
+                    color: "rgb(119,137,222) !important",
+                }
+            }
+        },
         fonts: {
             sizes: {
                 navigationHeader: "21px",

@@ -2,17 +2,16 @@ import {makeStyles} from "@material-ui/core/styles";
 
 export const thirdContentStyles = makeStyles((theme) => ({
     bgc: {
-        backgroundColor: theme.palette.background.fourthContent,
+        backgroundColor: theme.palette.background.thirdContent,
+        maxWidth: "1800px",
+        margin: "0 auto",
+        position: "relative",
     },
     maxWidthBox: {
-        position: "relative",
-        maxWidth: "1800px",
+        maxWidth: "1400px",
         height: "100vh",
         margin: "0 auto",
-        display: "flex",
-        [theme.breakpoints.down('md')]: {
-            flexDirection: "column",
-        },
+        textAlign: "center",
     },
 
 }))
