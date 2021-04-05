@@ -7,10 +7,10 @@ export const firstContentStyles = makeStyles((theme) => ({
         maxWidthBox: {
             position: "relative",
             maxWidth: "1800px",
-            height: "100vh",
+            height: "100%", //jak cos to zmienic na vh
             margin: "0 auto",
-            marginTop: "50px",
             overflow: "hidden",
+            marginTop: "50px",
             display: "flex",
             [theme.breakpoints.down('md')]: {
                 flexDirection: "column",
@@ -42,6 +42,7 @@ export const firstContentStyles = makeStyles((theme) => ({
             height: "100vh",
             maxWidth: "900px",
             maxHeight: "900px",
+
             background: theme.palette.primary.light,
             borderRadius: "50%",
             transform: "translate(-40%,60%)",
@@ -67,14 +68,19 @@ export const firstContentStyles = makeStyles((theme) => ({
             zIndex: "2",
             display: "flex",
             flexDirection: "column",
+
         },
         h1: {
-            marginLeft: "-600px",
+            marginLeft: "-300px",
             fontFamily: theme.fonts.family.h1FirstContent,
             fontSize: "38px",
             fontWeight: theme.fonts.weight.semiBold,
-            marginTop: "100px",
+            marginTop: "50px",
+            ['@media (min-height:800px)']: {
+                marginLeft: "-600px",
 
+
+            },
             [theme.breakpoints.down('md')]: {
                 padding: "0 5px",
                 margin: "25px 0 35px 0",
@@ -93,7 +99,9 @@ export const firstContentStyles = makeStyles((theme) => ({
                     margin: "10px 0 10px 0",
                 },
 
-            }
+            },
+
+
         },
         rightContent: {
             fontFamily: theme.fonts.family.content,
@@ -103,7 +111,20 @@ export const firstContentStyles = makeStyles((theme) => ({
             borderLeft: "8px dotted",
             borderColor: theme.palette.primary.light,
             paddingLeft: "15px",
-            marginTop: "23%",
+            marginTop: "15%",
+            ['@media (max-height:600px)']: {
+                fontSize: "16px",
+                marginLeft: "20%",
+                marginTop: "0%",
+
+                maxWidth: "1500px",
+            },
+            ['@media (max-height:800px)']: {
+                fontSize: "25px",
+                marginLeft: "5%",
+                marginTop: "0",
+                maxWidth: "1500px",
+            },
             [theme.breakpoints.down('md')]: {
                 fontSize: "30px",
                 maxWidth: "100%",
@@ -169,6 +190,12 @@ export const firstContentStyles = makeStyles((theme) => ({
             color: "white",
             textAlign: "center",
             lineHeight: "67px",
+            ['@media (max-height:800px)']: {
+                fontSize: "16px",
+                height: "30px",
+                lineHeight: "30px",
+                marginTop: "10px",
+            },
             [theme.breakpoints.down('md')]: {
                 ['@media (max-height:400px)']: {
                     fontSize: "16px",

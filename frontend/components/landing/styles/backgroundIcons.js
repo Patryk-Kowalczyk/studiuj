@@ -21,7 +21,7 @@ const backgroundIcons = makeStyles((theme) => ({
         fontSize: "80px",
         opacity: "0.6",
         zIndex: "2",
-        bottom: "40px",
+        bottom: "30px",
         left: "50%",
         transform: "translateX(-50%)",
         transition: ".4s",

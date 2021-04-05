@@ -42,6 +42,10 @@ const theme = createMuiTheme(
             background: {
                 default: "#fff",
                 firstContent: "#FBFBFB",
+                secondContent: "#F5F5F5",
+                thirdContent: "#F8EFE0",
+                fourthContent: "#FFFAF1",
+                footer: "#FFFFFF",
             },
             lightFont: {
                 main: blueGrey[50],

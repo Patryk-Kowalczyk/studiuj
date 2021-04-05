@@ -1,9 +1,7 @@
 import {Box, Typography} from "@material-ui/core";
 import {BackgroundIcons, firstContentStyles} from "./styles";
 import {SiWechat, SiInstagram, SiFacebook, SiTwitter} from "react-icons/si";
-import {motion} from "framer-motion";
 import React from "react";
-import Grid from "@material-ui/core/Grid";
 
 export default function FirstContent() {
     const classes = firstContentStyles();
@@ -24,7 +22,7 @@ export default function FirstContent() {
                         udzielaj się i zdobywaj reputację,<br/>
                         twórz spotkania i korzystaj z naszej platformy <span className={classes.span}>
                         korepetycji online</span>
-                        <div className={classes.divWeight}>dołącz już dziś i twórz z nami
+                        <div className={classes.divWeight}>dołącz już dziś i buduj z nami
                             społeczność
                         </div>
                         <button className={classes.button}>zarejestruj konto</button>
