@@ -4,12 +4,13 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
 import Typography from '@material-ui/core/Typography';
-
+import {secondContentStyles} from "./styles";
+import {Box} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
-
+        textAlign: "center",
 
     },
     button: {
@@ -26,17 +27,68 @@ const useStyles = makeStyles((theme) => ({
     },
     background: {
         background: "red !important",
-    }
+    },
+
+    /////////////////// STEPPER CONTENT
+    content: {
+        margin: "30px",
+        padding: "50px",
+        display: "flex",
+        justifyContent: "space-around",
+    },
+    text: {
+        width: "60%",
+    },
+    h1: {
+        fontFamily: theme.fonts.family.content,
+        fontWeight: theme.fonts.weight.medium,
+    },
+    span: {
+        color: theme.palette.primary.light,
+        fontWeight: theme.fonts.weight.medium,
+
+    },
+    pContent: {
+        fontFamily: theme.fonts.family.content,
+        fontSize: "21px",
+        fontWeight: theme.fonts.weight.normal,
+
+    },
+    image: {
+        maxHeight: "280px",
+    },
 }));
 
 function getSteps() {
-    return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+    return ['Wypełnij formularz', 'Udzielaj odpowiedzi', 'Umów się na spotkanie'];
 }
+
+const FirstCase = () => {
+    const classes = useStyles();
+    return (
+        <Box className={classes.content}>
+            <Box className={classes.text}>
+                <h1 className={classes.h1}> Załóż <span className={classes.span}>darmowe</span> konto a następnie...
+                </h1>
+                <p className={classes.pContent}>
+                    Wypełnij nasz formularz osobowy. Będziesz mógł identyfikować się z uczniami w twojej okolicy.
+                    Chętnie poznamy twoje zainteresowania oraz słabe i mocne strony. Profil będzie ' <span
+                    className={classes.span}>wizytówką</span>', a jak
+                    wiadomo wizytówki powinny być dobrze wykonane.
+
+
+                </p>
+            </Box>
+            <img src="/images/form_vector.svg" alt="info" className={classes.image}/>
+        </Box>
+    );
+};
+
 
 function getStepContent(step) {
     switch (step) {
         case 0:
-            return 'Step 1: Select campaign settings...';
+            return <FirstCase/>;
         case 1:
             return 'Step 2: What is an ad group anyways?';
         case 2:
@@ -52,11 +104,6 @@ export default function StepperThird() {
     const steps = getSteps();
 
 
-    const isStepOptional = (step) => {
-        return step === 1;
-    };
-
-
     const handleStep = (step) => () => {
         setActiveStep(step);
     };
@@ -68,9 +115,7 @@ export default function StepperThird() {
                 {steps.map((label, index) => {
                     const stepProps = {};
                     const buttonProps = {};
-                    if (isStepOptional(index)) {
-                        buttonProps.optional = <Typography variant="caption">Optional</Typography>;
-                    }
+
 
                     return (
                         <Step key={label} {...stepProps}>
@@ -85,3 +130,5 @@ export default function StepperThird() {
         </div>
     );
 }
+
+

@@ -13,6 +13,10 @@ const theme = createMuiTheme(
             MuiStepLabel: {
                 iconContainer: {
                     fontSize: "40px",
+                },
+                label: {
+                    fontFamily: "Montserrat, sans-serif",
+                    fontSize: "20px",
                 }
             },
             MuiStepConnector: {
@@ -22,7 +26,7 @@ const theme = createMuiTheme(
                     right: "calc(50% + 30px)",
                 },
                 lineHorizontal: {
-                    borderTopWidth: "3px"
+                    borderTopWidth: "2px"
                 }
             },
             MuiStepIcon: {
