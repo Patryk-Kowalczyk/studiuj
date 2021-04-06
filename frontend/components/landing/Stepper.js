@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
         padding: "50px",
         display: "flex",
         justifyContent: "space-around",
+        marginBottom: "12git ad0px",
     },
     text: {
         width: "60%",
@@ -57,6 +58,11 @@ const useStyles = makeStyles((theme) => ({
     image: {
         maxHeight: "280px",
     },
+    spanUnderline: {
+        // color: theme.palette.primary.light,
+        fontWeight: theme.fonts.weight.medium,
+        textDecoration: "underline",
+    },
 }));
 
 function getSteps() {
@@ -75,11 +81,46 @@ const FirstCase = () => {
                     Chętnie poznamy twoje zainteresowania oraz słabe i mocne strony. Profil będzie ' <span
                     className={classes.span}>wizytówką</span>', a jak
                     wiadomo wizytówki powinny być dobrze wykonane.
-
-
                 </p>
             </Box>
             <img src="/images/form_vector.svg" alt="info" className={classes.image}/>
+        </Box>
+    );
+};
+const SecondCase = () => {
+    const classes = useStyles();
+    return (
+        <Box className={classes.content}>
+            <Box className={classes.text}>
+                <h1 className={classes.h1}> Bądź <span className={classes.span}>aktywny </span>i zdobywaj odznaczenia
+                </h1>
+                <p className={classes.pContent}>
+                    <span className={classes.span}>Studiuj.pl</span> to nie tylko platforma do koprepetycji online, ale
+                    także duże <span className={classes.spanUnderline}>forum dyskusyjne</span>. Pomagaj innym lub
+                    zadawaj pytania. Nagradzaj punktami za
+                    trafne odpowiedzi. Zgromadzona ilość punktów jest nagradzana odpowiadającą jej rangą z tabeli
+                    punktacji.
+
+                </p>
+            </Box>
+            <img src="/images/answer_vector.svg" alt="info" className={classes.image}/>
+        </Box>
+    );
+};
+const ThirdCase = () => {
+    const classes = useStyles();
+    return (
+        <Box className={classes.content}>
+            <Box className={classes.text}>
+                <h1 className={classes.h1}> Skorzystaj z <span className={classes.span}>pomocy</span> korepetytora
+                </h1>
+                <p className={classes.pContent}>
+                    Ktoś odpowiedział na twoje pytanie i chciałbyś podjąć z nim współpracę? Spodobało Ci się jakieś
+                    ogłoszenie lub najwidoczniej potrzebujesz pomocy dobrego korepetytora?
+                    <span className={classes.span}> Umów się na spotkanie poprzez naszą platformę</span>
+                </p>
+            </Box>
+            <img src="/images/meet_vector.svg" alt="info" className={classes.image}/>
         </Box>
     );
 };
@@ -90,11 +131,11 @@ function getStepContent(step) {
         case 0:
             return <FirstCase/>;
         case 1:
-            return 'Step 2: What is an ad group anyways?';
+            return <SecondCase/>;
         case 2:
-            return 'Step 3: This is the bit I really care about!';
+            return <ThirdCase/>;
         default:
-            return 'Unknown step';
+            return '...';
     }
 }
 

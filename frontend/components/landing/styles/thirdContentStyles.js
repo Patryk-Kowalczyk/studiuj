@@ -11,7 +11,7 @@ export const thirdContentStyles = makeStyles((theme) => ({
     },
     maxWidthBox: {
         maxWidth: "1400px",
-        height: "100vh",
+        height: "100%",
         margin: "0 auto",
         display: "flex",
         flexDirection: "column",
@@ -21,16 +21,14 @@ export const thirdContentStyles = makeStyles((theme) => ({
         fontFamily: theme.fonts.family.content,
         fontWeight: theme.fonts.weight.medium,
         fontSize: "50px",
-        marginBottom: "100px",
-        marginTop: "50px",
+        marginBottom: "70px",
+        marginTop: "40px",
     },
     span: {
         color: theme.palette.primary.light,
         fontWeight: theme.fonts.weight.medium,
-
-
     },
-
+  
 }))
 
 export default thirdContentStyles;
