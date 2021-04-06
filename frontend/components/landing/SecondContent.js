@@ -24,7 +24,7 @@ export default function SecondContent() {
                 </Box>
                 <Box className={classes.content}>
                     <Box className={classes.text}>
-                        <p className={classes.p}> #thegoodgather</p>
+                        <p className={classes.p}> #thegoodfather</p>
                         <h1 className={classes.h1}> U<span className={classes.span}>ratujemy</span> Cię z opresji</h1>
                         <p className={classes.pContent}>Sesja depresja... każdy student zna to powiedzenie. Potrzebujesz
                             pomocy z projektem lub zadaniem? Zadaj pytanie lub dodaj ogłoszenie. Umów termin i popraw

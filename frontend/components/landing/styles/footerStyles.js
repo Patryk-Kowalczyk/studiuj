@@ -7,7 +7,7 @@ export const footerStyles = makeStyles((theme) => ({
     maxWidthBox: {
         position: "relative",
         maxWidth: "1800px",
-        height: "100vh",
+        height: "100%",
         margin: "0 auto",
         display: "flex",
         [theme.breakpoints.down('md')]: {

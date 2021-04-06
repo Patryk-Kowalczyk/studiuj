@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         padding: "50px",
         display: "flex",
         justifyContent: "space-around",
-        marginBottom: "12git ad0px",
+        marginBottom: "100px",
     },
     text: {
         width: "60%",
