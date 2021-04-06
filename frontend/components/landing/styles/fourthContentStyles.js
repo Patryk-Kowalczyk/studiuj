@@ -11,15 +11,37 @@ export const fourthContentStyles = makeStyles((theme) => ({
     },
     maxWidthBox: {
         maxWidth: "1400px",
-        // backgroundColor: "red",
         height: "100%",
         margin: "0 auto",
         display: "flex",
         flexWrap: "wrap",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
     },
-
+    h1: {
+        width: "100%",
+        textAlign: "center",
+        fontFamily: theme.fonts.family.content,
+        fontWeight: theme.fonts.weight.medium,
+        fontSize: "40px",
+        marginTop: "10px",
+        marginBottom: "50px",
+    },
+    span: {
+        color: theme.palette.primary.light,
+        fontWeight: theme.fonts.weight.medium,
+    },
+    p: {
+        color: theme.palette.primary.light,
+        marginTop: "40px",
+        fontSize: "16px",
+        fontStyle: "italic",
+        fontWeight: theme.fonts.weight.medium,
+    },
+    margin: {
+        width: "100%",
+        height: "80px",
+    }
 
 }))
 

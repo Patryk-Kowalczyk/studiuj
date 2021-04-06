@@ -12,7 +12,7 @@ export default function LandingPage() {
                 <SecondContent/>
                 <ThirdContent/>
                 <FourthContent/>
-                <Footer/>
+                {/*<Footer/>*/}
             </Box>
 
         </>

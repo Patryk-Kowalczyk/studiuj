@@ -34,7 +34,7 @@ const backgroundIcons = makeStyles((theme) => ({
     },
 }));
 
-export default function BackgroundIcons() {
+export default function BackgroundIcons({none}) {
 
     const icons = backgroundIcons();
     return (
@@ -46,7 +46,7 @@ export default function BackgroundIcons() {
             <RiBookOpenLine className={icons.baseIcon} style={{top: "25%", left: "10%"}}/>
             <RiScissorsLine className={icons.baseIcon}
                             style={{bottom: "15%", left: "50%", transform: "rotate(20deg)"}}/>
-            <RiArrowDownSLine className={icons.downIcon}/>
+            {none === true ? null : <RiArrowDownSLine className={icons.downIcon}/>}
         </>
     )
 }

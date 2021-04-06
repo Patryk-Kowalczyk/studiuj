@@ -13,6 +13,21 @@ export const flipStyles = makeStyles((theme) => ({
         alignItems: "center",
         cursor: "pointer",
 
+        margin: "40px 0",
+
+        fontFamily: "Montserrat, sans-serif",
+        background: "rgb(248,239,224)",
+        webkitBoxShadow: "0px 0px 8px 2px rgb(248,239,224) ",
+        boxShadow: "0px 0px 8px 2px rgb(248,239,224)",
+        transition: ".3s",
+
+        //HOVER
+        ['&:hover']: {
+            transform: "translateY(-20px)",
+            color: theme.palette.primary.light,
+            webkitBoxShadow: "0px 0px 15px 1px rgb(119,137,222)",
+            boxShadow: "0px 0px 15px 1px rgb(119,137,222)",
+        }
     },
     small: {
         fontSize: "25px",
@@ -21,16 +36,8 @@ export const flipStyles = makeStyles((theme) => ({
     },
 }))
 const containerStyle = {
-    // flex: "0 0 30%",
-    width: "25%",
+    width: "26%",
     height: "30%",
-    margin: "30px",
-    fontFamily: "Montserrat, sans-serif",
-    background: "rgb(248,239,224)",
-    webkitBoxShadow: "0px 0px 8px 2px git ",
-
-    boxShadow: "0px 0px 8px 2px rgb(248,239,224)",
-
 }
 const FlipCard = () => {
     const classes = flipStyles()
