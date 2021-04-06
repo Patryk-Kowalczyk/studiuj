@@ -20,7 +20,7 @@ export const firstContentStyles = makeStyles((theme) => ({
 
         // ----------------------------- leftSideBox
         leftSide: {
-            maxWidth: "800px",
+            maxWidth: "700px",
             [theme.breakpoints.down('md')]: {
                 order: "2",
             },
@@ -72,7 +72,7 @@ export const firstContentStyles = makeStyles((theme) => ({
 
         },
         h1: {
-            marginLeft: "-300px",
+            marginLeft: "-500px",
             fontFamily: theme.fonts.family.h1FirstContent,
             fontSize: "38px",
             fontWeight: theme.fonts.weight.semiBold,
@@ -106,7 +106,7 @@ export const firstContentStyles = makeStyles((theme) => ({
         },
         rightContent: {
             fontFamily: theme.fonts.family.content,
-            fontSize: "40px",
+            fontSize: "30px",
             fontWeight: theme.fonts.weight.bold,
             maxWidth: "800px",
             borderLeft: "8px dotted",
@@ -115,15 +115,15 @@ export const firstContentStyles = makeStyles((theme) => ({
             marginTop: "15%",
             ['@media (max-height:600px)']: {
                 fontSize: "16px",
-                marginLeft: "20%",
-                marginTop: "0%",
+                marginLeft: "5%",
+                marginTop: "5%",
 
                 maxWidth: "1500px",
             },
             ['@media (max-height:800px)']: {
                 fontSize: "25px",
-                marginLeft: "5%",
-                marginTop: "0",
+                marginLeft: "0%",
+                marginTop: "5",
                 maxWidth: "1500px",
             },
             [theme.breakpoints.down('md')]: {
@@ -179,22 +179,22 @@ export const firstContentStyles = makeStyles((theme) => ({
             display: "block",
             backgroundColor: theme.palette.primary.light,
             width: "350px",
-            height: "67px",
+            height: "60px",
             marginTop: "30px",
             border: "none",
             borderRadius: "50px",
             fontFamily: theme.fonts.family.content,
             fontWeight: theme.fonts.weight.bold,
-            fontSize: "25px",
+            fontSize: "20px",
             textTransform: "lowercase",
             textDecoration: "none",
             color: "white",
             textAlign: "center",
-            lineHeight: "67px",
+            lineHeight: "60px",
             ['@media (max-height:800px)']: {
                 fontSize: "16px",
-                height: "30px",
-                lineHeight: "30px",
+                height: "40px",
+                lineHeight: "40px",
                 marginTop: "10px",
             },
             [theme.breakpoints.down('md')]: {
