@@ -4,14 +4,14 @@ import {makeStyles} from "@material-ui/core/styles";
 
 export const flipStyles = makeStyles((theme) => ({
     front: {
-        paddingTop: "40px",
         fontSize: "84px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         cursor: "pointer",
-
+        textAlign: "center",
+        padding: "40px 15px 0 15px",
         margin: "40px 0",
 
         fontFamily: "Montserrat, sans-serif",
@@ -62,7 +62,7 @@ export const flipStyles = makeStyles((theme) => ({
     },
     pText: {
         fontWeight: theme.fonts.weight.normal,
-        fontSize: "14px",
+        fontSize: "18px",
         color: "black",
 
     }

@@ -39,8 +39,10 @@ export const fourthContentStyles = makeStyles((theme) => ({
         fontWeight: theme.fonts.weight.medium,
     },
     margin: {
-        width: "100%",
-        height: "80px",
+        width: "80%",
+        height: "50px",
+        borderBottom: "1px solid",
+        marginBottom: "30px",
     }
 
 }))

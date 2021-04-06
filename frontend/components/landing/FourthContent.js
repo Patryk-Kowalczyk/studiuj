@@ -19,25 +19,25 @@ import {
 const Cards = {
     money: {
         icon: FaMoneyBillWaveAlt,
-        text: "Czy serwis jest płatny?",
+        text: "Czy korzystanie z serwisu jest płatne?",
         bool: "NIE",
         backText: "Posiadanie konta w serwisie jest darmowe, tak samo jak korzystanie z forum. ",
     },
     users: {
         icon: FaUsers,
-        text: "Jak wygląda forum?",
-        bool: "Jest skategoryzowane",
-        backText: "Użytkownicy mogą poruszać się po odpowiednich przedmiotach, zagadnieniach. Zadawać pytania oraz odpowiadać.",
+        text: "Jak wygląda korzystanie z forum?",
+        bool: "Jest intuicyjne",
+        backText: "Użytkownicy mogą poruszać się po odpowiednich przedmiotach i zagadnieniach. Zadawać pytania oraz odpowiadać.",
     },
     form: {
         icon: FaReceipt,
-        text: "Czy dodanie ogłoszenia jest darmowe",
+        text: "Czy dodanie ogłoszenia jest darmowe?",
         bool: "Tak",
         backText: "Wszystkie ogłoszenia, pytania i posty nie są objęte żadnymi opłatami",
     },
     what: {
         icon: FaHeadset,
-        text: "Czy mikrofon lub kamera są wymagane",
+        text: "Czy mikrofon lub kamera są wymagane?",
         bool: "Standardowo, nie jednak ...",
         backText: "Występują przypadki, że korepetytor z góry wyznaczy wymagany sprzęt jednak wszystko jest zawarte w ogłoszeniu.",
     },
@@ -55,19 +55,19 @@ const Cards = {
     },
     times: {
         icon: FaUserTimes,
-        text: "Korepetytor nie wstawił sie na zajęcia",
+        text: "Korepetytor nie wstawił sie na zajęcia?",
         bool: "Otrzymasz od nas rekompensatę w postaci...",
         backText: "kuponu rabatowego na kolejne zajęcia. Korepetytor poniesie koszty jego realizacji.",
     },
     provision: {
         icon: FaMoneyCheckAlt,
-        text: "Czy korepetytor płaci prowizję",
+        text: "Czy korepetytor płaci prowizję?",
         bool: "Tak",
         backText: "Wynosi ona 5%, minimalna wartość to 5zł.",
     },
     micro: {
         icon: FaMicrophone,
-        text: "Jak wyglądają zajęcia?",
+        text: "W jaki sposób i gdzie odbywają zajęcia?",
         bool: "Odbywają się na platformie",
         backText: "Użytkownik ma mozliwość połączenia głosowego oraz poprzez czat.",
     },
@@ -90,12 +90,12 @@ export default function FourthContent() {
                 <FlipCard component={Cards.money}/>
                 <FlipCard component={Cards.users}/>
                 <FlipCard component={Cards.form}/>
-                <FlipCard component={Cards.what}/>
+                <FlipCard component={Cards.micro}/>
                 <FlipCard component={Cards.away}/>
-                <FlipCard component={Cards.cash}/>
+                <FlipCard component={Cards.what}/>
                 <FlipCard component={Cards.times}/>
                 <FlipCard component={Cards.provision}/>
-                <FlipCard component={Cards.money}/>
+                <FlipCard component={Cards.cash}/>
                 <FlipCard component={Cards.info}/>
 
                 <div className={classes.margin}/>

@@ -1,10 +1,9 @@
 import {makeStyles} from "@material-ui/core/styles";
 
 export const firstContentStyles = makeStyles((theme) => ({
-        bgc: {
-            backgroundColor: theme.palette.background.firstContent,
-        },
+        bgc: {},
         maxWidthBox: {
+            backgroundColor: theme.palette.background.firstContent,
             position: "relative",
             maxWidth: "1800px",
             height: "100%", //jak cos to zmienic na vh
