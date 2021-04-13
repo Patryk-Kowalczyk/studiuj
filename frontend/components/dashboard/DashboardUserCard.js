@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,13 +64,15 @@ export default function DashboardUserCard({ userData }) {
           >
             <PersonIcon />
           </IconButton>
-          <IconButton
-            aria-label="user-settings"
-            size="small"
-            className={classes.itemButton}
-          >
-            <SettingsIcon />
-          </IconButton>
+          <Link href="/user/settings">
+            <IconButton
+              aria-label="user-settings"
+              size="small"
+              className={classes.itemButton}
+            >
+              <SettingsIcon />
+            </IconButton>
+          </Link>
           <IconButton
             aria-label="logout"
             size="small"

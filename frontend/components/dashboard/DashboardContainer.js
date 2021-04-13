@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 import DrawerItems from "./DrawerItems";
 
@@ -22,6 +23,8 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { Avatar, Button } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { route } from "next/dist/next-server/server/router";
+import { LensTwoTone } from "@material-ui/icons";
 
 const drawerWidth = 280;
 
@@ -117,8 +120,15 @@ function DashboardContainer({ children, ...props }) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const userData = useSelector((state) => state.auth.user.data);
+  const user = useSelector((state) => state.auth.user);
+  let userData = null;
+  if (user) {
+    userData = user.data;
+  } else {
+    router.push("/");
+  }
 
   //Using menu button on mobile view
   const handleDrawerToggle = () => {
