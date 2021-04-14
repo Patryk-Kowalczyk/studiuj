@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5e3b797-3c48-4159-aab5-007e895b04e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.graphqlconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/reset-password.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphql/.graphqlconfig" beforeDir="false" afterPath="$PROJECT_DIR$/graphql/.graphqlconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphql/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/graphql/schema.graphql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +161,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -181,7 +176,21 @@
       <updated>1616490764478</updated>
       <workItem from="1616490770348" duration="14835000" />
       <workItem from="1616676110930" duration="1776000" />
-      <workItem from="1616779913137" duration="3965000" />
+      <workItem from="1616779913137" duration="4137000" />
+      <workItem from="1616929292075" duration="2508000" />
+      <workItem from="1617012791662" duration="2895000" />
+      <workItem from="1617018013319" duration="1914000" />
+      <workItem from="1617313099786" duration="364000" />
+      <workItem from="1617723727613" duration="1251000" />
+      <workItem from="1617792407869" duration="11000" />
+      <workItem from="1617801996811" duration="51000" />
+      <workItem from="1617818386840" duration="23000" />
+      <workItem from="1617833249759" duration="960000" />
+      <workItem from="1617964760624" duration="252000" />
+      <workItem from="1618250527657" duration="50000" />
+      <workItem from="1618342242924" duration="1595000" />
+      <workItem from="1618419900407" duration="42000" />
+      <workItem from="1618419975494" duration="13688000" />
     </task>
     <servers />
   </component>
