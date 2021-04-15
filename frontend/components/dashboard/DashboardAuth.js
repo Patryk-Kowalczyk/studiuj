@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "../../src/actions/auth";
 import { gql, useQuery } from "@apollo/client";
 import Router from "next/router";
@@ -11,6 +11,7 @@ const GET_USERS = gql`
     me {
       name
       email
+      avatar
     }
   }
 `;
@@ -18,15 +19,26 @@ const GET_USERS = gql`
 export default function Dashboard({ children }) {
   const { loading, error, data } = useQuery(GET_USERS);
   const dispatch = useDispatch();
+  const [loaded, setLoaded] = React.useState(false);
 
-  if (!loading && data) {
-    const userInfo = data.me;
-    dispatch(setUserInfo(userInfo));
-  }
+  React.useEffect(() => {
+    if (data) {
+      const userInfo = data.me;
+      dispatch(setUserInfo(userInfo));
+      setLoaded(true);
+    }
+  }, [data]);
+
+  // if (!loading && data) {
+  //   const userInfo = data.me;
+  //   dispatch(setUserInfo(userInfo));
+  // }
   if (!loading && error) {
+    console.log(error.graphQLErrors);
     Router.push("/login");
   }
-  if (!data) {
+
+  if (!loaded) {
     return (
       <div
         style={{

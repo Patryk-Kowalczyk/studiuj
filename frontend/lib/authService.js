@@ -65,6 +65,7 @@ function authService() {
         variables: { username, password },
       })
       .then((res) => {
+        //console.log(res.data);
         dispatch(loginAction(res.data));
         localStorage.setItem("user", JSON.stringify(res.data));
         return true;

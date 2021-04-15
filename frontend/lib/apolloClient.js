@@ -6,10 +6,11 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { TokenKind } from "graphql";
+import { createUploadLink } from 'apollo-upload-client'
 
 let apolloClient;
 
-const httpLink = new HttpLink({
+const httpLink = createUploadLink({
   uri: `${process.env.BACKEND_HOST}/graphql`,
 });
 

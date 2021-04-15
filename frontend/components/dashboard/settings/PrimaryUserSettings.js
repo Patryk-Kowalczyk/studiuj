@@ -1,4 +1,6 @@
 import React from "react";
+import { gql } from "@apollo/client";
+import { useApollo } from "../../../lib/apolloClient";
 import {
   Avatar,
   Button,
@@ -7,13 +9,34 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "../../../src/actions/auth";
 import useStyles from "./styles/PrimaryUserSettingsStyles";
 import { useForm } from "react-hook-form";
 import ControlledInput from "../../ControlledInput";
+import LoadingButton from "../../LoadingButton";
+
 import AttachFileIcon from "@material-ui/icons/AttachFile";
+import SaveIcon from "@material-ui/icons/Save";
+
+const CHANGE_USER_PRIMARY_INFO = gql`
+  mutation ChangeUserPrimaryInfo(
+    $name: String!
+    $email: String!
+    $avatar: Upload
+  ) {
+    ChangeUserPrimaryInfo(name: $name, email: $email, avatar: $avatar) {
+      name
+      email
+      avatar
+    }
+  }
+`;
 
 export default function PrimaryUserSettings({ user }) {
   const classes = useStyles();
+  const client = useApollo();
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -22,8 +45,31 @@ export default function PrimaryUserSettings({ user }) {
     setError,
     clearErrors,
   } = useForm();
+
   const [newAvatar, setNewAvatar] = React.useState(null);
-  const [imie, nazwisko] = user.name.split(" ");
+  const [loadingForm, setLoadingForm] = React.useState(false);
+
+  const [first_name, last_name] = user.name.split(" ");
+
+  const onSubmit = async (data) => {
+    setLoadingForm(true);
+    const name = data.first_name + " " + data.last_name;
+    const avatar = data.avatar[0] || null;
+
+    await client
+      .mutate({
+        mutation: CHANGE_USER_PRIMARY_INFO,
+        variables: { name, email: data.email, avatar: avatar },
+      })
+      .then((res) => {
+        dispatch(setUserInfo(res.data.ChangeUserPrimaryInfo));
+        setLoadingForm(false);
+      })
+      .catch((err) => {
+        console.log(err.graphQLErrors);
+        setLoadingForm(false);
+      });
+  };
 
   return (
     <Card className={classes.root}>
@@ -31,7 +77,7 @@ export default function PrimaryUserSettings({ user }) {
         Twoje dane osobowe oraz zdjęcie.
       </Typography>
       <Divider />
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={1}>
           <Grid item xs={8}>
             <Grid container spacing={1}>
@@ -48,32 +94,39 @@ export default function PrimaryUserSettings({ user }) {
               </Grid>
               <Grid item xs={6}>
                 <ControlledInput
-                  name="imie"
+                  name="first_name"
                   control={control}
-                  id="imie"
+                  id="first_name"
                   label="Imię"
-                  autoComplete="imie"
-                  defaultValue={imie}
-                  error={errors.imie ? true : false}
+                  autoComplete="first_name"
+                  defaultValue={first_name}
+                  error={errors.first_name ? true : false}
                 />
               </Grid>
               <Grid item xs={6}>
                 <ControlledInput
-                  name="Nazwisko"
+                  name="last_name"
                   control={control}
-                  id="nazwisko"
+                  id="last_name"
                   label="Nazwisko"
-                  defaultValue={nazwisko}
-                  autoComplete="nazwisko"
-                  error={errors.nazwisko ? true : false}
+                  defaultValue={last_name}
+                  autoComplete="last_name"
+                  error={errors.last_name ? true : false}
                 />
               </Grid>
             </Grid>
           </Grid>
 
           <Grid item xs={4} className={classes.avatarSection}>
-            <Avatar src={newAvatar || ""} className={classes.avatar}>
-              A
+            <Avatar
+              src={
+                newAvatar ||
+                (user.avatar && `${process.env.BACKEND_HOST}/${user.avatar}`) ||
+                ""
+              }
+              className={classes.avatar}
+            >
+              {user.name[0]}
             </Avatar>
             <Typography variant="caption">
               Zdjęcie musi być kwadratowe i ważyć maksymalnie 512KB
@@ -82,13 +135,15 @@ export default function PrimaryUserSettings({ user }) {
               accept="image/*"
               className={classes.input}
               hidden
-              id="button-file"
+              id="avatar"
               type="file"
+              name="avatar"
+              ref={register}
               onChange={(e) => {
                 setNewAvatar(URL.createObjectURL(e.target.files[0]) || null);
               }}
             />
-            <label htmlFor="button-file">
+            <label htmlFor="avatar">
               <Button
                 variant="outlined"
                 color="primary"
@@ -101,9 +156,16 @@ export default function PrimaryUserSettings({ user }) {
             </label>
           </Grid>
         </Grid>
-        <Button variant="contained" color="primary" className={classes.button}>
+        <LoadingButton
+          loading={loadingForm || false}
+          type="submit"
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          startIcon={<SaveIcon />}
+        >
           Zatwierdź
-        </Button>
+        </LoadingButton>
       </form>
     </Card>
   );

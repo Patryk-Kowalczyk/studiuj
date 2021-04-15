@@ -122,13 +122,13 @@ function DashboardContainer({ children, ...props }) {
   const theme = useTheme();
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const user = useSelector((state) => state.auth.user);
-  let userData = null;
-  if (user) {
-    userData = user.data;
-  } else {
-    router.push("/");
-  }
+  const userData = useSelector((state) => state.auth.user.data);
+  // let userData = null;
+  // if (user) {
+  //   userData = user.data;
+  // } else {
+  //   router.push("/");
+  // }
 
   //Using menu button on mobile view
   const handleDrawerToggle = () => {

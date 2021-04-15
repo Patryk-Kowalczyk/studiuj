@@ -1,5 +1,6 @@
 import React from "react";
 import authService from "../../lib/authService";
+import { useSelector } from "react-redux";
 
 import SettingsIcon from "@material-ui/icons/Settings";
 import PersonIcon from "@material-ui/icons/Person";
@@ -45,15 +46,22 @@ export default function DashboardUserCard({ userData }) {
   const classes = useStyles();
   const router = useRouter();
   const { logout } = authService();
-
   const handleLogout = () => {
     router.push("/");
     logout();
   };
-
   return (
     <Card className={classes.root} elevation={0}>
-      <Avatar alt="User Image" src="/images/default-user-image.png" />
+      <Avatar
+        alt="User Image"
+        src={
+          (userData.avatar &&
+            `${process.env.BACKEND_HOST}/${userData.avatar}`) ||
+          ""
+        }
+      >
+        {userData.name[0]}
+      </Avatar>
       <div className={classes.nameIcons}>
         <Typography className={classes.name}>{userData.name}</Typography>
         <div>
