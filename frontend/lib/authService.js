@@ -87,9 +87,11 @@ function authService() {
         return [true, ""];
       })
       .catch((err) => {
-        const isEmailError =
-          err.graphQLErrors[0].extensions.validation["input.email"] || false;
-        if (isEmailError) {
+        console.log(err.graphQLErrors);
+        if (
+          typeof err.graphQLErrors[0].extensions.validation["input.email"] !==
+          undefined
+        ) {
           return [false, "emailError"];
         }
       });
