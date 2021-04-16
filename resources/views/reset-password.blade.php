@@ -68,8 +68,8 @@
         <h2>Forgot Password?</h2>
 
         <input name="email" placeholder="Enter email" value="{{$email}}">
-        <input name="password" placeholder="Enter new password">
-        <input name="password_confirmation" placeholder="Confirm new password">
+        <input type="password" name="password" placeholder="Enter new password">
+        <input type="password" name="password_confirmation" placeholder="Confirm new password">
         <input hidden name="token" placeholder="token" value="{{$token}}">
 
         <button type="submit">Submit</button>

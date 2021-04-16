@@ -19,11 +19,13 @@ class ForgotPasswordController extends Controller
     }
 
     public function reset() {
+
         $credentials = request()->validate([
             'email' => 'required|email',
             'token' => 'required|string',
             'password' => 'required|string|confirmed'
         ]);
+
 
         $reset_password_status = Password::reset($credentials, function ($user, $password) {
             $user->password = bcrypt($password);
