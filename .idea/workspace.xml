@@ -4,6 +4,7 @@
     <list default="true" id="d5e3b797-3c48-4159-aab5-007e895b04e6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graphql/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/graphql/schema.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/2/avatar/1618436640.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +191,12 @@
       <workItem from="1618250527657" duration="50000" />
       <workItem from="1618342242924" duration="1595000" />
       <workItem from="1618419900407" duration="42000" />
-      <workItem from="1618419975494" duration="13688000" />
+      <workItem from="1618419975494" duration="14486000" />
+      <workItem from="1618475470601" duration="1276000" />
+      <workItem from="1618476855200" duration="126000" />
+      <workItem from="1618495253027" duration="1254000" />
+      <workItem from="1618498618139" duration="636000" />
+      <workItem from="1618506871046" duration="943000" />
     </task>
     <servers />
   </component>
