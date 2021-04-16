@@ -34,6 +34,6 @@ class ForgotPasswordController extends Controller
             return response()->json(["msg" => "Invalid token provided"], 400);
         }
 
-        return redirect(env('CLIENT_PAGE').'/login');
+        return redirect(\config('client-page.url').'/login');
     }
 }

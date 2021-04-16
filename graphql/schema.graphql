@@ -21,7 +21,7 @@ type User {
     id: ID!
     name: String!
     email: String!
-    avatar: String!
+    avatar: String
     created_at: DateTime!
     updated_at: DateTime!
     advertisements: [Advertisement!]! @hasMany

@@ -55,7 +55,7 @@ class LoginController extends Controller
         $token->save();
         $access_token = $tokenCreated->accessToken;
         //dd($access_token);
-        return redirect('http://127.0.0.1:3000/oauth/token?'.$access_token);
+        return redirect(\config('client-page.url').'/oauth/token?'.$access_token);
     }
 
 }
