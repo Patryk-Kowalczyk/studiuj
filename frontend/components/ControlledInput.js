@@ -10,11 +10,15 @@ export default function ControlledInput({
   margin = "normal",
   required = true,
   fullWidth = true,
+  type = "text",
+  rules = null,
   id,
   label,
   autoComplete,
   onChange,
   error = false,
+  helperText = null,
+  clearErrors = null,
   ...props
 }) {
   return (
@@ -22,23 +26,30 @@ export default function ControlledInput({
       name={name}
       control={control}
       defaultValue={defaultValue}
-      {...props}
-      render={(props) => (
-        <TextField
-          variant={variant}
-          margin={margin}
-          required={required}
-          fullWidth={fullWidth}
-          id={id}
-          label={label}
-          autoComplete={autoComplete}
-          onChange={(e) => {
-            props.onChange(e.target.value);
-          }}
-          value={props.value}
-          error={error}
-        />
-      )}
+      rules={rules}
+      render={(props) => {
+        return (
+          <TextField
+            variant={variant}
+            margin={margin}
+            required={required}
+            fullWidth={fullWidth}
+            id={id}
+            label={label}
+            autoComplete={autoComplete}
+            onChange={(e) => {
+              props.onChange(e.target.value);
+              if (clearErrors !== null) {
+                clearErrors();
+              }
+            }}
+            value={props.value}
+            error={error}
+            type={type}
+            helperText={helperText}
+          />
+        );
+      }}
     />
   );
 }

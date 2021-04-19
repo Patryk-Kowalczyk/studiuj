@@ -183,12 +183,12 @@ function UniversityEditDialog({
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <DialogTitle id="simple-dialog-title">
-          Edytuj informacje o szkole
+          Edytuj informacje o uczelni
         </DialogTitle>
 
         <DialogContent>
           <Grid container className={classes.centeredFields} spacing={1}>
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               {data.university_id ? (
                 <Autocomplete
                   filterOptions={filterOptions}
@@ -233,8 +233,8 @@ function UniversityEditDialog({
                   name="name"
                   control={control}
                   variant="outlined"
-                  placeholder="Szkoła"
-                  label="Nazwa szkoły"
+                  placeholder="Uczelnia"
+                  label="Nazwa uczelni"
                   defaultValue={data.name}
                   required
                   onChange={(e) => setName(e.target.name)}
@@ -243,7 +243,7 @@ function UniversityEditDialog({
               )}
             </Grid>
 
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <ControlledInput
                 name="major"
                 control={control}
@@ -257,7 +257,12 @@ function UniversityEditDialog({
               />
             </Grid>
 
-            <Grid item xs={2} className={classes.universityItemCheckbox}>
+            <Grid
+              item
+              xs={12}
+              md={2}
+              className={classes.universityItemCheckbox}
+            >
               <FormControlLabel
                 control={
                   <Checkbox
@@ -357,7 +362,7 @@ function UniversityAddDialog({ open, setOpen, setUniversities, institutions }) {
 
         <DialogContent>
           <Grid container spacing={1} className={classes.centeredFields}>
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               {!isOther ? (
                 <Autocomplete
                   filterOptions={filterOptions}
@@ -410,7 +415,7 @@ function UniversityAddDialog({ open, setOpen, setUniversities, institutions }) {
               )}
             </Grid>
 
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <ControlledInput
                 name="major"
                 control={control}
@@ -422,7 +427,12 @@ function UniversityAddDialog({ open, setOpen, setUniversities, institutions }) {
               />
             </Grid>
 
-            <Grid item xs={2} className={classes.universityItemCheckbox}>
+            <Grid
+              item
+              xs={12}
+              md={2}
+              className={classes.universityItemCheckbox}
+            >
               <FormControlLabel
                 control={
                   <Checkbox

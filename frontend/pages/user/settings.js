@@ -5,6 +5,7 @@ import DashboardAuth from "../../components/dashboard/DashboardAuth";
 
 import PrimaryUserSettings from "../../components/dashboard/settings/PrimaryUserSettings";
 import EducationUserSettings from "../../components/dashboard/settings/EducationUserSettings";
+import PasswordChange from "../../components/dashboard/settings/PasswordChange";
 
 export default function userSettings() {
   const userData = useSelector((state) => state.auth.user.data);
@@ -16,7 +17,11 @@ export default function userSettings() {
       <Typography variant="caption" display="block" gutterBottom>
         Ustaw podstawowe informacje dotyczące Twojego profilu.
       </Typography>
+
       <PrimaryUserSettings user={userData} />
+
+      {userData.provider === "default" ? <PasswordChange /> : null}
+
       <EducationUserSettings />
     </>
   );

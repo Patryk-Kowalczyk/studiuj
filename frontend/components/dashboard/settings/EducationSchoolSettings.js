@@ -136,7 +136,7 @@ function SchoolEditDialog({ data, open, setOpen, setSchools, schools }) {
 
         <DialogContent>
           <Grid container spacing={1}>
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <ControlledInput
                 name="name"
                 control={control}
@@ -150,7 +150,7 @@ function SchoolEditDialog({ data, open, setOpen, setSchools, schools }) {
               />
             </Grid>
 
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <ControlledInput
                 name="major"
                 control={control}
@@ -164,7 +164,7 @@ function SchoolEditDialog({ data, open, setOpen, setSchools, schools }) {
               />
             </Grid>
 
-            <Grid item xs={2} className={classes.schoolItemCheckbox}>
+            <Grid item xs={12} md={2} className={classes.schoolItemCheckbox}>
               <FormControlLabel
                 control={
                   <Checkbox
@@ -237,12 +237,12 @@ function SchoolAddDialog({ open, setOpen, setSchools }) {
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <DialogTitle id="simple-dialog-title">
-          Dodaj informacje o szkole, do ktorej uczęszczałeś/uczęszczasz.
+          Dodaj informacje o szkole, do ktorej uczęszczałeś/ uczęszczasz.
         </DialogTitle>
 
         <DialogContent>
           <Grid container spacing={1}>
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <ControlledInput
                 name="name"
                 control={control}
@@ -254,7 +254,7 @@ function SchoolAddDialog({ open, setOpen, setSchools }) {
               />
             </Grid>
 
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <ControlledInput
                 name="major"
                 control={control}
@@ -266,7 +266,7 @@ function SchoolAddDialog({ open, setOpen, setSchools }) {
               />
             </Grid>
 
-            <Grid item xs={2} className={classes.schoolItemCheckbox}>
+            <Grid item xs={12} md={2} className={classes.schoolItemCheckbox}>
               <FormControlLabel
                 control={
                   <Checkbox

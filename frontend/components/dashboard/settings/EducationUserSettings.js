@@ -109,7 +109,7 @@ export default function EducationUserSettings() {
   return (
     <Card className={classes.root}>
       <Typography variant="h6" component="h3">
-        Wyształcenie
+        Wykształcenie
       </Typography>
       <Typography variant="caption">
         Wprowadź informacjie o swojej edukacji, aby pomóc znaleźć dla Ciebie

@@ -12,6 +12,7 @@ const GET_USERS = gql`
       name
       email
       avatar
+      provider
       profile {
         id
       }
