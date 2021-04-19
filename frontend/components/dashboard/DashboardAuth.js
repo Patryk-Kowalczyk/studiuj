@@ -12,6 +12,9 @@ const GET_USERS = gql`
       name
       email
       avatar
+      profile {
+        id
+      }
     }
   }
 `;

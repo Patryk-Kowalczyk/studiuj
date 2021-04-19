@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "../../../src/actions/auth";
-import useStyles from "./styles/PrimaryUserSettingsStyles";
+import useStyles from "./styles/Styles";
 import { useForm } from "react-hook-form";
 import ControlledInput from "../../ControlledInput";
 import LoadingButton from "../../LoadingButton";
@@ -79,7 +79,7 @@ export default function PrimaryUserSettings({ user }) {
       <Divider />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={1}>
-          <Grid item xs={8}>
+          <Grid item xs={7} md={8}>
             <Grid container spacing={1}>
               <Grid item xs={12}>
                 <ControlledInput
@@ -92,18 +92,19 @@ export default function PrimaryUserSettings({ user }) {
                   error={errors.serverError ? true : false}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <ControlledInput
                   name="first_name"
                   control={control}
                   id="first_name"
                   label="Imię"
+                  rules={{ pattern: /^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/i }}
                   autoComplete="first_name"
                   defaultValue={first_name}
                   error={errors.first_name ? true : false}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <ControlledInput
                   name="last_name"
                   control={control}
@@ -117,7 +118,7 @@ export default function PrimaryUserSettings({ user }) {
             </Grid>
           </Grid>
 
-          <Grid item xs={4} className={classes.avatarSection}>
+          <Grid item xs={5} md={4} className={classes.avatarSection}>
             <Avatar
               src={
                 newAvatar ||

@@ -12,6 +12,7 @@ import {
   IconButton,
   makeStyles,
   Typography,
+  Badge,
 } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 import { useRouter } from "next/router";
@@ -40,15 +41,24 @@ const useStyles = makeStyles((theme) => ({
   itemButton: {
     color: theme.palette.lightFont.main,
   },
+  badge: {
+    "& > span": {
+      right: 5,
+      top: 4,
+      width: 10,
+      height: 10,
+    },
+  },
 }));
 
 export default function DashboardUserCard({ userData }) {
   const classes = useStyles();
   const router = useRouter();
   const { logout } = authService();
-  const handleLogout = () => {
+
+  const handleLogout = async () => {
     router.push("/");
-    logout();
+    await logout();
   };
   return (
     <Card className={classes.root} elevation={0}>
@@ -78,7 +88,14 @@ export default function DashboardUserCard({ userData }) {
               size="small"
               className={classes.itemButton}
             >
-              <SettingsIcon />
+              <Badge
+                color="primary"
+                variant="dot"
+                invisible={userData.profile ? true : false}
+                className={classes.badge}
+              >
+                <SettingsIcon />
+              </Badge>
             </IconButton>
           </Link>
           <IconButton

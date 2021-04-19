@@ -23,7 +23,7 @@ function authReducer(state = inistalState, action) {
         ...state,
         user: {
           ...state.user,
-          data: payload.userInfo,
+          data: { ...state.user.data, ...payload.userInfo },
         },
       };
     case LOGOUT:

@@ -1,11 +1,10 @@
 import { gql } from "@apollo/client";
-import { useApollo } from "./apolloClient";
-import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 import {
   login as loginAction,
   logout as logoutAction,
 } from "../src/actions/auth";
-import { useDispatch } from "react-redux";
+import { useApollo } from "./apolloClient";
 
 //prettier-ignore
 const LOGIN = gql`
@@ -97,7 +96,6 @@ function authService() {
       });
     return result;
   };
-
   const logout = async () => {
     const result = await client
       .mutate({
@@ -105,6 +103,7 @@ function authService() {
       })
       .then((res) => {
         dispatch(logoutAction());
+
         localStorage.removeItem("user");
       })
       .catch((err) => {

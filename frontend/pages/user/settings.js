@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import DashboardAuth from "../../components/dashboard/DashboardAuth";
 
 import PrimaryUserSettings from "../../components/dashboard/settings/PrimaryUserSettings";
+import EducationUserSettings from "../../components/dashboard/settings/EducationUserSettings";
 
 export default function userSettings() {
   const userData = useSelector((state) => state.auth.user.data);
@@ -16,6 +17,7 @@ export default function userSettings() {
         Ustaw podstawowe informacje dotyczące Twojego profilu.
       </Typography>
       <PrimaryUserSettings user={userData} />
+      <EducationUserSettings />
     </>
   );
 }
