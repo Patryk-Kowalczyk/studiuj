@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Facades\Socialite;
 
+function generateRandomString($length = 16) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
 class LoginController extends Controller
 {
     public function __construct(Request $request)
@@ -42,10 +52,11 @@ class LoginController extends Controller
         if (!$user->id) {
             $user->fill([
                 "name" => $userSocial->getName(),
-                "password" => bcrypt("dummyPassword")
+                "password" => bcrypt(generateRandomString()),
             ]);
 
             // Save user social
+            $user->provider = "google";
             $user->save();
         }
 

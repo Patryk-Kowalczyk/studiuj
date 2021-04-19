@@ -21,7 +21,11 @@ class ChangeUserPrimaryInfo
         $avatar = $args['avatar'];
         if (isset($avatar)){
             if ($user->avatar){
-                unlink(public_path().'/'.$user->avatar);
+                $filename = public_path().'/'.$user->avatar;
+                if (file_exists ($filename)){
+                    unlink($filename);
+                }
+
             }
             $time = time();
             $avatar_extension = $avatar->extension();
