@@ -12,20 +12,20 @@ export const fourthContentStyles = makeStyles((theme) => ({
     maxWidthBox: {
         maxWidth: "1400px",
         height: "100%",
+        textAlign: "center",
         margin: "0 auto",
-        display: "flex",
-        flexWrap: "wrap",
-        flexDirection: "row",
-        justifyContent: "space-around",
+
+
     },
     h1: {
         width: "100%",
         textAlign: "center",
         fontFamily: theme.fonts.family.content,
         fontWeight: theme.fonts.weight.medium,
-        fontSize: "40px",
         marginTop: "10px",
         marginBottom: "50px",
+        fontSize: "clamp(20px,2.5vw,40px)",
+
     },
     span: {
         color: theme.palette.primary.light,
@@ -34,7 +34,7 @@ export const fourthContentStyles = makeStyles((theme) => ({
     p: {
         color: theme.palette.primary.light,
         marginTop: "40px",
-        fontSize: "16px",
+        fontSize: "clamp(10px,2.5vw,16px)",
         fontStyle: "italic",
         fontWeight: theme.fonts.weight.medium,
     },
@@ -43,6 +43,14 @@ export const fourthContentStyles = makeStyles((theme) => ({
         height: "50px",
         borderBottom: "1px solid",
         marginBottom: "30px",
+    },
+    grid: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr",
+        [theme.breakpoints.down('xs')]: {
+            gridTemplateColumns: "1fr 1fr",
+        },
+        margin: "0 auto",
     }
 
 }))

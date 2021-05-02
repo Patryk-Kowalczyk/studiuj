@@ -10,7 +10,7 @@ export default function ThirdContent() {
             <Box className={classes.maxWidthBox}>
                 <h1 className={classes.h1}><span className={classes.span}>Sukces</span> w 3 krokach </h1>
                 <StepperThird/>
-                <BackgroundIcons/>
+                <BackgroundIcons none/>
             </Box>
         </Box>
     )

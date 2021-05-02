@@ -36,13 +36,28 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "space-around",
         marginBottom: "100px",
+        [theme.breakpoints.down('xs')]: {
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "10px",
+            margin: "10px",
+            flexDirection: "column"
+        },
     },
     text: {
         width: "60%",
+        [theme.breakpoints.down('xs')]: {
+            width: "100%",
+            textAlign: "center",
+            marginTop: "0",
+        },
     },
     h1: {
         fontFamily: theme.fonts.family.content,
         fontWeight: theme.fonts.weight.medium,
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "18px",
+        }
     },
     span: {
         color: theme.palette.primary.light,
@@ -53,10 +68,18 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: theme.fonts.family.content,
         fontSize: "21px",
         fontWeight: theme.fonts.weight.normal,
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "13px",
+        },
 
     },
     image: {
+        width: "30%",
+        maxWidth: "360px",
         maxHeight: "280px",
+        [theme.breakpoints.down('xs')]: {
+            order: "-1",
+        },
     },
     spanUnderline: {
         // color: theme.palette.primary.light,

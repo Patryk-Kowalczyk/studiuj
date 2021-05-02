@@ -49,7 +49,7 @@ export default function SecondContent() {
                     </Box>
                 </Box>
             </Box>
-            <BackgroundIcons/>
+            <BackgroundIcons none/>
         </Box>
     )
 }

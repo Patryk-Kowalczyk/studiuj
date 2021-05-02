@@ -23,12 +23,15 @@ export const thirdContentStyles = makeStyles((theme) => ({
         fontSize: "50px",
         marginBottom: "70px",
         marginTop: "40px",
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "25px",
+        }
     },
     span: {
         color: theme.palette.primary.light,
         fontWeight: theme.fonts.weight.medium,
     },
-  
+
 }))
 
 export default thirdContentStyles;

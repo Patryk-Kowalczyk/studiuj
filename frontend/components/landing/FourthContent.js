@@ -87,17 +87,18 @@ export default function FourthContent() {
             <Box className={classes.maxWidthBox}>
                 <span className={classes.p}>#faq</span>
                 <h1 className={classes.h1}> Najczęsciej zadawane <span className={classes.span}>pytania</span></h1>
-                <FlipCard component={Cards.money}/>
-                <FlipCard component={Cards.users}/>
-                <FlipCard component={Cards.form}/>
-                <FlipCard component={Cards.micro}/>
-                <FlipCard component={Cards.away}/>
-                <FlipCard component={Cards.what}/>
-                <FlipCard component={Cards.times}/>
-                <FlipCard component={Cards.provision}/>
-                <FlipCard component={Cards.cash}/>
-                <FlipCard component={Cards.info}/>
-
+                <div className={classes.grid}>
+                    <FlipCard component={Cards.money}/>
+                    <FlipCard component={Cards.users}/>
+                    <FlipCard component={Cards.form}/>
+                    <FlipCard component={Cards.micro}/>
+                    <FlipCard component={Cards.away}/>
+                    <FlipCard component={Cards.what}/>
+                    <FlipCard component={Cards.times}/>
+                    <FlipCard component={Cards.provision}/>
+                    <FlipCard component={Cards.cash}/>
+                    <FlipCard component={Cards.info}/>
+                </div>
                 <div className={classes.margin}/>
                 <BackgroundIcons none/>
             </Box>

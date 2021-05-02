@@ -1,10 +1,10 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import ReactCardFlip from 'react-card-flip';
 import {makeStyles} from "@material-ui/core/styles";
 
 export const flipStyles = makeStyles((theme) => ({
     front: {
-        fontSize: "84px",
+        fontSize: "clamp(30px,5.5vw,84px)",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -51,34 +51,37 @@ export const flipStyles = makeStyles((theme) => ({
         }
     },
     small: {
-        fontSize: "25px",
+        fontSize: "clamp(10px,2.5vw,18px)",
         color: "black",
     },
     pBool: {
-        fontSize: "25px",
+        fontSize: "clamp(10px,2.5vw,18px)",
         fontWeight: theme.fonts.weight.medium,
         color: theme.palette.primary.light,
 
     },
     pText: {
         fontWeight: theme.fonts.weight.normal,
-        fontSize: "18px",
+        fontSize: "clamp(10px,2.5vw,18px)",
         color: "black",
 
+    },
+    ct: {
+        margin: "30px",
+
     }
+
 }))
-const containerStyle = {
-    width: "26%",
-    height: "30%",
-}
+
 const FlipCard = ({component}) => {
+
     const classes = flipStyles()
     const [isFlipped, setIsFlipped] = useState(false)
     return (
         <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal"
-                       containerStyle={containerStyle}>
-            <div
-                onClick={() => setIsFlipped(!isFlipped)}>
+        >
+            <div className={classes.ct}
+                 onClick={() => setIsFlipped(!isFlipped)}>
                 <div className={classes.front}>
                     {component.icon()}
                     <p className={classes.small}>{component.text}</p>

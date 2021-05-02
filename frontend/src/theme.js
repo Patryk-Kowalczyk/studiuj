@@ -16,7 +16,8 @@ const theme = createMuiTheme(
                 },
                 label: {
                     fontFamily: "Montserrat, sans-serif",
-                    fontSize: "20px",
+                    fontSize: "15px",
+
                 }
             },
             MuiStepConnector: {
