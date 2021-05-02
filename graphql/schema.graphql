@@ -39,6 +39,7 @@ type Advertisement {
     comments: [Comment!]! @hasMany
 }
 
+
 type Comment {
     id: ID!
     description: String!

@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d5e3b797-3c48-4159-aab5-007e895b04e6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reset-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reset-password.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +192,10 @@
       <workItem from="1618342242924" duration="1595000" />
       <workItem from="1618419900407" duration="42000" />
       <workItem from="1618419975494" duration="13688000" />
-      <workItem from="1618572607471" duration="10297000" />
+      <workItem from="1618572607471" duration="10804000" />
+      <workItem from="1618585567081" duration="897000" />
+      <workItem from="1618586579945" duration="2743000" />
+      <workItem from="1619951262699" duration="775000" />
     </task>
     <servers />
   </component>
