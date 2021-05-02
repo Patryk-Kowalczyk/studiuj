@@ -27,7 +27,7 @@ type User {
     advertisements: [Advertisement!]! @hasMany
     profile: Profile @hasOne
     provider: String!
-    type: String!
+
 
 }
 
@@ -69,6 +69,7 @@ type Advertisement {
     updated_at: DateTime!
     user: User! @belongsTo
     comments: [Comment!]! @hasMany
+    type: String!
 }
 
 
@@ -94,7 +95,7 @@ type Mutation {
 
     #####################################
 
-    createAdvertisement(name: String!, description: String! ,price: Int!,user_id: Int!): Advertisement! @create
+    createAdvertisement(name: String!, description: String! ,price: Int!,user_id: Int!,type: String!): Advertisement! @create
     createComment(description: String!, user_id: Int!, advertisement_id:Int!): Comment! @create
 
     ChangeUserPrimaryInfo(name: String!, email: String!, avatar: Upload @rules(apply: ["image", "mimes:jpeg,png,jpg,gif,svg", "max:512", "nullable"])): User! @guard
