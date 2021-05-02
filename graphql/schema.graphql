@@ -25,7 +25,37 @@ type User {
     created_at: DateTime!
     updated_at: DateTime!
     advertisements: [Advertisement!]! @hasMany
+    profile: Profile @hasOne
 
+}
+
+type Profile{
+    id: ID!
+    type_of_education: String!
+    user: User! @belongsTo
+    universities: [UserUniversity] @hasMany
+    schools: [UserSchool] @hasMany
+}
+
+type UserUniversity{
+    id: ID!
+    university_id: String
+    name: String
+    major: String!
+    finished: Boolean!
+}
+
+type UserSchool{
+    id: ID!
+    name: String!
+    major: String!
+    finished: Boolean!
+}
+input UserSchoolInput{
+    id: ID
+    name: String!
+    major: String!
+    finished: Boolean!
 }
 
 type Advertisement {
@@ -66,5 +96,14 @@ type Mutation {
     createComment(description: String!, user_id: Int!, advertisement_id:Int!): Comment! @create
 
     ChangeUserPrimaryInfo(name: String!, email: String!, avatar: Upload @rules(apply: ["image", "mimes:jpeg,png,jpg,gif,svg", "max:512", "nullable"])): User! @guard
+    CreateOrChangeProfile(type_of_education: String!): Profile! @guard
+
+    AddSchool(name: String!, major: String!, finished: Boolean!): UserSchool! @guard
+    DeleteSchool(id: ID!): UserSchool @delete
+    EditSchool(id: ID!, name: String!, major: String!, finished: Boolean!): UserSchool @update
+
+    AddUniversity(university_id: String, name: String, major: String!, finished: Boolean!): UserUniversity! @guard
+    DeleteUniversity(id: ID!): UserUniversity @delete
+    EditUniversity(id: ID!, university_id: String, name: String, major: String!, finished: Boolean!): UserUniversity @update
 }
 
