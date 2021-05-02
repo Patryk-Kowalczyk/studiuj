@@ -10,7 +10,7 @@ type Query {
     users: [User!]! @guard(with: ["api"]) @paginate(type: "paginator" model: "App\\Models\\User")
     user(id: ID @eq): User @find
     me: User! @auth
-    advertisements: [Advertisement!]! @all
+    advertisements: [Advertisement!]! @paginate(type: "paginator" model: "App\\Models\\Advertisement")
     advertisement(id: Int! @eq): Advertisement @find
 
     comments: [Comment!]! @all
