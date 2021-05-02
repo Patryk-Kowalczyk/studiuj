@@ -18,7 +18,7 @@ export const flipStyles = makeStyles((theme) => ({
         background: "rgb(248,239,224)",
         webkitBoxShadow: "0px 0px 8px 2px rgb(248,239,224) ",
         boxShadow: "0px 0px 8px 2px rgb(248,239,224)",
-        transition: ".3s",
+        transition: ".4s",
 
         //HOVER
         ['&:hover']: {
@@ -56,6 +56,7 @@ export const flipStyles = makeStyles((theme) => ({
     },
     pBool: {
         fontSize: "clamp(10px,2.5vw,18px)",
+
         fontWeight: theme.fonts.weight.medium,
         color: theme.palette.primary.light,
 
@@ -63,22 +64,22 @@ export const flipStyles = makeStyles((theme) => ({
     pText: {
         fontWeight: theme.fonts.weight.normal,
         fontSize: "clamp(10px,2.5vw,18px)",
+
         color: "black",
 
     },
     ct: {
         margin: "30px",
-
     }
 
 }))
 
 const FlipCard = ({component}) => {
-
     const classes = flipStyles()
     const [isFlipped, setIsFlipped] = useState(false)
+
     return (
-        <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal"
+        <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" flipSpeedFrontToBack={"0.7"}
         >
             <div className={classes.ct}
                  onClick={() => setIsFlipped(!isFlipped)}>

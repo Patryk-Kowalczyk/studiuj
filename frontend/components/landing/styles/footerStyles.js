@@ -17,16 +17,19 @@ export const footerStyles = makeStyles((theme) => ({
         flexWrap: "wrap",
         flexDirection: "row",
         justifyContent: "space-around",
+        [theme.breakpoints.down('xs')]: {
+            flexDirection: "column",
+        },
     },
     border: {
         borderBottom: "1px solid",
         width: "300px",
     },
     socialMediaContainer: {
-
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
+
     },
     hover: {
         fontSize: "35px",
@@ -39,8 +42,8 @@ export const footerStyles = makeStyles((theme) => ({
             border: "2px solid",
         },
 
-    }
-
+    },
+  
 }))
 
 export default footerStyles;
