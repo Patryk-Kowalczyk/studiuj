@@ -1,0 +1,12 @@
+{
+  "name": "studiuj",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "http://studiuj.createosm.pl/public/graphql",
+        "introspect": true
+      }
+    }
+  }
+}

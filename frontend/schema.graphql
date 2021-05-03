@@ -1,0 +1,283 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Advertisement {
+    comments: [Comment!]!
+    created_at: DateTime!
+    description: String!
+    id: ID!
+    name: String!
+    price: Float!
+    type: String!
+    updated_at: DateTime!
+    user: User!
+}
+
+"A paginated list of Advertisement items."
+type AdvertisementPaginator {
+    "A list of Advertisement items."
+    data: [Advertisement!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type AuthPayload {
+    access_token: String
+    expires_in: Int
+    refresh_token: String
+    token_type: String
+    user: User
+}
+
+type Comment {
+    advertisement: Advertisement!
+    created_at: DateTime!
+    description: String!
+    id: ID!
+    updated_at: DateTime!
+    user: User!
+}
+
+type ForgotPasswordResponse {
+    message: String
+    status: String!
+}
+
+type LogoutResponse {
+    message: String
+    status: String!
+}
+
+type Mutation {
+    AddSchool(finished: Boolean!, major: String!, name: String!): UserSchool!
+    AddUniversity(finished: Boolean!, major: String!, name: String, university_id: String): UserUniversity!
+    ChangeUserPrimaryInfo(avatar: Upload, email: String!, name: String!): User!
+    CreateOrChangeProfile(type_of_education: String!): Profile!
+    DeleteSchool(id: ID!): UserSchool
+    DeleteUniversity(id: ID!): UserUniversity
+    EditSchool(finished: Boolean!, id: ID!, major: String!, name: String!): UserSchool
+    EditUniversity(finished: Boolean!, id: ID!, major: String!, name: String, university_id: String): UserUniversity
+    createAdvertisement(description: String!, name: String!, price: Int!, type: String!, user_id: Int!): Advertisement!
+    createComment(advertisement_id: Int!, description: String!, user_id: Int!): Comment!
+    forgotPassword(input: ForgotPasswordInput!): ForgotPasswordResponse!
+    login(input: LoginInput): AuthPayload!
+    logout: LogoutResponse!
+    refreshToken(input: RefreshTokenInput): RefreshTokenPayload!
+    register(input: RegisterInput): RegisterResponse!
+    socialLogin(input: SocialLoginInput!): AuthPayload!
+    updateForgottenPassword(input: NewPasswordWithCodeInput): ForgotPasswordResponse!
+    updatePassword(input: UpdatePassword!): UpdatePasswordResponse!
+    verifyEmail(input: VerifyEmailInput!): AuthPayload!
+}
+
+"Pagination information about the corresponding list of items."
+type PageInfo {
+    "Count of nodes in current request."
+    count: Int
+    "Current page of request."
+    currentPage: Int
+    "When paginating forwards, the cursor to continue."
+    endCursor: String
+    "When paginating forwards, are there more items?"
+    hasNextPage: Boolean!
+    "When paginating backwards, are there more items?"
+    hasPreviousPage: Boolean!
+    "Last page in connection."
+    lastPage: Int
+    "When paginating backwards, the cursor to continue."
+    startCursor: String
+    "Total number of node in connection."
+    total: Int
+}
+
+"Pagination information about the corresponding list of items."
+type PaginatorInfo {
+    "Total count of available items in the page."
+    count: Int!
+    "Current pagination page."
+    currentPage: Int!
+    "Index of first item in the current page."
+    firstItem: Int
+    "If collection has more pages."
+    hasMorePages: Boolean!
+    "Index of last item in the current page."
+    lastItem: Int
+    "Last page number of the collection."
+    lastPage: Int!
+    "Number of items per page in the collection."
+    perPage: Int!
+    "Total items available in the collection."
+    total: Int!
+}
+
+type Profile {
+    id: ID!
+    schools: [UserSchool]
+    type_of_education: String!
+    universities: [UserUniversity]
+    user: User!
+}
+
+type Query {
+    advertisement(id: Int!): Advertisement
+    advertisements(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): AdvertisementPaginator
+    comments(id: Int!): Comment
+    me: User!
+    user(id: ID): User
+    users(
+        "Limits number of fetched elements."
+        first: Int!,
+        "The offset from which elements are returned."
+        page: Int
+    ): UserPaginator
+}
+
+type RefreshTokenPayload {
+    access_token: String!
+    expires_in: Int!
+    refresh_token: String!
+    token_type: String!
+}
+
+type RegisterResponse {
+    status: RegisterStatuses!
+    tokens: AuthPayload
+}
+
+type UpdatePasswordResponse {
+    message: String
+    status: String!
+}
+
+type User {
+    advertisements: [Advertisement!]!
+    avatar: String
+    created_at: DateTime!
+    email: String!
+    id: ID!
+    name: String!
+    profile: Profile
+    provider: String!
+    updated_at: DateTime!
+}
+
+"A paginated list of User items."
+type UserPaginator {
+    "A list of User items."
+    data: [User!]!
+    "Pagination information about the list of items."
+    paginatorInfo: PaginatorInfo!
+}
+
+type UserSchool {
+    finished: Boolean!
+    id: ID!
+    major: String!
+    name: String!
+}
+
+type UserUniversity {
+    finished: Boolean!
+    id: ID!
+    major: String!
+    name: String
+    university_id: String
+}
+
+enum RegisterStatuses {
+    MUST_VERIFY_EMAIL
+    SUCCESS
+}
+
+"The available directions for ordering a list of records."
+enum SortOrder {
+    "Sort records in ascending order."
+    ASC
+    "Sort records in descending order."
+    DESC
+}
+
+"Specify if you want to include or exclude trashed results from a query."
+enum Trashed {
+    "Only return trashed results."
+    ONLY
+    "Return both trashed and non-trashed results."
+    WITH
+    "Only return non-trashed results."
+    WITHOUT
+}
+
+input ForgotPasswordInput {
+    email: String!
+}
+
+input LoginInput {
+    password: String!
+    username: String!
+}
+
+input NewPasswordWithCodeInput {
+    email: String!
+    password: String!
+    password_confirmation: String!
+    token: String!
+}
+
+"Allows ordering a list of records."
+input OrderByClause {
+    "The column that is used for ordering."
+    column: String!
+    "The direction that is used for ordering."
+    order: SortOrder!
+}
+
+input RefreshTokenInput {
+    refresh_token: String
+}
+
+input RegisterInput {
+    email: String!
+    name: String!
+    password: String!
+    password_confirmation: String!
+}
+
+input SocialLoginInput {
+    provider: String!
+    token: String!
+}
+
+input UpdatePassword {
+    old_password: String!
+    password: String!
+    password_confirmation: String!
+}
+
+input UserSchoolInput {
+    finished: Boolean!
+    id: ID
+    major: String!
+    name: String!
+}
+
+input VerifyEmailInput {
+    token: String!
+}
+
+
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime
+
+scalar Upload
+
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date

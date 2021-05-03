@@ -42,7 +42,11 @@ export const fourthContentStyles = makeStyles((theme) => ({
         width: "80%",
         height: "50px",
         borderBottom: "1px solid",
+        margin: "0 auto",
         marginBottom: "30px",
+        [theme.breakpoints.down('xs')]: {
+            borderBottom: "none",
+        },
     },
     grid: {
         display: "grid",

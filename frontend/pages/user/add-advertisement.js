@@ -1,8 +1,9 @@
 import React from "react";
 import DashboardAuth from "../../components/dashboard/DashboardAuth";
+import Checkout from "../../components/add/Checkout";
 
 export default function addAdvertisement() {
-  return <h1>Dodaj ogłoszenie</h1>;
+    return <Checkout/>;
 }
 
 addAdvertisement.Layout = DashboardAuth;

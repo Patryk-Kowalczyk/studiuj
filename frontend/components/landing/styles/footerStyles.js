@@ -24,6 +24,14 @@ export const footerStyles = makeStyles((theme) => ({
     border: {
         borderBottom: "1px solid",
         width: "300px",
+        [theme.breakpoints.down('xs')]: {
+            margin: "0 auto"
+        },
+    },
+    p: {
+        [theme.breakpoints.down('xs')]: {
+            textAlign: "center"
+        },
     },
     socialMediaContainer: {
         display: "flex",
@@ -43,7 +51,14 @@ export const footerStyles = makeStyles((theme) => ({
         },
 
     },
-  
+    about: {
+        [theme.breakpoints.down('xs')]: {
+            margin: "0 auto",
+            textAlign: "center"
+
+        },
+    }
+
 }))
 
 export default footerStyles;

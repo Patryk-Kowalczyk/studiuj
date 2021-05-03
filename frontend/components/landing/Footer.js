@@ -9,7 +9,7 @@ export default function FooterContent() {
             <Box className={classes.maxWidthBox}>
                 <Box>
                     <h1 className={classes.border}>Studiuj.pl</h1>
-                    <p>Copyright TeamStudiuj.pl</p>
+                    <p className={classes.p}>Copyright TeamStudiuj.pl</p>
                     <Box className={classes.socialMediaContainer}>
                         <SiFacebook className={classes.hover}/>
                         <SiInstagram className={classes.hover}/>
@@ -17,7 +17,7 @@ export default function FooterContent() {
                     </Box>
                 </Box>
 
-                <Box>
+                <Box className={classes.about}>
                     <h1>O nas</h1>
                     <p>Polityka prywatności</p>
                     <p>Regulamin</p>
