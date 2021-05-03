@@ -14,6 +14,7 @@ export default function PaymentForm({values, updateValues}) {
                     <TextField
                         required
                         name="price"
+                        type={"number"}
                         value={values.price}
                         onChange={updateValues}
                         label="Cena w pln"

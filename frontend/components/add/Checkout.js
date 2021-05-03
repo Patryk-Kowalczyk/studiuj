@@ -11,6 +11,7 @@ import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 import useForm from "../../utils/useForm";
+import {gql, useMutation} from "@apollo/client";
 
 function Copyright() {
     return (
@@ -63,13 +64,35 @@ const useStyles = makeStyles((theme) => ({
 const steps = ['Dodaj opis', 'Finanse', 'Podsumowanie'];
 
 
-export default function Checkout() {
+const CREATE_ADVERTISMENT_MUTATION = gql`
+    mutation CREATE_ADVERTISMENT_MUTATION(
+        $name: String!
+        $description: String!
+        $price: Int!
+        $user_id: Int!
+        $type: String!
+    ) {
+        createAdvertisement(
+            name: $name
+            description: $description
+            price: $price
+            user_id:$user_id
+            type:$type
+        )
+        {
+            id
+        }
+    }
+`;
+
+
+export default function Checkout({data}) {
     const {values, updateValues} = useForm({
         name: '',
         description: '',
         type: '',
-        price: '',
-        user_id: ''
+        price: 0,
+        user_id: Number(data.user.id),
     });
 
     function getStepContent(step) {
@@ -88,12 +111,24 @@ export default function Checkout() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
 
+    const [createAdvertisment, {loading: createLoading, error: createError, data: createData}] = useMutation(
+        CREATE_ADVERTISMENT_MUTATION,
+        {
+            variables: values,
+        }
+    );
     const handleNext = () => {
         setActiveStep(activeStep + 1);
     };
 
     const handleBack = () => {
         setActiveStep(activeStep - 1);
+    };
+
+    const handleButtonSubmit = async (e) => {
+        e.preventDefault();
+        const res = await createAdvertisment();
+        setActiveStep(activeStep + 1);
     };
 
     return (
@@ -118,8 +153,7 @@ export default function Checkout() {
                                     Dziękujemy za dodanie ogłoszenia.
                                 </Typography>
                                 <Typography variant="subtitle1">
-                                    Your order number is #2001539. We have emailed your order confirmation, and will
-                                    send you an update when your order has shipped.
+                                    Twoje ogłoszenie ma numer #.
                                 </Typography>
                             </>
                         ) : (
@@ -131,14 +165,24 @@ export default function Checkout() {
                                             powrót
                                         </Button>
                                     )}
-                                    <Button
+                                    {activeStep === steps.length - 1 ? (<Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={handleNext}
+                                        onClick={handleButtonSubmit}
                                         className={classes.button}
+                                        disabled={createLoading}
                                     >
-                                        {activeStep === steps.length - 1 ? 'Zatwierdź' : 'Dalej'}
-                                    </Button>
+                                        Zatwierdź
+                                    </Button>) : (
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={handleNext}
+                                            className={classes.button}
+                                        >
+                                            Dalej
+                                        </Button>
+                                    )}
                                 </div>
                             </>
                         )}
