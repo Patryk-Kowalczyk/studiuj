@@ -10,8 +10,10 @@ type Query {
     users: [User!]! @guard(with: ["api"]) @paginate(type: "paginator" model: "App\\Models\\User")
     user(id: ID @eq): User @find
     me: User! @auth
-    advertisements: [Advertisement!]! @paginate(type: "paginator" model: "App\\Models\\Advertisement")
+    advertisements (category_id: Int @where(key: "category_id")): [Advertisement!]! @paginate(type: "paginator" model: "App\\Models\\Advertisement") @orderBy(column: "created_at", direction: "DESC")
     advertisement(id: Int! @eq): Advertisement @find
+
+    categories: [Category!]! @all
 
     comments: [Comment!]! @all
     comments(id: Int! @eq): Comment @find
@@ -27,8 +29,6 @@ type User {
     advertisements: [Advertisement!]! @hasMany
     profile: Profile @hasOne
     provider: String!
-
-
 }
 
 type Profile{
@@ -60,6 +60,12 @@ input UserSchoolInput{
     finished: Boolean!
 }
 
+type Category{
+    id: ID!
+    name: String!
+    advertisements: [Advertisement!]! @hasMany
+}
+
 type Advertisement {
     id: ID!
     name: String!
@@ -68,6 +74,7 @@ type Advertisement {
     created_at: DateTime!
     updated_at: DateTime!
     user: User! @belongsTo
+    category: Category! @belongsTo
     comments: [Comment!]! @hasMany
     type: String!
 }
@@ -95,7 +102,7 @@ type Mutation {
 
     #####################################
 
-    createAdvertisement(name: String!, description: String! ,price: Int!,user_id: Int!,type: String!): Advertisement! @create
+    createAdvertisement(name: String!, description: String! ,price: Int!,user_id: Int!,type: String!,  category_id:Int!): Advertisement! @create
     createComment(description: String!, user_id: Int!, advertisement_id:Int!): Comment! @create
 
     ChangeUserPrimaryInfo(name: String!, email: String!, avatar: Upload @rules(apply: ["image", "mimes:jpeg,png,jpg,gif,svg", "max:512", "nullable"])): User! @guard
