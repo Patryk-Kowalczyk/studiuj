@@ -10,10 +10,13 @@ import Radio from '@material-ui/core/Radio';
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 
-export default function AddressForm({values, updateValues, categories}) {
+export default function AddressForm({values, updateValues, categories, info}) {
     return (
         <>
-            <Typography variant="h6" gutterBottom={6}>
+            <Typography variant="subtitle2" color={'error'} gutterBottom>
+                {info ? 'Uwaga! Uzupełnij pola danymi ' : null}
+            </Typography>
+            <Typography variant="h6" gutterBottom>
                 Opis ogłoszenia
             </Typography>
             <Grid container spacing={5}>
@@ -54,7 +57,7 @@ export default function AddressForm({values, updateValues, categories}) {
                     >
                         <option aria-label="None" value=""/>
                         {categories.map(category => (
-                            <option value={category.id}>{category.name}</option>
+                            <option key={`${category.id}_${category.name}`} value={category.id}>{category.name}</option>
                         ))}
                     </Select>
                 </Grid>

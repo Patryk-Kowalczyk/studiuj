@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
@@ -89,6 +89,7 @@ const CREATE_ADVERTISMENT_MUTATION = gql`
 
 
 export default function Checkout({data}) {
+    const [validInfo, setValidInfo] = useState(false)
     const {values, updateValues} = useForm({
         name: '',
         description: '',
@@ -101,7 +102,8 @@ export default function Checkout({data}) {
     function getStepContent(step) {
         switch (step) {
             case 0:
-                return <AddressForm values={values} updateValues={updateValues} categories={data.categories}/>;
+                return <AddressForm info={validInfo} values={values} updateValues={updateValues}
+                                    categories={data.categories}/>;
             case 1:
                 return <PaymentForm values={values} updateValues={updateValues}/>;
             case 2:
@@ -123,8 +125,20 @@ export default function Checkout({data}) {
 
     const handleButtonSubmit = async (e) => {
         e.preventDefault();
-        const res = await createAdvertisment();
-        setActiveStep(activeStep + 1);
+        if (values.name === '' ||
+            values.description === '' ||
+            values.price === '' ||
+            values.type === '' ||
+            values.category_id === ''
+        ) {
+            setValidInfo(true)
+            setActiveStep(activeStep - 2);
+
+        } else {
+            const res = await createAdvertisment();
+            setActiveStep(activeStep + 1);
+        }
+
     };
     return (
         <>
@@ -148,7 +162,8 @@ export default function Checkout({data}) {
                                     Dziękujemy za dodanie ogłoszenia.
                                 </Typography>
                                 <Typography variant="subtitle1">
-                                    Twoje ogłoszenie ma numer #.
+                                    Twoje ogłoszenie ma numer
+                                    #{createData?.createAdvertisement?.id}.
                                 </Typography>
                             </>
                         ) : (

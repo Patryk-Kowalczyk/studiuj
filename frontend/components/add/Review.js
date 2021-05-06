@@ -40,10 +40,14 @@ export default function Review({values}) {
                 <ListItem className={classes.listItem}>
                     <ListItemText primary={"Cena"} secondary={values.price}/>
                 </ListItem>
+                <ListItem className={classes.listItem}>
+                    <ListItemText primary={"ID Kategorii"} secondary={values.category_id}/>
+                </ListItem>
+
             </List>
             <Grid container spacing={9}>
                 <Grid item xs={12}>
-                    <Typography variant={"p"}>Zatwierdzając ogłoszenie decydujesz się na akceptację regulaminu i
+                    <Typography variant={"subtitle2"}>Zatwierdzając ogłoszenie decydujesz się na akceptację regulaminu i
                         ponosisz odpowiedzialnośc w przypadku rezygnacji z zaplanowanych zajęć.</Typography>
                 </Grid>
             </Grid>
