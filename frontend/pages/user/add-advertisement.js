@@ -10,6 +10,11 @@ export default function addAdvertisement() {
                 id
                 name
             }
+            categories{
+                id
+                name
+            }
+
         }
     `;
     const {loading, error, data} = useQuery(GET_USER_INFO);

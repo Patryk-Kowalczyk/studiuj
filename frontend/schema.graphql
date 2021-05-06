@@ -6,6 +6,7 @@ schema {
 }
 
 type Advertisement {
+    category: Category!
     comments: [Comment!]!
     created_at: DateTime!
     description: String!
@@ -31,6 +32,12 @@ type AuthPayload {
     refresh_token: String
     token_type: String
     user: User
+}
+
+type Category {
+    advertisements: [Advertisement!]!
+    id: ID!
+    name: String!
 }
 
 type Comment {
@@ -61,7 +68,7 @@ type Mutation {
     DeleteUniversity(id: ID!): UserUniversity
     EditSchool(finished: Boolean!, id: ID!, major: String!, name: String!): UserSchool
     EditUniversity(finished: Boolean!, id: ID!, major: String!, name: String, university_id: String): UserUniversity
-    createAdvertisement(description: String!, name: String!, price: Int!, type: String!, user_id: Int!): Advertisement!
+    createAdvertisement(category_id: Int!, description: String!, name: String!, price: Int!, type: String!, user_id: Int!): Advertisement!
     createComment(advertisement_id: Int!, description: String!, user_id: Int!): Comment!
     forgotPassword(input: ForgotPasswordInput!): ForgotPasswordResponse!
     login(input: LoginInput): AuthPayload!
@@ -125,11 +132,13 @@ type Profile {
 type Query {
     advertisement(id: Int!): Advertisement
     advertisements(
+        category_id: Int,
         "Limits number of fetched elements."
         first: Int!,
         "The offset from which elements are returned."
         page: Int
     ): AdvertisementPaginator
+    categories: [Category!]!
     comments(id: Int!): Comment
     me: User!
     user(id: ID): User

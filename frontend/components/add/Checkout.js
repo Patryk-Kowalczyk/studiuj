@@ -13,17 +13,6 @@ import Review from './Review';
 import useForm from "../../utils/useForm";
 import {gql, useMutation} from "@apollo/client";
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            {'Studiuj.pl '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
 const useStyles = makeStyles((theme) => ({
     appBar: {
         position: 'relative',
@@ -61,6 +50,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            {'Studiuj.pl '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
+
+
 const steps = ['Dodaj opis', 'Finanse', 'Podsumowanie'];
 
 
@@ -71,6 +72,7 @@ const CREATE_ADVERTISMENT_MUTATION = gql`
         $price: Int!
         $user_id: Int!
         $type: String!
+        $category_id:Int!
     ) {
         createAdvertisement(
             name: $name
@@ -78,8 +80,8 @@ const CREATE_ADVERTISMENT_MUTATION = gql`
             price: $price
             user_id:$user_id
             type:$type
-        )
-        {
+            category_id:$category_id
+        ){
             id
         }
     }
@@ -91,6 +93,7 @@ export default function Checkout({data}) {
         name: '',
         description: '',
         type: '',
+        category_id: '',
         price: 0,
         user_id: Number(data.user.id),
     });
@@ -98,7 +101,7 @@ export default function Checkout({data}) {
     function getStepContent(step) {
         switch (step) {
             case 0:
-                return <AddressForm values={values} updateValues={updateValues}/>;
+                return <AddressForm values={values} updateValues={updateValues} categories={data.categories}/>;
             case 1:
                 return <PaymentForm values={values} updateValues={updateValues}/>;
             case 2:
@@ -117,20 +120,12 @@ export default function Checkout({data}) {
             variables: values,
         }
     );
-    const handleNext = () => {
-        setActiveStep(activeStep + 1);
-    };
-
-    const handleBack = () => {
-        setActiveStep(activeStep - 1);
-    };
 
     const handleButtonSubmit = async (e) => {
         e.preventDefault();
         const res = await createAdvertisment();
         setActiveStep(activeStep + 1);
     };
-
     return (
         <>
             <CssBaseline/>
@@ -161,7 +156,8 @@ export default function Checkout({data}) {
                                 {getStepContent(activeStep)}
                                 <div className={classes.buttons}>
                                     {activeStep !== 0 && (
-                                        <Button onClick={handleBack} className={classes.button}>
+                                        <Button onClick={() => setActiveStep(activeStep - 1)}
+                                                className={classes.button}>
                                             powrót
                                         </Button>
                                     )}
@@ -177,7 +173,7 @@ export default function Checkout({data}) {
                                         <Button
                                             variant="contained"
                                             color="primary"
-                                            onClick={handleNext}
+                                            onClick={() => setActiveStep(activeStep + 1)}
                                             className={classes.button}
                                         >
                                             Dalej

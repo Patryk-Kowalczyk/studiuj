@@ -8,6 +8,10 @@ export default function useForm(defaults) {
         if (e.target.type === 'number') {
             value = parseInt(e.target.value);
         }
+        if (e.target.name === 'category_id') {
+            value = parseInt(e.target.value);
+        }
+
         setValues({
             ...values,
             [e.target.name]: value,

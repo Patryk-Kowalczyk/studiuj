@@ -7,11 +7,13 @@ import FormLabel from '@material-ui/core/FormLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
 
-export default function AddressForm({values, updateValues}) {
+export default function AddressForm({values, updateValues, categories}) {
     return (
         <>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom={6}>
                 Opis ogłoszenia
             </Typography>
             <Grid container spacing={5}>
@@ -39,6 +41,25 @@ export default function AddressForm({values, updateValues}) {
                         onChange={updateValues}
                     />
                 </Grid>
+
+                <Grid item xs={12}>
+                    <InputLabel htmlFor="age-native-simple">Wybierz kategorię ogłoszenia</InputLabel>
+                    <Select
+                        native
+                        value={values.category_id}
+                        name="category_id"
+                        fullWidth
+                        onChange={updateValues}
+
+                    >
+                        <option aria-label="None" value=""/>
+                        {categories.map(category => (
+                            <option value={category.id}>{category.name}</option>
+                        ))}
+                    </Select>
+                </Grid>
+
+
                 <Grid item xs={12}>
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Typ ogłoszenia</FormLabel>
