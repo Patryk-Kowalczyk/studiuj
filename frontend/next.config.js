@@ -8,7 +8,7 @@ module.exports = {
         return config;
     },
     env: {
-        BACKEND_HOST: "http://studiuj.createosm.pl/public",
+        BACKEND_HOST: "http://localhost:8000",
     },
 };
 

@@ -75,13 +75,15 @@ export default function DashboardUserCard({ userData }) {
       <div className={classes.nameIcons}>
         <Typography className={classes.name}>{userData.name}</Typography>
         <div>
-          <IconButton
-            aria-label="user-profile"
-            size="small"
-            className={classes.itemButton}
-          >
-            <PersonIcon />
-          </IconButton>
+          <Link href={`/user/${userData.id}`}>
+            <IconButton
+              aria-label="user-profile"
+              size="small"
+              className={classes.itemButton}
+            >
+              <PersonIcon />
+            </IconButton>
+          </Link>
           <Link href="/user/settings">
             <IconButton
               aria-label="user-settings"

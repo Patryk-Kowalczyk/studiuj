@@ -9,6 +9,7 @@ import { CircularProgress } from "@material-ui/core";
 const GET_USERS = gql`
   query users {
     me {
+      id
       name
       email
       avatar

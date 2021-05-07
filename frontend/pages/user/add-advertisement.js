@@ -6,7 +6,7 @@ import {gql, useQuery} from "@apollo/client";
 export default function addAdvertisement() {
     const GET_USER_INFO = gql`
         query userInfo {
-            user{
+            me{
                 id
                 name
             }
@@ -18,7 +18,10 @@ export default function addAdvertisement() {
         }
     `;
     const {loading, error, data} = useQuery(GET_USER_INFO);
-    if (loading) return <p>Loading...</p>;
+    if (error) {
+        console.log(error.graphQLErrors)
+    }
+    if (loading || !data) return <p>Loading...</p>;
     return <Checkout data={data}/>;
 }
 

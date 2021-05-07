@@ -96,7 +96,7 @@ export default function Checkout({data}) {
         type: '',
         category_id: '',
         price: 0,
-        user_id: Number(data.user.id),
+        user_id: Number(data.me.id),
     });
 
     function getStepContent(step) {

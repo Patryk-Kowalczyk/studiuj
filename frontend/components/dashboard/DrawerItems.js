@@ -17,6 +17,7 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import FolderSharedIcon from "@material-ui/icons/FolderShared";
 import HomeIcon from "@material-ui/icons/Home";
+import ChatIcon from '@material-ui/icons/Chat';
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -77,6 +78,11 @@ const data = [
       },
     ],
   },
+  {
+    name: "Wiadomości",
+    icon: <ChatIcon />,
+    href: "/user/messages",
+  }
 ];
 
 const LinkedSimpleItem = ({ data }) => {
