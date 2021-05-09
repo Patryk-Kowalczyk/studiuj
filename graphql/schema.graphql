@@ -17,6 +17,9 @@ type Query {
 
     comments: [Comment!]! @all
     comments(id: Int! @eq): Comment @find
+
+    UserChats: [UserInChat!] @guard(with: ["api"])
+    ChatMessages(id: ID!): Chat! @guard(with: ["api"])
 }
 
 type User {
@@ -90,6 +93,31 @@ type Comment {
     advertisement: Advertisement! @belongsTo
 }
 
+type Chat{
+    id: ID!
+    created_at: DateTime!
+    updated_at: DateTime!
+    usersInChat: [UserInChat!]! @hasMany
+    messages: [Message] @hasMany
+}
+
+type Message{
+    id: ID!
+    text: String!
+    seen: Boolean!
+    sender: User! @belongsTo
+    receiver: User! @belongsTo
+    chat: Chat! @belongsTo
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type UserInChat{
+    id: ID!
+    chat: Chat! @belongsTo
+    user: User! @belongsTo
+}
+
 type Mutation {
     login(input: LoginInput @spread): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Login@resolve")
     refreshToken(input: RefreshTokenInput @spread): RefreshTokenPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\RefreshToken@resolve")
@@ -116,5 +144,6 @@ type Mutation {
     AddUniversity(university_id: String, name: String, major: String!, finished: Boolean!): UserUniversity! @guard
     DeleteUniversity(id: ID!): UserUniversity @delete
     EditUniversity(id: ID!, university_id: String, name: String, major: String!, finished: Boolean!): UserUniversity @update
+    CreateOrGetChat(id: ID!): Chat! @guard
 }
 

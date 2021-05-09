@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -65,6 +66,9 @@ class User extends Authenticatable
         $this->notify(new ResetPasswordNotification($token));
     }
 
-
+    public function inChats(): HasMany
+    {
+        $this->hasMany(UserInChat::class);
+    }
 
 }

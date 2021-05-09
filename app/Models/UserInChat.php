@@ -15,8 +15,8 @@ class UserInChat extends Model
     {
         return $this->belongsTo(Chat::class);
     }
-    public function users(): HasMany
+    public function user(): BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }
