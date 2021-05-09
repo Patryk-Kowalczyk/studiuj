@@ -38,8 +38,8 @@ const useStyles = makeStyles((theme) => ({
   },
   actionsSection: {
     display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-end",
+    width: "100%",
+    justifyContent: "flex-end",
   },
   categories: {
     marginTop: theme.spacing(2),
@@ -83,6 +83,8 @@ const GET_USER = gql`
   }
 `;
 
+//const CREATE_OR_GET_CHAT = gql``;
+
 const EducationElement = ({ name, major, finished }) => {
   return (
     <Box>
@@ -100,12 +102,14 @@ const userPage = () => {
   const router = useRouter();
   const classes = useStyles();
   const { id } = router.query;
-  const { loading, error, data } = useQuery(GET_USER, {
+  const { loading, error, data, refetch } = useQuery(GET_USER, {
     variables: {
       id: Number(id),
     },
   });
-  console.log(data);
+  React.useEffect(() => {
+    refetch();
+  }, []);
   const isUser = !loading && data.user;
   if (!loading && !data.user) {
     router.push("/404");
@@ -115,35 +119,27 @@ const userPage = () => {
       <Grid item xs={12} md={8}>
         <Card>
           <CardContent className={classes.card}>
-            <Grid container spacing={1}>
-              <Grid item xs={8} className={classes.avatarSection}>
-                {isUser ? (
-                  <Avatar
-                    className={classes.avatar}
-                    src={
-                      `${process.env.BACKEND_HOST}/${data.user.avatar}` || ""
-                    }
-                  >{`${data.user.name[0]}`}</Avatar>
-                ) : (
-                  <Skeleton
-                    variant="circle"
-                    width={150}
-                    height={150}
-                  ></Skeleton>
-                )}
-                {isUser ? (
-                  <Typography variant="h4" component="h3">
-                    {data.user.name}
-                  </Typography>
-                ) : (
-                  <Skeleton variant="rect" width={200} height={30}></Skeleton>
-                )}
-              </Grid>
-              <Grid item xs={4} className={classes.actionsSection}>
-                <Button variant="outlined" startIcon={<MessageIcon />}>
-                  Wiadomość
-                </Button>
-              </Grid>
+            <Grid item xs={12} className={classes.actionsSection}>
+              <Button variant="outlined" startIcon={<MessageIcon />}>
+                Wiadomość
+              </Button>
+            </Grid>
+            <Grid item xs={12} className={classes.avatarSection}>
+              {isUser ? (
+                <Avatar
+                  className={classes.avatar}
+                  src={`${process.env.BACKEND_HOST}/${data.user.avatar}` || ""}
+                >{`${data.user.name[0]}`}</Avatar>
+              ) : (
+                <Skeleton variant="circle" width={150} height={150}></Skeleton>
+              )}
+              {isUser ? (
+                <Typography variant="h4" component="h3">
+                  {data.user.name}
+                </Typography>
+              ) : (
+                <Skeleton variant="rect" width={200} height={30}></Skeleton>
+              )}
             </Grid>
             <Box display="flex" mt={3}>
               <Box className={classes.statCard}>
@@ -174,7 +170,9 @@ const userPage = () => {
       </Grid>
       <Grid item xs={12} md={4}>
         <Card className={classes.educationCard}>
-          <Typography variant="h4">Wykształcenie</Typography>
+          <Typography variant="h5" gutterBottom>
+            Wykształcenie
+          </Typography>
           {loading ? (
             <Skeleton variant="rect" width={200} height={20} />
           ) : (

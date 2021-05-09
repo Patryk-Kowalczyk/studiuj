@@ -127,7 +127,7 @@ function DashboardContainer({ children, ...props }) {
   };
 
   //
-  //Last messages
+  //Last index
   //
   const [anchorMessagesEl, setAnchorMessagesEl] = React.useState(null);
   const areLastMessagesOpen = Boolean(anchorMessagesEl);
@@ -140,7 +140,7 @@ function DashboardContainer({ children, ...props }) {
     setAnchorMessagesEl(null);
   };
 
-  const lastMessagesId = "last-messages";
+  const lastMessagesId = "last-index";
   const renderLastMessages = (
     <Menu
       anchorEl={anchorMessagesEl}
@@ -176,7 +176,7 @@ function DashboardContainer({ children, ...props }) {
       <div className={classes.messagesExpandMore}>
         <Button
           endIcon={
-            <ExpandMoreIcon color="inherit" aria-label="show more messages" />
+            <ExpandMoreIcon color="inherit" aria-label="show more index" />
           }
         >
           Pokaż wszystko
@@ -184,7 +184,7 @@ function DashboardContainer({ children, ...props }) {
       </div>
     </Menu>
   );
-  //End last messages
+  //End last index
 
   //
   // Notifications
@@ -239,7 +239,7 @@ function DashboardContainer({ children, ...props }) {
       <div className={classes.messagesExpandMore}>
         <Button
           endIcon={
-            <ExpandMoreIcon color="inherit" aria-label="show more messages" />
+            <ExpandMoreIcon color="inherit" aria-label="show more index" />
           }
         >
           Pokaż wszystko
