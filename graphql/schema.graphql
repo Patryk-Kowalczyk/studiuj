@@ -144,6 +144,8 @@ type Mutation {
     AddUniversity(university_id: String, name: String, major: String!, finished: Boolean!): UserUniversity! @guard
     DeleteUniversity(id: ID!): UserUniversity @delete
     EditUniversity(id: ID!, university_id: String, name: String, major: String!, finished: Boolean!): UserUniversity @update
+
     CreateOrGetChat(id: ID!): Chat! @guard
+    CreateMessage(sender_id: ID!, receiver_id: ID!, chat_id: ID!, text: String!): Message! @create @guard
 }
 
