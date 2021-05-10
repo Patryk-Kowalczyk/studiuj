@@ -16,17 +16,17 @@ class ChatMessages
     {
         $user = Auth::user();
         $id = $args['id'];
-        $users = UserInChat::where('chat_id', $args['id'])->get();
+        $users = UserInChat::where('chat_id', $id)->get();
         if ($users){
             $canView = false;
             foreach($users as $userInChat)
             {
-               if ($userInChat->id == $user->id){
+               if ($userInChat->user_id == $user->id){
                    $canView = true;
                }
             }
             if ($canView){
-                return Chat::where('id', $args['id'])->first();
+                return Chat::where('id', $id)->first();
             }
         }
         return ;

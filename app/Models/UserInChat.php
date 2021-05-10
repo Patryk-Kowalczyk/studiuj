@@ -11,6 +11,11 @@ class UserInChat extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id'
+    ];
+    public $timestamps = false;
+
     public function chat(): BelongsTo
     {
         return $this->belongsTo(Chat::class);

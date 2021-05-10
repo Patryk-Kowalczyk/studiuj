@@ -15,8 +15,21 @@ class CreateOrGetChat
      */
     public function __invoke($_, array $args)
     {
+
         $user = Auth::user();
+        $authUserInChats = UserInChat::where('user_id', $user->id)->get();
         $receiver = User::findOrFail($args['id']);
+        //Search chat same for both users
+        foreach ($authUserInChats as $authUserInChat){
+            $chatUsers = $authUserInChat->chat->usersInChat;
+            foreach ($chatUsers as $chatUser){
+                if ($chatUser->id == $args['id']){
+                    return $authUserInChat->chat;
+                }
+            }
+        }
+
+
         $chat = Chat::create();
         $chat->usersInChat()->create([
             'user_id'=>$user->id,
@@ -24,6 +37,6 @@ class CreateOrGetChat
         $chat->usersInChat()->create([
             'user_id'=>$receiver->id,
         ]);
-        return true;
+        return $chat;
     }
 }
