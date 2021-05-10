@@ -11,11 +11,14 @@ import {
   Typography,
   Box,
 } from "@material-ui/core";
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { makeStyles } from "@material-ui/core/styles";
 import { Skeleton } from "@material-ui/lab";
 import MessageIcon from "@material-ui/icons/Message";
 import DoneIcon from "@material-ui/icons/Done";
+import LoadingButton from "../../components/LoadingButton";
+import { useDispatch } from "react-redux";
+import { setMessage } from "../../src/actions/message";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -83,7 +86,13 @@ const GET_USER = gql`
   }
 `;
 
-//const CREATE_OR_GET_CHAT = gql``;
+const CREATE_OR_GET_CHAT = gql`
+  mutation CreateOrGetChat($id: ID!) {
+    CreateOrGetChat(id: $id) {
+      id
+    }
+  }
+`;
 
 const EducationElement = ({ name, major, finished }) => {
   return (
@@ -102,11 +111,33 @@ const userPage = () => {
   const router = useRouter();
   const classes = useStyles();
   const { id } = router.query;
+  const [isMutationLoading, setIsMutationLoading] = React.useState(false);
+  const dispatch = useDispatch();
   const { loading, error, data, refetch } = useQuery(GET_USER, {
     variables: {
       id: Number(id),
     },
   });
+  const [CreateOrGetChat] = useMutation(CREATE_OR_GET_CHAT);
+
+  const handleClick = async () => {
+    setIsMutationLoading(true);
+    const isSure = confirm("Czy chcesz przejść do czatu z tym użytkownikiem?");
+    if (isSure) {
+      await CreateOrGetChat({
+        variables: {
+          id: Number(id),
+        },
+      })
+        .then((res) => {
+          router.push(`/user/messages/${res.data.CreateOrGetChat.id}`);
+          dispatch(setMessage("Przeniesiono do czatu"));
+        })
+        .catch((err) => console.log(err));
+    }
+    setIsMutationLoading(false);
+  };
+
   React.useEffect(() => {
     refetch();
   }, []);
@@ -120,9 +151,14 @@ const userPage = () => {
         <Card>
           <CardContent className={classes.card}>
             <Grid item xs={12} className={classes.actionsSection}>
-              <Button variant="outlined" startIcon={<MessageIcon />}>
+              <LoadingButton
+                loading={isMutationLoading}
+                onClick={handleClick}
+                variant="outlined"
+                startIcon={<MessageIcon />}
+              >
                 Wiadomość
-              </Button>
+              </LoadingButton>
             </Grid>
             <Grid item xs={12} className={classes.avatarSection}>
               {isUser ? (

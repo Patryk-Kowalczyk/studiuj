@@ -97,9 +97,14 @@ function MessagesContent() {
       id: Number(id),
     },
   });
+
   React.useEffect(() => {
     if (data) {
-      setMessages(data.ChatMessages.messages);
+      if (data.ChatMessages.messages) {
+        setMessages(data.ChatMessages.messages);
+      } else {
+        setMessages([]);
+      }
       const newReceiver = data.ChatMessages.usersInChat.find(
         (chatUser) => chatUser.user.id !== user.id
       );
