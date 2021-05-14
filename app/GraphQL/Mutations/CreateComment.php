@@ -17,7 +17,7 @@ class CreateComment
             'description' => $args['description'],
             'user_id' => $args['user_id'],
             'advertisement_id' => $args['advertisement_id'],
-            'rating' => $args['rating'],
+            'rating' => $args['rating'] ?? null,
         ]);
 
         $rating = Comment::where('advertisement_id', $args['advertisement_id'])->avg('rating');
