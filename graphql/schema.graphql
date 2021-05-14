@@ -81,6 +81,7 @@ type Advertisement {
     category: Category! @belongsTo
     comments: [Comment!]! @hasMany
     type: String!
+    rating: Float
 }
 
 
@@ -91,6 +92,7 @@ type Comment {
     updated_at: DateTime!
     user: User! @belongsTo
     advertisement: Advertisement! @belongsTo
+    rating: Float
 }
 
 type Chat{
@@ -131,8 +133,8 @@ type Mutation {
 
     #####################################
 
-    createAdvertisement(name: String!, description: String! ,price: Int!,user_id: Int!,type: String!,  category_id:Int!): Advertisement! @create
-    createComment(description: String!, user_id: Int!, advertisement_id:Int!): Comment! @create
+    CreateAdvertisement(name: String!, description: String! ,price: Int!,user_id: Int!,type: String!,  category_id:Int!): Advertisement! @create
+    CreateComment(description: String!, user_id: Int!, advertisement_id:Int!,rating: Int): Comment! @guard
 
     ChangeUserPrimaryInfo(name: String!, email: String!, avatar: Upload @rules(apply: ["image", "mimes:jpeg,png,jpg,gif,svg", "max:512", "nullable"])): User! @guard
     CreateOrChangeProfile(type_of_education: String!): Profile! @guard

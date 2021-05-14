@@ -2,7 +2,6 @@
 
 namespace App\GraphQL\Mutations;
 
-
 use App\Models\UserSchool;
 use Illuminate\Support\Facades\Auth;
 

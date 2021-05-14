@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->boolean("seen")->default(false);
             $table->foreignId('sender_id')->references('id')->on('users');
             $table->foreignId('receiver_id')->references('id')->on('users');
-            $table->foreignId('chat_id')->references('id')->on('chats');
+            $table->foreignId('chat_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

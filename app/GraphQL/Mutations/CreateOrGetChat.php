@@ -15,7 +15,6 @@ class CreateOrGetChat
      */
     public function __invoke($_, array $args)
     {
-
         $user = Auth::user();
         $authUserInChats = UserInChat::where('user_id', $user->id)->get();
         $receiver = User::findOrFail($args['id']);

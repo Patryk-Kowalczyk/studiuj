@@ -1,7 +1,8 @@
 <?php
 
 namespace App\GraphQL\Mutations;
-namespace App\Models\Message;
+
+use App\Models\Message;
 
 class CreateMessage
 {
