@@ -74,7 +74,7 @@ const CREATE_ADVERTISMENT_MUTATION = gql`
         $type: String!
         $category_id:Int!
     ) {
-        createAdvertisement(
+        CreateAdvertisement(
             name: $name
             description: $description
             price: $price

@@ -87,7 +87,7 @@ export default function RecipeReviewCard({data: {description, price, name, creat
                 </Typography>
                 <br/>
                 <Typography variant="overline" component="p">
-                    Cena - {price} pln
+                    Cena - <b>{price}</b> pln
                 </Typography>
             </CardContent>
             <CardActions disableSpacing className={classes.expand}>
