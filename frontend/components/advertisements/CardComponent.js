@@ -6,9 +6,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import {red} from '@material-ui/core/colors';
 import Link from "next/link";
 import Button from '@material-ui/core/Button';
+import Rating from '@material-ui/lab/Rating';
 
 const useStyles = makeStyles((theme) => ({
         root: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
             paddingTop: '56.25%', // 16:9
         },
         expand: {
-            justifyContent: 'flex-end',
+            justifyContent: 'space-between',
 
         },
         expandOpen: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     }))
 ;
 
-export default function RecipeReviewCard({data: {description, price, name, created_at, user, category, type}}) {
+export default function RecipeReviewCard({data: {rating, id, description, price, name, created_at, user, category, type}}) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
@@ -91,12 +91,19 @@ export default function RecipeReviewCard({data: {description, price, name, creat
                 </Typography>
             </CardContent>
             <CardActions disableSpacing className={classes.expand}>
-                <Link href={`/`}>
+                <Rating
+                    name="hover-feedback"
+                    value={rating / 2}
+                    precision={0.5}
+                    readOnly
+                />
+                <Link href={`/user/advertisement/${id}`}>
                     <Button variant="contained" className={classes.avatar} size="small">
                         Otwórz
                     </Button>
                 </Link>
             </CardActions>
+
         </Card>
     );
 }

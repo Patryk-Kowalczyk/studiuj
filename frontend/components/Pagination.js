@@ -71,12 +71,11 @@ export default function Pagination({page}) {
     const {lastPage, total} = data.advertisements.paginatorInfo;
     return (
         <PaginationStyles>
-            {/*<Head>*/}
-            {/*    <title>*/}
-            {/*        Studiuj.pl - Strona {page} z {lastPage}*/}
-            {/*    </title>*/}
-            {/*</Head>*/}
-
+            <Head>
+                <title>
+                    Studiuj.pl - Strona {page} z {lastPage}
+                </title>
+            </Head>
             <Link href={`/user/advertisements/${page - 1}`} data-cool="true">
                 <IconButton color="primary" size="medium" disabled={page <= 1}>
                     <a aria-disabled={page <= 1}><IoArrowBack/> </a>

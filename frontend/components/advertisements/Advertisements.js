@@ -10,6 +10,7 @@ export const ALL_ADVERTISEMENTS_IN_PAGE_QUERY = gql`
             data{
                 id
                 name
+                rating
                 description
                 price
                 type
