@@ -5,6 +5,7 @@ import {useQuery} from '@apollo/client';
 import styled from 'styled-components';
 import {IoArrowBack, IoArrowForward} from 'react-icons/io5'
 import IconButton from '@material-ui/core/IconButton';
+import {perPage} from "../config";
 
 const PaginationStyles = styled.div`
   text-align: center;
@@ -42,8 +43,8 @@ const PaginationStyles = styled.div`
 `;
 
 export const PAGINATION_QUERY = gql`
-    query PAGINATION_QUERY {
-        advertisements(first:5,page:1){
+    query PAGINATION_QUERY($perPage:Int = 3) {
+        advertisements(first:$perPage,page:1){
             data{
                 description
                 id
@@ -59,18 +60,22 @@ export const PAGINATION_QUERY = gql`
 `;
 export default function Pagination({page}) {
 
-    const {error, loading, data} = useQuery(PAGINATION_QUERY);
+    const {error, loading, data} = useQuery(PAGINATION_QUERY, {
+        variables: {
+            perPage: perPage
+        },
+    });
     if (loading) return 'Loading ...';
     if (error) return 'Error...';
     console.log(page);
     const {lastPage, total} = data.advertisements.paginatorInfo;
     return (
         <PaginationStyles>
-            <Head>
-                <title>
-                    Studiuj.pl - Strona {page} z {lastPage}
-                </title>
-            </Head>
+            {/*<Head>*/}
+            {/*    <title>*/}
+            {/*        Studiuj.pl - Strona {page} z {lastPage}*/}
+            {/*    </title>*/}
+            {/*</Head>*/}
 
             <Link href={`/user/advertisements/${page - 1}`} data-cool="true">
                 <IconButton color="primary" size="medium" disabled={page <= 1}>
