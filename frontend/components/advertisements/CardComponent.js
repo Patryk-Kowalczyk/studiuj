@@ -11,28 +11,52 @@ import Link from "next/link";
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        maxWidth: 545,
-        justifySelf: "stretch",
-    },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-    },
-    expand: {
-        justifyContent: 'flex-end',
+        root: {
+            maxWidth: 545,
+            justifySelf: "stretch",
+            position: "relative",
+        },
+        media: {
+            height: 0,
+            paddingTop: '56.25%', // 16:9
+        },
+        expand: {
+            justifyContent: 'flex-end',
 
-    },
-    expandOpen: {
-        transform: 'rotate(180deg)',
-    },
-    avatar: {
-        backgroundColor: theme.palette.primary.dark,
-        color: "white",
-    },
-}));
+        },
+        expandOpen: {
+            transform: 'rotate(180deg)',
+        },
+        avatar: {
+            backgroundColor: theme.palette.primary.dark,
+            color: "white",
+        },
+        typeOffer: {
+            backgroundColor: theme.palette.primary.dark,
+            color: "white",
+            fontSize: "15px",
+            textAlign: "center",
+            padding: "2px 15px",
+            position: "absolute",
+            right: 0,
+            top: 0,
+            transform: "translateY(50%) rotate(3deg)",
+        },
+        typeLooking: {
+            backgroundColor: theme.palette.secondary.dark,
+            color: "white",
+            fontSize: "15px",
+            textAlign: "center",
+            padding: "2px 15px",
+            position: "absolute",
+            right: 0,
+            top: 0,
+            transform: "translateY(50%) rotate(3deg)",
+        },
+    }))
+;
 
-export default function RecipeReviewCard({data: {description, price, name, created_at, user, category}}) {
+export default function RecipeReviewCard({data: {description, price, name, created_at, user, category, type}}) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
@@ -47,7 +71,10 @@ export default function RecipeReviewCard({data: {description, price, name, creat
                 title={user.name}
                 subheader={created_at}
             />
-
+            <div className={type === "offer" ? classes.typeOffer : classes.typeLooking}>
+                {type === "offer" ? <span className={classes.offer}> oferuję</span> :
+                    <div className={classes.offer}> szukam</div>}
+            </div>
             <CardContent>
                 <Typography variant="caption" color="textSecondary" component="p">
                     {category.name}

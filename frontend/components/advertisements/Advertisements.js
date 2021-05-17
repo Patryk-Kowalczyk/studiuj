@@ -12,6 +12,7 @@ export const ALL_ADVERTISEMENTS_IN_PAGE_QUERY = gql`
                 name
                 description
                 price
+                type
                 created_at
                 category{
                     name
@@ -36,11 +37,12 @@ const AdvertisementsListStyles = styled.div`
   @media (max-width:1500px){
   grid-template-columns: 1fr 1fr;
    }
-   @media (max-width:500px){
+  @media (max-width:800px){
      grid-template-columns: 1fr
    }
 
 `;
+
 
 export default function Advertisements({page}) {
     const {data, error, loading} = useQuery(ALL_ADVERTISEMENTS_IN_PAGE_QUERY, {
