@@ -13,6 +13,7 @@ type Advertisement {
     id: ID!
     name: String!
     price: Float!
+    rating: Float
     type: String!
     updated_at: DateTime!
     user: User!
@@ -40,11 +41,20 @@ type Category {
     name: String!
 }
 
+type Chat {
+    created_at: DateTime!
+    id: ID!
+    messages: [Message]
+    updated_at: DateTime!
+    usersInChat: [UserInChat!]!
+}
+
 type Comment {
     advertisement: Advertisement!
     created_at: DateTime!
     description: String!
     id: ID!
+    rating: Float
     updated_at: DateTime!
     user: User!
 }
@@ -59,17 +69,30 @@ type LogoutResponse {
     status: String!
 }
 
+type Message {
+    chat: Chat!
+    created_at: DateTime!
+    id: ID!
+    receiver: User!
+    seen: Boolean!
+    sender: User!
+    text: String!
+    updated_at: DateTime!
+}
+
 type Mutation {
     AddSchool(finished: Boolean!, major: String!, name: String!): UserSchool!
     AddUniversity(finished: Boolean!, major: String!, name: String, university_id: String): UserUniversity!
     ChangeUserPrimaryInfo(avatar: Upload, email: String!, name: String!): User!
+    CreateAdvertisement(category_id: Int!, description: String!, name: String!, price: Int!, type: String!, user_id: Int!): Advertisement!
+    CreateComment(advertisement_id: Int!, description: String!, rating: Int, user_id: Int!): Comment!
+    CreateMessage(chat_id: ID!, receiver_id: ID!, sender_id: ID!, text: String!): Message!
     CreateOrChangeProfile(type_of_education: String!): Profile!
+    CreateOrGetChat(id: ID!): Chat!
     DeleteSchool(id: ID!): UserSchool
     DeleteUniversity(id: ID!): UserUniversity
     EditSchool(finished: Boolean!, id: ID!, major: String!, name: String!): UserSchool
     EditUniversity(finished: Boolean!, id: ID!, major: String!, name: String, university_id: String): UserUniversity
-    createAdvertisement(category_id: Int!, description: String!, name: String!, price: Int!, type: String!, user_id: Int!): Advertisement!
-    createComment(advertisement_id: Int!, description: String!, user_id: Int!): Comment!
     forgotPassword(input: ForgotPasswordInput!): ForgotPasswordResponse!
     login(input: LoginInput): AuthPayload!
     logout: LogoutResponse!
@@ -130,6 +153,8 @@ type Profile {
 }
 
 type Query {
+    ChatMessages(id: ID!): Chat!
+    UserChats: [UserInChat!]
     advertisement(id: Int!): Advertisement
     advertisements(
         category_id: Int,
@@ -177,6 +202,12 @@ type User {
     profile: Profile
     provider: String!
     updated_at: DateTime!
+}
+
+type UserInChat {
+    chat: Chat!
+    id: ID!
+    user: User!
 }
 
 "A paginated list of User items."
