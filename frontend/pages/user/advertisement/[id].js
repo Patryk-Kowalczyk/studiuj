@@ -1,7 +1,7 @@
 import DashboardAuth from "../../../components/dashboard/DashboardAuth";
+import SingleAdvertisement from "../../../components/advertisements/SingleAdvertisment";
 
-export default function SingleAdvertisementPage({query}) {
-    // return <SingleProduct id={query.id}/>;
-    return <div>xd</div>
+export default function SingleAdvertisementPage() {
+    return <SingleAdvertisement/>;
 }
 SingleAdvertisementPage.Layout = DashboardAuth;
