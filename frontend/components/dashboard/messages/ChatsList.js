@@ -74,9 +74,13 @@ const ChatItem = ({ info }) => {
 };
 
 const ChatsList = () => {
-  const { loading, error, data } = useQuery(GET_CHATS);
+  const { loading, error, data, refetch } = useQuery(GET_CHATS);
   const user = useSelector((state) => state.auth.user.data);
   const [chats, setChats] = React.useState([]);
+
+  React.useEffect(() => {
+    refetch();
+  }, []);
 
   React.useEffect(() => {
     if (data) {
