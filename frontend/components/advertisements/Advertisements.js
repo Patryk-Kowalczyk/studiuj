@@ -59,7 +59,7 @@ export default function Advertisements({page}) {
         <div>
             <AdvertisementsListStyles>
                 {data.advertisements.data.map((product) => (
-                    <CardComponent data={product}/>
+                    <CardComponent key={product.id} data={product}/>
 
                 ))}
             </AdvertisementsListStyles>

@@ -2,7 +2,6 @@ import React from "react";
 import DashboardUserCard from "./DashboardUserCard";
 import Link from "next/link";
 import {useRouter} from "next/router";
-
 import clsx from "clsx";
 import {makeStyles} from "@material-ui/core/styles";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
@@ -131,22 +130,20 @@ const LinkedCollapseItem = ({data}) => {
             </ListItem>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 {data.subitems.map((itemData) => (
-                    <>
-                        < List
-                            component="div"
-                            disablePadding
-                            key={itemData.name}
-                            className={clsx(classes.subitem, {
-                                [classes.subitemActive]: router.pathname.includes(itemData.href),
-                            })}
-                        >
-                            <Link href={itemData.href}>
-                                <ListItem button className={classes.nested}>
-                                    <ListItemText primary={itemData.name}/>
-                                </ListItem>
-                            </Link>
-                        </List>
-                    </>
+                    < List
+                        component="div"
+                        disablePadding
+                        key={itemData.name}
+                        className={clsx(classes.subitem, {
+                            [classes.subitemActive]: router.pathname.includes(itemData.href),
+                        })}
+                    >
+                        <Link href={itemData.href}>
+                            <ListItem button className={classes.nested}>
+                                <ListItemText primary={itemData.name}/>
+                            </ListItem>
+                        </Link>
+                    </List>
                 ))}
             </Collapse>
         </>

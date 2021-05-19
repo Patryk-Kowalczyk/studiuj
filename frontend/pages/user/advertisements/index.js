@@ -6,6 +6,7 @@ import Advertisements from "../../../components/advertisements/Advertisements";
 export default function AdvertsmentsPage() {
 
     const {query} = useRouter();
+
     const page = parseInt(query.page);
     return (
         <div>
