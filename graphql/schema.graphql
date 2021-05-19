@@ -134,7 +134,11 @@ type Mutation {
     #####################################
 
     CreateAdvertisement(name: String!, description: String! ,price: Int!,user_id: Int!,type: String!,  category_id:Int!): Advertisement! @create
+    UpdateAdvertisement(id: ID!,description: String ,price: Int,user_id: Int,type: String, category_id:Int): Advertisement @update
+
     CreateComment(description: String!, user_id: Int!, advertisement_id:Int!,rating: Int): Comment! @guard
+    DeleteComment(id: Int!): Boolean @guard
+    UpdateComment(id: Int!, description: String, rating: Int): Boolean @guard
 
     ChangeUserPrimaryInfo(name: String!, email: String!, avatar: Upload @rules(apply: ["image", "mimes:jpeg,png,jpg,gif,svg", "max:512", "nullable"])): User! @guard
     CreateOrChangeProfile(type_of_education: String!): Profile! @guard
