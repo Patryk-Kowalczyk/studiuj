@@ -80,6 +80,7 @@ type Advertisement {
     user: User! @belongsTo
     category: Category! @belongsTo
     comments: [Comment!]! @hasMany
+    commentsCount: Int! @count(relation: "comments")
     type: String!
     rating: Float
 }
