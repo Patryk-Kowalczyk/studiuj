@@ -22,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         ForgotPassword::class => [
             ResetPasswordNotification::class
+        ],
+        'App\Events\NewChatMessage' => [
+            'App\Listeners\SendChatMessageNotification'
         ]
     ];
 
