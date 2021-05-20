@@ -65,8 +65,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const GET_USER = gql`
-  query getUser($id: ID!) {
-    user(id: $id) {
+  query getUser($uuid: String!) {
+    user(uuid: $uuid) {
       id
       name
       avatar
@@ -115,7 +115,7 @@ const userPage = () => {
   const dispatch = useDispatch();
   const { loading, error, data, refetch } = useQuery(GET_USER, {
     variables: {
-      id: Number(id),
+      uuid: id,
     },
   });
   const [CreateOrGetChat] = useMutation(CREATE_OR_GET_CHAT);

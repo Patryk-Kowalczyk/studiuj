@@ -10,6 +10,7 @@ const GET_USERS = gql`
   query users {
     me {
       id
+      uuid
       name
       email
       avatar

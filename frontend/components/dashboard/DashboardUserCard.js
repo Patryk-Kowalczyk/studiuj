@@ -75,7 +75,7 @@ export default function DashboardUserCard({ userData }) {
       <div className={classes.nameIcons}>
         <Typography className={classes.name}>{userData.name}</Typography>
         <div>
-          <Link href={`/user/${userData.id}`}>
+          <Link href={`/user/${userData.uuid}`}>
             <IconButton
               aria-label="user-profile"
               size="small"
