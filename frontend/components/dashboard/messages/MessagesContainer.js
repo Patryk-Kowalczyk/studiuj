@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Paper } from "@material-ui/core";
+import { Box, Grid, Paper } from "@material-ui/core";
 import ChatsList from "../../../components/dashboard/messages/ChatsList";
 import { makeStyles } from "@material-ui/core/styles";
 import { grey } from "@material-ui/core/colors";
@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: "calc(100% - 64px)",
     padding: theme.spacing(2),
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(2, 1),
+    },
   },
   chatsColumn: {
     height: "100%",
@@ -27,6 +30,11 @@ const useStyles = makeStyles((theme) => ({
   },
   grid: {
     height: "100%",
+    display: "grid",
+    gridTemplateColumns: "200px 1fr",
+    [theme.breakpoints.down("sm")]: {
+      gridTemplateColumns: "60px 1fr",
+    },
   },
 }));
 
@@ -34,14 +42,12 @@ const MessagesContainer = ({ children }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.root}>
-      <Grid container className={classes.grid}>
-        <Grid item xs={12} md={4} className={classes.chatsColumn}>
+      <Box className={classes.grid}>
+        <Box className={classes.chatsColumn}>
           <ChatsList />
-        </Grid>
-        <Grid item xs={12} md={8}>
-          {children}
-        </Grid>
-      </Grid>
+        </Box>
+        <Box>{children}</Box>
+      </Box>
     </Paper>
   );
 };

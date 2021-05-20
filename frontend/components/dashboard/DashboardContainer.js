@@ -69,6 +69,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       maxWidth: `calc(100% - ${drawerWidth}px)`,
     },
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(3, 1),
+    },
   },
   itemButton: {
     color: theme.palette.lightFont.main,
@@ -189,9 +192,8 @@ function DashboardContainer({ children, ...props }) {
   //
   // Notifications
   //
-  const [anchorNotificationsEl, setAnchorNotificationsEl] = React.useState(
-    null
-  );
+  const [anchorNotificationsEl, setAnchorNotificationsEl] =
+    React.useState(null);
   const areNotificationsOpen = Boolean(anchorNotificationsEl);
 
   const handleNotificationsOpen = (event) => {

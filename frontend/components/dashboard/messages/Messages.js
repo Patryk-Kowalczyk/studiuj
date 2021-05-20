@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
+import { useEcho } from "../../../lib/pusher";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -108,16 +109,36 @@ function SingleMessage({ data, user, receiver }) {
 }
 
 function MessagesContent({ messages, receiver, user }) {
+  const messagesEl = React.useRef();
+
+  React.useEffect(() => {
+    messagesEl.current.scroll({ top: messagesEl.current.scrollHeight });
+  }, [messages]);
   return (
-    <Box display={"flex"} flexDirection={"column"} justifyContent={"flex-end"}>
-      {messages.map((message) => (
-        <SingleMessage
-          user={user}
-          receiver={receiver}
-          data={message}
-          key={message.id}
-        />
-      ))}
+    <Box
+      position="absolute"
+      top={0}
+      left={0}
+      width={"100%"}
+      height={"100%"}
+      overflow="auto"
+      ref={messagesEl}
+    >
+      <Box
+        display={"flex"}
+        flexDirection={"column"}
+        justifyContent={"flex-end"}
+        minHeight={"100%"}
+      >
+        {messages.map((message) => (
+          <SingleMessage
+            user={user}
+            receiver={receiver}
+            data={message}
+            key={message.id}
+          />
+        ))}
+      </Box>
     </Box>
   );
 }
@@ -128,6 +149,7 @@ function Messages(props) {
   const [receiver, setReceiver] = React.useState(null);
   const [text, setText] = React.useState("");
   const user = useSelector((state) => state.auth.user.data);
+  const Echo = useEcho();
 
   const router = useRouter();
   const { id } = router.query;
@@ -148,7 +170,6 @@ function Messages(props) {
       },
     })
       .then((res) => {
-        setMessages([...messages, res.data.CreateMessage]);
         setText("");
       })
       .catch((err) => console.log(err));
@@ -170,9 +191,23 @@ function Messages(props) {
     }
   }, [data]);
 
+  const handleMessageEvent = (e) => {
+    setMessages((statemessages) => [...statemessages, e.message]);
+  };
+
+  React.useEffect(() => {
+    Echo.private("chat." + id).listen(".newMessage", handleMessageEvent);
+
+    return () => {
+      Echo.leave("chat." + id);
+    };
+  }, [id]);
+
   return (
     <Box display="grid" className={classes.root} mx={2}>
-      <MessagesContent messages={messages} receiver={receiver} user={user} />
+      <Box height="100%" position="relative">
+        <MessagesContent messages={messages} receiver={receiver} user={user} />
+      </Box>
       <Box
         display="flex"
         width={"100%"}

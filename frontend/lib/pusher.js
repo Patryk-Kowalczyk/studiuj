@@ -1,12 +1,18 @@
 import Echo from "laravel-echo";
-
-const user = JSON.parse(localStorage.getItem("user"));
-let token = "";
-if (user) {
-  token = user.login.access_token;
-}
+import Pusher from "pusher-js";
+import { useEffect } from "react";
 
 const ISSERVER = typeof window === "undefined";
+
+let token = "";
+
+if (!ISSERVER) {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (user) {
+    token = user.login.access_token;
+  }
+}
 
 const options = {
   broadcaster: "pusher",
@@ -24,22 +30,12 @@ const options = {
   },
 };
 
-export function createSocketConnection(token) {
+export function createSocketConnection() {
   if (!ISSERVER && !window.Echo) {
     window.Echo = new Echo(options);
   }
 }
 
-function listen(callback, channel, event) {
-  window.Echo.private(channel).listen(event, callback);
-
-  return function cleanUp() {
-    window.Echo.leaveChannel(`private-${channel}`);
-  };
-}
-
-export function useEcho(callback, channel, event) {
-  useEffect(() => {
-    return listen(callback, channel, event);
-  });
+export function useEcho() {
+  return window.Echo;
 }

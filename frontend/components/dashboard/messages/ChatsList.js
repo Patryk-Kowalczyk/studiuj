@@ -1,7 +1,7 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import { useSelector } from "react-redux";
-import { Avatar, Box, Typography } from "@material-ui/core";
+import { Avatar, Box, Hidden, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { grey } from "@material-ui/core/colors";
 import { Skeleton } from "@material-ui/lab";
@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: grey[100],
       cursor: "pointer",
+    },
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center",
     },
   },
   chatItemCurrent: {
@@ -65,9 +68,11 @@ const ChatItem = ({ info }) => {
         >
           {info.user.user.name[0]}
         </Avatar>
-        <Typography variant="h6" className={classes.chatItemName}>
-          {info.user.user.name}
-        </Typography>
+        <Hidden only={["xs", "sm"]}>
+          <Typography variant="h6" className={classes.chatItemName}>
+            {info.user.user.name}
+          </Typography>
+        </Hidden>
       </Box>
     </Link>
   );
@@ -103,11 +108,13 @@ const ChatsList = () => {
           {[...new Array(5)].map((_, i) => (
             <Box display="flex" alignItems="center" mt={2} mb={1} p={1} key={i}>
               <Skeleton variant="circle" width={40} height={40} />
-              <Skeleton
-                variant="rect"
-                width={Math.floor(Math.random() * (200 - 50)) + 50}
-                height={30}
-              />
+              <Hidden only={["xs", "sm"]}>
+                <Skeleton
+                  variant="rect"
+                  width={Math.floor(Math.random() * (200 - 50)) + 50}
+                  height={30}
+                />
+              </Hidden>
             </Box>
           ))}
         </>
