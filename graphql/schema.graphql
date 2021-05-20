@@ -8,7 +8,7 @@ scalar Upload @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload
 
 type Query {
     users: [User!]! @guard(with: ["api"]) @paginate(type: "paginator" model: "App\\Models\\User")
-    user(id: ID @eq): User @find
+    user(uuid: String @eq): User @find
     me: User! @auth
     advertisements (category_id: Int @where(key: "category_id")): [Advertisement!]! @paginate(type: "paginator" model: "App\\Models\\Advertisement") @orderBy(column: "created_at", direction: "DESC")
     advertisement(id: Int! @eq): Advertisement @find
@@ -24,6 +24,7 @@ type Query {
 
 type User {
     id: ID!
+    uuid: String!
     name: String!
     email: String!
     avatar: String
