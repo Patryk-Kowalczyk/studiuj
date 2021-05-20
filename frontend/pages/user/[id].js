@@ -68,6 +68,7 @@ const GET_USER = gql`
   query getUser($uuid: String!) {
     user(uuid: $uuid) {
       id
+      uuid
       name
       avatar
       profile {
@@ -119,14 +120,13 @@ const userPage = () => {
     },
   });
   const [CreateOrGetChat] = useMutation(CREATE_OR_GET_CHAT);
-
   const handleClick = async () => {
     setIsMutationLoading(true);
     const isSure = confirm("Czy chcesz przejść do czatu z tym użytkownikiem?");
     if (isSure) {
       await CreateOrGetChat({
         variables: {
-          id: Number(id),
+          id: data.user.id,
         },
       })
         .then((res) => {
