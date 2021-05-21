@@ -1,4 +1,4 @@
-import {Divider, Avatar, Grid, Paper, Box, InputBase, IconButton} from "@material-ui/core";
+import {Divider, Avatar, Grid, Paper, Box, InputBase, IconButton, Accordion, AccordionDetails} from "@material-ui/core";
 import {SendOutlined} from "@material-ui/icons";
 import React from "react";
 import {useStyles} from './styles/SingleAdvertismentStyles';
@@ -7,8 +7,10 @@ import Typography from "@material-ui/core/Typography";
 import useForm from "../../utils/useForm";
 import {gql, useMutation} from "@apollo/client";
 import {GET_ADV_INFO} from "../../pages/user/advertisement/[id]";
+import SingleComment from "./SingleComment";
+import NextLink from "../ButtonLink";
 
-const labels = {
+export const labels = {
     0.5: 'Słaby',
     1: 'Słaby+',
     1.5: 'Średni',
@@ -77,84 +79,63 @@ export default function SingleAdvertisement({
             console.log("error")
         } else {
             const res = await createComment();
+            values.description = '';
+            values.rating = null;
         }
 
     };
     return (
+
         <div className={classes.rootroot}>
             <div style={{padding: 14}} className={classes.boxx}>
+
                 {type === "offer" ? <h2 className={classes.typeOffer}>#oferuję</h2> :
                     <h2 className={classes.typeLooking}>#szukam</h2>}
                 <Paper className={classes.paper}>
-                    <Grid container wrap="nowrap" spacing={2}>
-                        <Grid item>
-                            <Avatar aria-label="recipe" className={classes.avatar}
-                                    src={`${process.env.BACKEND_HOST}/${user.avatar}` || ""}>
-                                {`${user.name[0]}`}
-                            </Avatar>
-                        </Grid>
-                        <Grid item xs zeroMinWidth>
-                            <Typography variant="caption" color="textSecondary" component="p">
-                                {category.name}
-                            </Typography>
-                            <h4 className={classes.h4}>{user.name}</h4>
-                            <h3 className={classes.h3}>{name}</h3>
-                            <p className={classes.description}>
-                                {description}
-                            </p>
-                            <Typography variant="overline" component="p">
-                                Cena - <b>{price}</b> pln
-                            </Typography>
-                            <Rating
-                                name="hover-feedback"
-                                value={rating / 2}
-                                precision={0.5}
-                                readOnly
-                            />
-                            <p className={classes.created}>
-                                dodano - {created_at}
-                            </p>
-                        </Grid>
-                    </Grid>
-                    <Divider variant="fullWidth" style={{margin: "30px 0"}}/>
+                    <Accordion>
+                        <AccordionDetails>
+                            <Grid container wrap="nowrap" spacing={2}>
+                                <Grid item>
+                                    <Avatar aria-label="recipe" className={classes.avatar}
+                                            src={`${process.env.BACKEND_HOST}/${user.avatar}` || ""}>
+                                        {`${user.name[0]}`}
+                                    </Avatar>
+                                </Grid>
+                                <Grid item xs zeroMinWidth>
+                                    <Typography variant="caption" color="textSecondary" component="p">
+                                        {category.name}
+                                    </Typography>
+                                    <NextLink href={"/"}>
+                                        <h4 className={classes.h4}>{user.name}</h4>
+                                    </NextLink>
+                                    <h3 className={classes.h3}>{name}</h3>
+                                    <p className={classes.description}>
+                                        {description}
+                                    </p>
+                                    <Typography variant="overline" component="p">
+                                        Cena - <b>{price}</b> pln
+                                    </Typography>
+                                    <Rating
+                                        name="hover-feedback"
+                                        value={rating / 2}
+                                        precision={0.5}
+                                        readOnly
+                                    />
+                                    <p className={classes.created}>
+                                        dodano - {created_at}
+                                    </p>
+                                </Grid>
+                            </Grid>
+                        </AccordionDetails>
+                    </Accordion>
+                    <Divider variant="middle" style={{margin: "35px 50px"}}/>
 
                     {comments.map((comment) => {
-                        return (
-                            <>
-                                <Grid container wrap="nowrap" spacing={2}>
-                                    <Grid item>
-                                        <Avatar aria-label="recipe" className={classes.avatar}
-                                                src={`${process.env.BACKEND_HOST}/${comment.user.avatar}` || ""}>
-                                            {`${comment.user.name[0]}`}
-                                        </Avatar>
-                                    </Grid>
-                                    <Grid item xs zeroMinWidth>
-                                        <div style={{display: "flex"}}>
-                                            <h4 style={{
-                                                margin: 0,
-                                                textAlign: "left",
-                                                marginRight: "10px",
-                                                marginTop: "2px",
-                                            }}>{comment.user.name}</h4>
-                                            <Rating
-                                                value={comment.rating / 2}
-                                                precision={0.5}
-                                                readOnly
-                                            />
-                                        </div>
-                                        <p style={{textAlign: "left"}}>
-                                            {comment.description}
-                                        </p>
 
-                                        <p style={{textAlign: "left", color: "gray"}}>
-                                            dodano - {comment.created_at}
-                                        </p>
-                                    </Grid>
-                                </Grid>
-                            </>
+                        return (
+                            <SingleComment key={comment.id} meid={me.id} comment={comment} advid={id}/>
                         );
                     })}
-                    {/*    do tąd*/}
                 </Paper>
             </div>
 
@@ -196,7 +177,6 @@ export default function SingleAdvertisement({
     )
         ;
 }
-
 
 
 

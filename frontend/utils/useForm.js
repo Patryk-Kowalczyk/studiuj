@@ -12,9 +12,10 @@ export default function useForm(defaults) {
             value = parseInt(e.target.value);
         }
         if (e.target.name === 'rating') {
+            value = e.target.value;
             value = value * 2;
+            console.log(value)
 
-            value = parseInt(value);
         }
         setValues({
             ...values,

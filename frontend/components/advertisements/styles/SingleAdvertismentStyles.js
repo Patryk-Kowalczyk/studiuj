@@ -47,10 +47,7 @@ export const useStyles = makeStyles((theme) => ({
     paper: {
         padding: "40px 20px",
     },
-    h4: {
-        margin: 0,
-        textAlign: "left",
-    },
+
     h3: {
         marginTop: "25px",
         fontSize: "18px",
@@ -61,8 +58,9 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: "15px",
         textAlign: "center",
         padding: "2px 15px",
-        position: "absolute",
-        transform: " translateY(-60%) rotate(3deg)",
+        position: "relative",
+        width: "100px",
+        transform: " translateY(120%) rotate(3deg)",
     },
     typeLooking: {
         backgroundColor: theme.palette.secondary.dark,
@@ -70,7 +68,14 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: "15px",
         textAlign: "center",
         padding: "2px 15px",
-        position: "absolute",
-        transform: " translateY(-60%) rotate(3deg)",
+        width: "100px",
+        position: "relative",
+        transform: " translateY(120%) rotate(3deg)",
     },
+    h4: {
+        margin: 0,
+        textAlign: "left",
+        marginRight: "10px",
+        marginTop: "2px",
+    }
 }));

@@ -22,11 +22,14 @@ export const GET_ADV_INFO = gql`
             created_at
             rating
             comments{
+                id
                 user{
+                    id
                     name
                     avatar
                 }
                 created_at
+                updated_at
                 description
                 rating
             }

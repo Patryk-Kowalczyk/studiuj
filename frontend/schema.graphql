@@ -89,10 +89,13 @@ type Mutation {
     CreateMessage(chat_id: ID!, receiver_id: ID!, sender_id: ID!, text: String!): Message!
     CreateOrChangeProfile(type_of_education: String!): Profile!
     CreateOrGetChat(id: ID!): Chat!
+    DeleteComment(id: Int!): Boolean
     DeleteSchool(id: ID!): UserSchool
     DeleteUniversity(id: ID!): UserUniversity
     EditSchool(finished: Boolean!, id: ID!, major: String!, name: String!): UserSchool
     EditUniversity(finished: Boolean!, id: ID!, major: String!, name: String, university_id: String): UserUniversity
+    UpdateAdvertisement(category_id: Int, description: String, id: ID!, price: Int, type: String, user_id: Int): Advertisement
+    UpdateComment(description: String, id: Int!, rating: Int): Boolean
     forgotPassword(input: ForgotPasswordInput!): ForgotPasswordResponse!
     login(input: LoginInput): AuthPayload!
     logout: LogoutResponse!
