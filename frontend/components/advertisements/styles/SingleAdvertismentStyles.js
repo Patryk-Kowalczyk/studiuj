@@ -47,6 +47,10 @@ export const useStyles = makeStyles((theme) => ({
         height: "80%",
         overflow: "auto",
     },
+    wrapboxx: {
+        overflow: "auto",
+
+    },
     paper: {
         padding: "40px 20px",
     },
