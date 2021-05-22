@@ -10,7 +10,7 @@ type Query {
     users: [User!]! @guard(with: ["api"]) @paginate(type: "paginator" model: "App\\Models\\User")
     user(uuid: String @eq): User @find
     me: User! @auth
-    advertisements (category_id: Int @where(key: "category_id")): [Advertisement!]! @paginate(type: "paginator" model: "App\\Models\\Advertisement") @orderBy(column: "created_at", direction: "DESC")
+    advertisements (category_id: Int @where(key: "category_id"),type: String @where(key: "type")): [Advertisement!]! @paginate(type: "paginator" model: "App\\Models\\Advertisement") @orderBy(column: "created_at", direction: "DESC")
     advertisement(id: Int! @eq): Advertisement @find
 
     categories: [Category!]! @all
@@ -136,7 +136,8 @@ type Mutation {
     #####################################
 
     CreateAdvertisement(name: String!, description: String! ,price: Int!,user_id: Int!,type: String!,  category_id:Int!): Advertisement! @create
-    UpdateAdvertisement(id: ID!,description: String ,price: Int,user_id: Int,type: String, category_id:Int): Advertisement @update
+    UpdateAdvertisement(id: ID!,name: String, description: String ,price: Int,user_id: Int,type: String, category_id:Int): Advertisement @update
+    DeleteAdvertisement(id: ID!): Boolean @guard
 
     CreateComment(description: String!, user_id: Int!, advertisement_id:Int!,rating: Int): Comment! @guard
     DeleteComment(id: Int!): Boolean @guard
