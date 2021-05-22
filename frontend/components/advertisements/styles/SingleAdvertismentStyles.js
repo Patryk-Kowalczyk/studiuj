@@ -62,6 +62,16 @@ export const useStyles = makeStyles((theme) => ({
         width: "100px",
         transform: " translateY(120%) rotate(3deg)",
     },
+    typeEdit: {
+        backgroundColor: theme.palette.error.dark,
+        color: "white",
+        fontSize: "15px",
+        textAlign: "center",
+        padding: "2px 15px",
+        position: "relative",
+        width: "100px",
+        transform: " translateY(120%) rotate(3deg)",
+    },
     typeLooking: {
         backgroundColor: theme.palette.secondary.dark,
         color: "white",
