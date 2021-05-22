@@ -1,14 +1,12 @@
-import {Avatar, Box, Grid, IconButton, InputBase} from "@material-ui/core";
+import {Avatar, Box, Grid, InputBase} from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 import {useStyles} from './styles/SingleAdvertismentStyles';
 import React from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import EditIcon from '@material-ui/icons/Edit';
-import {SendOutlined} from "@material-ui/icons";
 import {labels} from "./SingleAdvertisment";
 import NextLink from "../ButtonLink";
 import {
-    FormControl,
     AccordionActions,
     AccordionSummary,
     AccordionDetails,
@@ -74,7 +72,6 @@ const UPDATE_COMMENT = gql`
 
 function Comment({comment}) {
     const classes = useStyles();
-
     return (
         <Grid container wrap="nowrap" spacing={2}>
             <Grid item>
@@ -97,13 +94,10 @@ function Comment({comment}) {
                 <p style={{textAlign: "left"}}>
                     {comment.description}
                 </p>
-
                 <p style={{textAlign: "left", color: "gray"}}>
                     {comment.updated_at === comment.created_at ? 'dodano - ' : 'edytowano - '}
                     {comment.updated_at}
                 </p>
-
-
             </Grid>
         </Grid>
     )
@@ -207,7 +201,7 @@ export default function SingleComment({comment, meid, advid}) {
                                     onChange={(e) => setEditDesc(e.target.value)}
 
                                 />
-                  
+
                             </Box>
                         </Box>
 

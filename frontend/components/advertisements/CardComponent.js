@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from "next/link";
 import Button from '@material-ui/core/Button';
 import Rating from '@material-ui/lab/Rating';
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 const useStyles = makeStyles((theme) => ({
         root: {
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     }))
 ;
 
-export default function RecipeReviewCard({data: {rating, id, description, price, name, created_at, user, category, type}}) {
+export default function CardComponent({data: {rating, id, description, price, name, created_at, user, category, type}, my}) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
@@ -97,11 +98,26 @@ export default function RecipeReviewCard({data: {rating, id, description, price,
                     precision={0.5}
                     readOnly
                 />
-                <Link href={`/user/advertisement/${id}`}>
-                    <Button variant="contained" className={classes.avatar} size="small">
-                        Otwórz
-                    </Button>
-                </Link>
+
+                {my ?
+                    <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+                        <Link href={`/user/advertisement/${id}`}>
+                            <Button variant="contained" className={classes.avatar} size="small">
+                                Otwórz
+                            </Button>
+                        </Link>
+
+                        <Link href={`/user/my-advertisement/${id}`}>
+                            <Button variant="contained" className={classes.avatar} size="small">
+                                Edytuj
+                            </Button>
+                        </Link>
+                    </ButtonGroup>
+                    : <Link href={`/user/advertisement/${id}`}>
+                        <Button variant="contained" className={classes.avatar} size="small">
+                            Otwórz
+                        </Button>
+                    </Link>}
             </CardActions>
 
         </Card>

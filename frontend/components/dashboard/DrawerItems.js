@@ -75,6 +75,10 @@ const data = [
                 name: "Pokaż wszystkie",
                 href: "/user/advertisements",
             },
+            {
+                name: "Moje ogłoszenia",
+                href: "/user/my-advertisements",
+            },
         ],
     },
     {
