@@ -43,8 +43,8 @@ const PaginationStyles = styled.div`
 `;
 
 export const PAGINATION_QUERY = gql`
-    query PAGINATION_QUERY($perPage:Int = 3) {
-        advertisements(first:$perPage,page:1){
+    query PAGINATION_QUERY($perPage:Int = 3,$id:Int,$type:String) {
+        advertisements(first:$perPage,page:1,category_id: $id,type:$type){
             data{
                 description
                 id
@@ -58,12 +58,21 @@ export const PAGINATION_QUERY = gql`
         }
     }
 `;
-export default function Pagination({page}) {
+export default function Pagination({page, id, type}) {
 
+    const variables = {
+        perPage: perPage,
+        id,
+        type,
+    }
+    if (!id) {
+        delete variables.id;
+    }
+    if (!type || type === 'all') {
+        delete variables.type;
+    }
     const {error, loading, data} = useQuery(PAGINATION_QUERY, {
-        variables: {
-            perPage: perPage
-        },
+        variables
     });
     if (loading) return 'Loading ...';
     if (error) return 'Error...';

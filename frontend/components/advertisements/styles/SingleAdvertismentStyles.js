@@ -6,6 +6,9 @@ export const useStyles = makeStyles((theme) => ({
         height: "90vh",
         overflow: "hidden",
     },
+    wrap: {
+        height: "100%",
+    },
     root: {
         gridTemplateRows: "1fr auto",
         height: "10%",

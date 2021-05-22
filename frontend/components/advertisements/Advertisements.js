@@ -5,8 +5,8 @@ import CardComponent from "./CardComponent";
 import {perPage} from "../../config";
 
 export const ALL_ADVERTISEMENTS_IN_PAGE_QUERY = gql`
-    query ALL_ADVERTISEMENTS_IN_PAGE_QUERY($page: Int = 1,$perPage:Int = 3) {
-        advertisements(first:$perPage,page: $page) {
+    query ALL_ADVERTISEMENTS_IN_PAGE_QUERY($page: Int = 1,$perPage:Int = 3,$id:Int,$type:String) {
+        advertisements(first:$perPage,page: $page,category_id:$id,type:$type) {
             data{
                 id
                 name
@@ -45,12 +45,21 @@ const AdvertisementsListStyles = styled.div`
 `;
 
 
-export default function Advertisements({page}) {
+export default function Advertisements({page, id, type}) {
+    const variables = {
+        page: page,
+        perPage: perPage,
+        id,
+        type
+    }
+    if (!id) {
+        delete variables.id;
+    }
+    if (!type || type === 'all') {
+        delete variables.type;
+    }
     const {data, error, loading} = useQuery(ALL_ADVERTISEMENTS_IN_PAGE_QUERY, {
-        variables: {
-            page: page,
-            perPage: perPage
-        },
+        variables
     });
     if (loading) return <p>Loading ...</p>;
     if (error) return <p>{error.message}</p>;

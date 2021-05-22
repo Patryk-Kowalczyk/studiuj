@@ -1,9 +1,19 @@
-import {Divider, Avatar, Grid, Paper, Box, InputBase, IconButton, Accordion, AccordionDetails} from "@material-ui/core";
+import {
+    Divider,
+    Avatar,
+    Grid,
+    Paper,
+    Box,
+    InputBase,
+    IconButton,
+    Accordion,
+    AccordionDetails,
+    Button
+} from "@material-ui/core";
 import React from "react";
 import {useStyles} from './styles/SingleAdvertismentStyles';
 import Typography from "@material-ui/core/Typography";
 import useForm from "../../utils/useForm";
-import NextLink from "../ButtonLink";
 import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
@@ -12,7 +22,38 @@ import FormLabel from "@material-ui/core/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
-
+import {gql, useMutation} from "@apollo/client";
+import {GET_ADV_INFO} from "../../pages/user/advertisement/[id]";
+// const [deleteComment, {loading, error, data}] = useMutation(
+//     DELETE_COMMENT,
+//     {
+//         variables: {
+//             id: parseInt(comment.id)
+//         },
+//         refetchQueries: [{
+//             query: GET_ADV_INFO, variables: {
+//                 id: advid
+//             }
+//         }],
+//
+//     },
+// );
+const DELETE_COMMENT = gql`
+    mutation DELETE_COMMENT(
+        $id: Int!
+    ) {
+        DeleteComment(id:$id)
+    }
+`;
+const UPDATE_COMMENT = gql`
+    mutation UPDATE_COMMENT(
+        $id: Int!
+        $description:String
+        $rating:Int
+    ) {
+        UpdateComment(id:$id,description:$description,rating:$rating)
+    }
+`;
 
 export default function SingleAdvertisement({
                                                 data: {
@@ -37,7 +78,7 @@ export default function SingleAdvertisement({
     });
     return (
 
-        <div className={classes.rootroot}>
+        <div className={classes.wrap}>
             <div style={{padding: 14}} className={classes.boxx}>
 
                 <h2 className={classes.typeEdit}>#edycja</h2>
@@ -60,6 +101,7 @@ export default function SingleAdvertisement({
                                 onChange={updateValues}
                             />
                         </Grid>
+                   
                         <Grid item xs={12}>
                             <TextField
                                 required
@@ -91,8 +133,6 @@ export default function SingleAdvertisement({
                                 ))}
                             </Select>
                         </Grid>
-
-
                         <Grid item xs={12}>
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">Typ ogłoszenia</FormLabel>
@@ -121,11 +161,21 @@ export default function SingleAdvertisement({
                                 />
                             </FormControl>
                         </Grid>
-                    </Grid>
+                        <Grid style={{margin: "0 auto"}}>
+                            <Button variant="contained" size="small" style={{margin: "10px"}}>
+                                Wróć</Button>
+                            <Button variant="contained" size="small"
+                                    style={{margin: "10px", backgroundColor: "rgb(178,16,48)", color: "white"}}>
+                                Usuń ogłoszenie
 
+                            </Button>
+                            <Button variant="contained" size="small" color={"secondary"} style={{margin: "10px"}}>
+                                Zapisz zmiany
+                            </Button>
+                        </Grid>
+                    </Grid>
                 </Paper>
             </div>
-
         </div>
     )
 }
