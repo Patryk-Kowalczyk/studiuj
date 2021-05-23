@@ -77,6 +77,12 @@ const CREATE_MESSAGE = gql`
   }
 `;
 
+const MARK_MESSAGES_AS_SEEN = gql`
+  mutation MarkMessagesAsSeen($chat_id: ID!) {
+    MarkMessagesAsSeen(chat_id: $chat_id)
+  }
+`;
+
 function SingleMessage({ data, user, receiver }) {
   const classes = useStyles();
   const isAuthUser = user.id === data.sender.id;
@@ -159,6 +165,7 @@ function Messages(props) {
     },
   });
   const [CreateMessage] = useMutation(CREATE_MESSAGE);
+  const [MarkMessagesAsSeen] = useMutation(MARK_MESSAGES_AS_SEEN);
 
   const handleClick = () => {
     CreateMessage({
@@ -188,6 +195,11 @@ function Messages(props) {
         (chatUser) => chatUser.user.id !== user.id
       );
       setReceiver(newReceiver);
+      MarkMessagesAsSeen({
+        variables: {
+          chat_id: Number(id),
+        },
+      });
     }
   }, [data]);
 

@@ -1,13 +1,14 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import { useSelector } from "react-redux";
-import { Avatar, Box, Hidden, Typography } from "@material-ui/core";
+import { Avatar, Badge, Box, Hidden, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { grey } from "@material-ui/core/colors";
 import { Skeleton } from "@material-ui/lab";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import clsx from "clsx";
+import { useEcho } from "../../../lib/pusher";
 
 const useStyles = makeStyles((theme) => ({
   chatItem: {
@@ -24,24 +25,25 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: grey[200],
   },
   chatItemName: {
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(2),
   },
 }));
 
 const GET_CHATS = gql`
   query chats {
     UserChats {
-      chat {
-        id
-        usersInChat {
+      userChat {
+        chat {
           id
-          user {
-            id
-            name
-            avatar
-          }
         }
       }
+      sender {
+        id
+        name
+        avatar
+      }
+      unseenMessagesCounter
+      lastMessageDate
     }
   }
 `;
@@ -63,14 +65,15 @@ const ChatItem = ({ info }) => {
           [classes.chatItemCurrent]: isCurrent,
         })}
       >
-        <Avatar
-          src={`${process.env.BACKEND_HOST}/${info.user.user.avatar}` || ""}
-        >
-          {info.user.user.name[0]}
-        </Avatar>
+        <Badge color="primary" badgeContent={info.counter}>
+          <Avatar src={`${process.env.BACKEND_HOST}/${info.user.avatar}` || ""}>
+            {info.user.name[0]}
+          </Avatar>
+        </Badge>
+
         <Hidden only={["xs", "sm"]}>
           <Typography variant="h6" className={classes.chatItemName}>
-            {info.user.user.name}
+            {info.user.name}
           </Typography>
         </Hidden>
       </Box>
@@ -82,20 +85,29 @@ const ChatsList = () => {
   const { loading, error, data, refetch } = useQuery(GET_CHATS);
   const user = useSelector((state) => state.auth.user.data);
   const [chats, setChats] = React.useState([]);
+  const Echo = useEcho();
 
   React.useEffect(() => {
     refetch();
   }, []);
 
+  const handleChangeInfo = () => {
+    refetch();
+  };
+
+  React.useEffect(() => {
+    Echo.private("user." + user.id).listen(".changeChatInfo", handleChangeInfo);
+  }, []);
+
   React.useEffect(() => {
     if (data) {
-      const newChats = data.UserChats.map((chat) => {
-        const chatUser = chat.chat.usersInChat.find(
-          (oneOf) => oneOf.user.id !== user.id
-        );
+      let newChats = data.UserChats.map((chat) => {
+        const chatSender = chat.sender;
         return {
-          id: chat.chat.id,
-          user: chatUser,
+          id: chat.userChat.chat.id,
+          user: chatSender,
+          counter: chat.unseenMessagesCounter,
+          lastDate: chat.lastMessageDate,
         };
       });
       setChats(newChats);

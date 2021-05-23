@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   grid: {
     height: "100%",
     display: "grid",
-    gridTemplateColumns: "200px 1fr",
+    gridTemplateColumns: "240px 1fr",
     [theme.breakpoints.down("sm")]: {
       gridTemplateColumns: "60px 1fr",
     },

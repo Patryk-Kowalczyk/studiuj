@@ -1,9 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/router";
-
 import DrawerItems from "./DrawerItems";
-
 import AppBar from "@material-ui/core/AppBar";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
@@ -23,6 +20,27 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { Avatar, Button } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { gql, useQuery } from "@apollo/client";
+import Link from "next/link";
+import { useEcho } from "../../lib/pusher";
+
+const GET_LAST_MESSAGES = gql`
+  query LastUnseenMessages {
+    LastUnseenMessages {
+      messages {
+        text
+        chat {
+          id
+        }
+        sender {
+          name
+          avatar
+        }
+      }
+      unseenChatsCounter
+    }
+  }
+`;
 
 const drawerWidth = 280;
 
@@ -80,7 +98,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   messagesContainer: {
-    maxWidth: 500,
+    paper: {
+      maxWidth: 500,
+      minWidth: 400,
+    },
   },
   messagesTitle: {
     margin: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
@@ -123,6 +144,33 @@ function DashboardContainer({ children, ...props }) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const userData = useSelector((state) => state.auth.user.data);
+  const [lastMessages, setLastMessages] = React.useState([]);
+  const [unseenChatsCounter, setUnseenChatsCounter] = React.useState(0);
+  const Echo = useEcho();
+
+  const { loading, error, data, refetch } = useQuery(GET_LAST_MESSAGES);
+
+  React.useEffect(() => {
+    if (data) {
+      setLastMessages(data.LastUnseenMessages.messages);
+      setUnseenChatsCounter(data.LastUnseenMessages.unseenChatsCounter);
+    }
+  }, [data]);
+
+  const handleChangeInfo = () => {
+    refetch();
+  };
+
+  React.useEffect(() => {
+    Echo.private("user." + userData.id).listen(
+      ".changeChatInfo",
+      handleChangeInfo
+    );
+
+    return () => {
+      Echo.leave("user." + userData.id);
+    };
+  }, []);
 
   //Using menu button on mobile view
   const handleDrawerToggle = () => {
@@ -158,32 +206,40 @@ function DashboardContainer({ children, ...props }) {
         Ostatnie wiadomości
       </Typography>
       <Divider />
-      {[0, 1, 2].map((item) => (
-        <MenuItem
-          onClick={handleLastMessagesClose}
-          key={item}
-          className={classes.messageItem}
-        >
-          <Avatar alt="User Image" src="/images/default-user-image.png" />
-          <div className={classes.messageTexts}>
-            <Typography className={classes.messageName}>
-              Anon Anonowicz
-            </Typography>
-            <Typography className={classes.messageShort}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              fringilla, justo a ullamcorper tristique,...
-            </Typography>
-          </div>
-        </MenuItem>
+      {lastMessages.map((item, index) => (
+        <Link href={`/user/messages/${item.chat.id}`} key={index}>
+          <MenuItem
+            onClick={handleLastMessagesClose}
+            className={classes.messageItem}
+          >
+            <Avatar
+              aria-label="recipe"
+              className={classes.avatar}
+              src={`${process.env.BACKEND_HOST}/${item.sender.avatar}` || ""}
+            >
+              {`${item.sender.name[0]}`}
+            </Avatar>
+            <div className={classes.messageTexts}>
+              <Typography className={classes.messageName}>
+                {item.sender.name}
+              </Typography>
+              <Typography className={classes.messageShort}>
+                {item.text}
+              </Typography>
+            </div>
+          </MenuItem>
+        </Link>
       ))}
       <div className={classes.messagesExpandMore}>
-        <Button
-          endIcon={
-            <ExpandMoreIcon color="inherit" aria-label="show more index" />
-          }
-        >
-          Pokaż wszystko
-        </Button>
+        <Link href="/user/messages">
+          <Button
+            endIcon={
+              <ExpandMoreIcon color="inherit" aria-label="show more index" />
+            }
+          >
+            Pokaż wszystko
+          </Button>
+        </Link>
       </div>
     </Menu>
   );
@@ -271,7 +327,7 @@ function DashboardContainer({ children, ...props }) {
             aria-label="show 4 new mails"
             onClick={handleLastMessagesOpen}
           >
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={unseenChatsCounter} color="primary">
               <MailIcon />
             </Badge>
           </IconButton>
