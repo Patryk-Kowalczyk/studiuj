@@ -36,6 +36,7 @@ export const GET_ADV_INFO = gql`
             }
         }
         me{
+            id
             advertisements{
                 id
             }
@@ -56,13 +57,14 @@ export default function SingleMyAdvertisementPage() {
             id: id,
         },
     });
+    console.log(data);
     if (loading) return <p>Loading ...</p>;
     if (error) return <p>{error.message}</p>;
     let combinedArray = []
     data.me.advertisements.forEach(item => (
         combinedArray.push(item.id)
     ))
-    if (combinedArray.includes(query.id)) return <SingleMyAdvertisement data={data}/>;
+    if (combinedArray.includes(query.id) || data.advertisement !== null) return <SingleMyAdvertisement data={data}/>;
     return <p>ooooops</p>
 }
 SingleMyAdvertisementPage.Layout = DashboardAuth;

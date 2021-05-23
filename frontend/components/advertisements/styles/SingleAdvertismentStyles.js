@@ -6,6 +6,9 @@ export const useStyles = makeStyles((theme) => ({
         height: "90vh",
         overflow: "hidden",
     },
+    wrap: {
+        height: "100%",
+    },
     root: {
         gridTemplateRows: "1fr auto",
         height: "10%",
@@ -43,6 +46,10 @@ export const useStyles = makeStyles((theme) => ({
     boxx: {
         height: "80%",
         overflow: "auto",
+    },
+    wrapboxx: {
+        overflow: "auto",
+
     },
     paper: {
         padding: "40px 20px",
