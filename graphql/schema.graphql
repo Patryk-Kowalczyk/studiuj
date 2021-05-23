@@ -18,8 +18,9 @@ type Query {
     comments: [Comment!]! @all
     comments(id: Int! @eq): Comment @find
 
-    UserChats: [UserInChat!] @guard(with: ["api"])
+    UserChats: [UserChat!] @guard(with: ["api"])
     ChatMessages(id: ID!): Chat! @guard(with: ["api"])
+    LastUnseenMessages: LastUnseenMessages! @guard(with: ["api"])
 }
 
 type User {
@@ -116,6 +117,18 @@ type Message{
     updated_at: DateTime!
 }
 
+type LastUnseenMessages{
+    messages: [Message!]
+    unseenChatsCounter: Int!
+}
+
+type UserChat{
+    userChat: UserInChat!
+    sender: User!
+    unseenMessagesCounter: Int!
+    lastMessageDate: DateTime
+}
+
 type UserInChat{
     id: ID!
     chat: Chat! @belongsTo
@@ -155,5 +168,6 @@ type Mutation {
 
     CreateOrGetChat(id: ID!): Chat! @guard
     CreateMessage(sender_id: ID!, receiver_id: ID!, chat_id: ID!, text: String!): Message! @guard
+    MarkMessagesAsSeen(chat_id: ID!): Boolean! @guard(with: ["api"])
 }
 

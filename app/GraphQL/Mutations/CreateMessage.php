@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Mutations;
 
+use App\Events\ChangeChatInfo;
 use App\Events\NewChatMessage;
 use App\Models\Message;
 
@@ -33,6 +34,8 @@ class CreateMessage
         ];
 
         broadcast(new NewChatMessage($messageResponse))->toOthers();
+        broadcast(new ChangeChatInfo($sender_id))->toOthers();
+        broadcast(new ChangeChatInfo($receiver_id))->toOthers();
 
         return $message;
     }
