@@ -184,6 +184,14 @@ function Messages(props) {
   React.useEffect(() => {
     refetch();
   }, [id]);
+
+  React.useEffect(() => {
+    MarkMessagesAsSeen({
+      variables: {
+        chat_id: Number(id),
+      },
+    });
+  }, [messages]);
   React.useEffect(() => {
     if (data) {
       if (data.ChatMessages.messages) {
@@ -195,11 +203,6 @@ function Messages(props) {
         (chatUser) => chatUser.user.id !== user.id
       );
       setReceiver(newReceiver);
-      MarkMessagesAsSeen({
-        variables: {
-          chat_id: Number(id),
-        },
-      });
     }
   }, [data]);
 
