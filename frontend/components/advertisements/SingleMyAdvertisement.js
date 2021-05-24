@@ -17,6 +17,9 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import {gql, useMutation} from "@apollo/client";
 import {GET_ADV_INFO} from "../../pages/user/advertisement/[id]";
+import {MY_ADVERTISEMENTS} from "../../pages/user/my-advertisements";
+import {ALL_ADVERTISEMENTS_IN_PAGE_QUERY} from "./Advertisements";
+import {perPage} from "../../config";
 
 const DELETE_ADVERTISEMENT = gql`
     mutation DELETE_ADVERTISEMENT(
@@ -77,7 +80,12 @@ export default function SingleMyAdvertisement({
                 query: GET_ADV_INFO, variables: {
                     id: parseInt(id)
                 }
-            }],
+            },
+                {
+                    query: MY_ADVERTISEMENTS
+                }
+
+            ],
 
         },
     );
@@ -91,8 +99,21 @@ export default function SingleMyAdvertisement({
             refetchQueries: [{
                 query: GET_ADV_INFO, variables: {
                     id: parseInt(id)
+                },
+            },
+                {
+                    query: MY_ADVERTISEMENTS
+                },
+                {
+                    query: ALL_ADVERTISEMENTS_IN_PAGE_QUERY,
+                    variables: {
+                        perPage: perPage,
+                        page: 1
+                    },
                 }
-            }],
+
+
+            ],
 
         },
     );

@@ -12,6 +12,8 @@ import PaymentForm from './PaymentForm';
 import Review from './Review';
 import useForm from "../../utils/useForm";
 import {gql, useMutation} from "@apollo/client";
+import {ALL_ADVERTISEMENTS_IN_PAGE_QUERY} from "../advertisements/Advertisements";
+import {perPage} from "../../config";
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -120,8 +122,18 @@ export default function Checkout({data}) {
         CREATE_ADVERTISMENT_MUTATION,
         {
             variables: values,
+            refetchQueries: [
+                {
+                    query: ALL_ADVERTISEMENTS_IN_PAGE_QUERY,
+                    variables: {
+                        perPage: perPage,
+                        page: 1
+                    },
+                },
+            ],
         }
-    );
+        )
+    ;
 
     const handleButtonSubmit = async (e) => {
         e.preventDefault();
