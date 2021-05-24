@@ -203,33 +203,39 @@ function DashboardContainer({ children, ...props }) {
       className={classes.messagesContainer}
     >
       <Typography variant="h5" className={classes.messagesTitle}>
-        Ostatnie wiadomości
+        Nowe wiadomości
       </Typography>
       <Divider />
-      {lastMessages.map((item, index) => (
-        <Link href={`/user/messages/${item.chat.id}`} key={index}>
-          <MenuItem
-            onClick={handleLastMessagesClose}
-            className={classes.messageItem}
-          >
-            <Avatar
-              aria-label="recipe"
-              className={classes.avatar}
-              src={`${process.env.BACKEND_HOST}/${item.sender.avatar}` || ""}
+      {lastMessages.length > 0 ? (
+        lastMessages.map((item, index) => (
+          <Link href={`/user/messages/${item.chat.id}`} key={index}>
+            <MenuItem
+              onClick={handleLastMessagesClose}
+              className={classes.messageItem}
             >
-              {`${item.sender.name[0]}`}
-            </Avatar>
-            <div className={classes.messageTexts}>
-              <Typography className={classes.messageName}>
-                {item.sender.name}
-              </Typography>
-              <Typography className={classes.messageShort}>
-                {item.text}
-              </Typography>
-            </div>
-          </MenuItem>
-        </Link>
-      ))}
+              <Avatar
+                aria-label="recipe"
+                className={classes.avatar}
+                src={`${process.env.BACKEND_HOST}/${item.sender.avatar}` || ""}
+              >
+                {`${item.sender.name[0]}`}
+              </Avatar>
+              <div className={classes.messageTexts}>
+                <Typography className={classes.messageName}>
+                  {item.sender.name}
+                </Typography>
+                <Typography className={classes.messageShort}>
+                  {item.text}
+                </Typography>
+              </div>
+            </MenuItem>
+          </Link>
+        ))
+      ) : (
+        <Typography component="div" style={{ padding: 8, color: grey[600] }}>
+          {"Obecnie nie posiadasz nowych wiadomości 🤷‍♂️"}
+        </Typography>
+      )}
       <div className={classes.messagesExpandMore}>
         <Link href="/user/messages">
           <Button

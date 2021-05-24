@@ -19,6 +19,7 @@ import DoneIcon from "@material-ui/icons/Done";
 import LoadingButton from "../../components/LoadingButton";
 import { useDispatch } from "react-redux";
 import { setMessage } from "../../src/actions/message";
+import CardComponent from "../../components/advertisements/CardComponent";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -81,6 +82,24 @@ const GET_USER = gql`
           name
           major
           finished
+        }
+      }
+      advertisements {
+        id
+        name
+        rating
+        description
+        price
+        type
+        created_at
+        category {
+          name
+        }
+        user {
+          id
+          uuid
+          avatar
+          name
         }
       }
     }
@@ -213,7 +232,7 @@ const userPage = () => {
             <Skeleton variant="rect" width={200} height={20} />
           ) : (
             <>
-              {data.user.profile.schools.length > 0 ? (
+              {data.user.profile?.schools.length > 0 ? (
                 <>
                   <Typography
                     variant="h5"
@@ -222,7 +241,7 @@ const userPage = () => {
                   >
                     Szkoły
                   </Typography>
-                  {data.user.profile.schools.map((school, k) => (
+                  {data.user.profile?.schools.map((school, k) => (
                     <EducationElement key={k} {...school} />
                   ))}
                 </>
@@ -233,7 +252,7 @@ const userPage = () => {
             <Skeleton variant="rect" width={200} height={20} />
           ) : (
             <>
-              {data.user.profile.universities.length > 0 ? (
+              {data.user.profile?.universities.length > 0 ? (
                 <>
                   <Typography
                     variant="h5"
@@ -242,7 +261,7 @@ const userPage = () => {
                   >
                     Uczelnie
                   </Typography>
-                  {data.user.profile.universities.map((university, k) => (
+                  {data.user.profile?.universities.map((university, k) => (
                     <EducationElement key={k} {...university} />
                   ))}
                 </>
@@ -253,8 +272,23 @@ const userPage = () => {
       </Grid>
       <Grid item xs={12}>
         <Card className={classes.card}>
-          <Typography variant="h4">Ogłoszenia użytkownika</Typography>
-          <Typography>Obecnie brak ogłoszeń danego użytkownika</Typography>
+          <Typography variant="h4" gutterBottom>
+            Ogłoszenia użytkownika
+          </Typography>
+          <Box
+            display="flex"
+            flexWrap="wrap"
+            width="100%"
+            justifyContent="space-around"
+          >
+            {!loading && data?.user?.advertisements.length > 0 ? (
+              data.user.advertisements.map((adv) => (
+                <CardComponent key={adv.id} data={adv} />
+              ))
+            ) : (
+              <Typography>Obecnie brak ogłoszeń danego użytkownika</Typography>
+            )}
+          </Box>
         </Card>
       </Grid>
     </Grid>
