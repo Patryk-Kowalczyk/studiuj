@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
         "fideloper/proxy": "^4.4",
         "firebase/php-jwt": "^5.3",
         "fruitcake/laravel-cors": "^2.0",
@@ -21,7 +22,7 @@
         "mll-lab/laravel-graphql-playground": "^2.5",
         "nuwave/lighthouse": "^5.3",
         "pusher/pusher-php-server": "^6.1",
-      "ext-json": "*"
+        "stripe/stripe-php": "^7.80"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

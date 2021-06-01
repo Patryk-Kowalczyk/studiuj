@@ -96,6 +96,8 @@ type Order {
     advertisement: Advertisement! @belongsTo
     meets: [Meet!]! @hasMany
     user: User! @belongsTo
+    created_at: DateTime!
+    updated_at: DateTime!
 }
 
 type Meet {
@@ -186,5 +188,8 @@ type Mutation {
     CreateOrGetChat(id: ID!): Chat! @guard
     CreateMessage(sender_id: ID!, receiver_id: ID!, chat_id: ID!, text: String!): Message! @guard
     MarkMessagesAsSeen(chat_id: ID!): Boolean! @guard(with: ["api"])
+
+    CreateOrder(user_id: ID!, advertisement_id: ID!): Order @guard(with: ["api"])
+    CreatePaymentIntent(order_id: ID!): String! @guard(with: ["api"])
 }
 
