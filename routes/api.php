@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Zoom\MeetingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('password/reset', 'App\Http\Controllers\Auth\ForgotPasswordController@reset');
+
+Route::post('/meetings', [MeetingController::class,'create']);

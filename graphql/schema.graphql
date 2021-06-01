@@ -18,7 +18,9 @@ type Query {
     comments: [Comment!]! @all
     comments(id: Int! @eq): Comment @find
 
-    UserChats: [UserChat!] @guard(with: ["api"])
+    orders: [Order!]! @all
+    meets: [Meet!]! @all
+    UserChats: [UserInChat!] @guard(with: ["api"])
     ChatMessages(id: ID!): Chat! @guard(with: ["api"])
     LastUnseenMessages: LastUnseenMessages! @guard(with: ["api"])
 }
@@ -35,6 +37,7 @@ type User {
     advertisements: [Advertisement!] @hasMany
     profile: Profile @hasOne
     provider: String!
+    orders: [Order!]! @hasMany
 }
 
 type Profile{
@@ -85,8 +88,21 @@ type Advertisement {
     commentsCount: Int! @count(relation: "comments")
     type: String!
     rating: Float
+    orders: [Order!]! @hasMany
 }
 
+type Order {
+    id: ID!
+    advertisement: Advertisement! @belongsTo
+    meets: [Meet!]! @hasMany
+    user: User! @belongsTo
+}
+
+type Meet {
+    id: ID!
+    order: Order! @belongsTo
+    zoom_link: String!
+}
 
 type Comment {
     id: ID!
