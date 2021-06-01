@@ -16,7 +16,7 @@ if (!ISSERVER) {
 
 const options = {
   broadcaster: "pusher",
-  key: process.env.KEY,
+  key: process.env.PUSHER_KEY,
   cluster: process.env.CLUSTER,
   forceTLS: true,
   //authEndpoint is your apiUrl + /broadcasting/auth

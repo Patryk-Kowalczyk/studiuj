@@ -12,6 +12,7 @@ export const GET_ADV_INFO = gql`
         uuid
         name
         avatar
+        email
       }
       name
       description

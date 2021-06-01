@@ -8,6 +8,7 @@ import {
   IconButton,
   Accordion,
   AccordionDetails,
+  Button,
 } from "@material-ui/core";
 import { SendOutlined } from "@material-ui/icons";
 import React from "react";
@@ -19,6 +20,8 @@ import { gql, useMutation } from "@apollo/client";
 import { GET_ADV_INFO } from "../../pages/user/advertisement/[id]";
 import SingleComment from "./SingleComment";
 import NextLink from "../ButtonLink";
+import PaymentDialog from "../common/PaymentDialog";
+import LoadingButton from "../../components/LoadingButton";
 
 export const labels = {
   0.5: "Słaby",
@@ -51,6 +54,14 @@ const CREATE_COMMENT_MUTATION = gql`
   }
 `;
 
+const CREATE_ORDER = gql`
+  mutation CREATE_ORDER($user_id: ID!, $advertisement_id: ID!) {
+    CreateOrder(user_id: $user_id, advertisement_id: $advertisement_id) {
+      id
+    }
+  }
+`;
+
 export default function SingleAdvertisement({
   data: {
     advertisement: {
@@ -70,6 +81,9 @@ export default function SingleAdvertisement({
 }) {
   const classes = useStyles();
   const [hover, setHover] = React.useState(-1);
+  const [isOpenDialog, setIsOpenDialog] = React.useState(false);
+  const [orderId, setOrderId] = React.useState(null);
+
   id = parseInt(id);
   const { values, updateValues } = useForm({
     rating: null,
@@ -91,6 +105,9 @@ export default function SingleAdvertisement({
       ],
     }
   );
+
+  const [createOrder, { loading: loadingOrder }] = useMutation(CREATE_ORDER);
+
   const handleButtonSubmit = async (e) => {
     e.preventDefault();
     if (values.description === "") {
@@ -101,6 +118,26 @@ export default function SingleAdvertisement({
       values.rating = null;
     }
   };
+
+  const handlePaymentDialogOpen = async () => {
+    const isSure = confirm("Czy na pewno chcesz zamówić tę konsultację?");
+    if (isSure) {
+      await createOrder({
+        variables: {
+          user_id: me.id,
+          advertisement_id: id,
+        },
+      })
+        .then((res) => setOrderId(res.data.CreateOrder.id))
+        .catch((err) => console.error(err));
+      setIsOpenDialog(true);
+    }
+  };
+
+  const handlePaymentDialogClose = async () => {
+    setIsOpenDialog(false);
+  };
+
   return (
     <div className={classes.rootroot}>
       <div style={{ padding: 14 }} className={classes.boxx}>
@@ -144,7 +181,27 @@ export default function SingleAdvertisement({
                     precision={0.5}
                     readOnly
                   />
-                  <p className={classes.created}>dodano - {created_at}</p>
+                  <Box display="flex" justifyContent="space-between">
+                    <p className={classes.created}>dodano - {created_at}</p>
+                    {me.id !== user.id && (
+                      <>
+                        <LoadingButton
+                          loading={loadingOrder}
+                          variant="contained"
+                          color="primary"
+                          onClick={handlePaymentDialogOpen}
+                        >
+                          Zamów konsultacje
+                        </LoadingButton>
+                        <PaymentDialog
+                          isOpen={isOpenDialog}
+                          handleClose={handlePaymentDialogClose}
+                          orderId={orderId}
+                          user={user}
+                        />
+                      </>
+                    )}
+                  </Box>
                 </Grid>
               </Grid>
             </AccordionDetails>

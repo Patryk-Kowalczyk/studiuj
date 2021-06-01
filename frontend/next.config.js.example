@@ -11,8 +11,12 @@ module.exports = {
   },
   env: {
     BACKEND_DOMAIN,
+    //BACKEND_HOST: "http://studiuj.createosm.pl/public",
+
     BACKEND_HOST: BACKEND_DOMAIN + ":8000",
-    KEY: "dcbfa94fcf2c3c32ad5e",
+    STRIPE_PK:
+      "",
+    PUSHER_KEY: "dcbfa94fcf2c3c32ad5e",
     CLUSTER: "eu",
   },
 };
