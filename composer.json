@@ -10,8 +10,9 @@
     "require": {
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.4",
+        "firebase/php-jwt": "^5.3",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.3",
         "joselfonseca/lighthouse-graphql-passport-auth": "^6.0",
         "laravel/framework": "^8.12",
         "laravel/passport": "^10.1",
@@ -19,7 +20,8 @@
         "laravel/tinker": "^2.5",
         "mll-lab/laravel-graphql-playground": "^2.5",
         "nuwave/lighthouse": "^5.3",
-        "pusher/pusher-php-server": "^6.1"
+        "pusher/pusher-php-server": "^6.1",
+      "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

@@ -25,7 +25,6 @@ class Advertisement extends Model
         return $this->belongsTo(User::class);
     }
 
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -36,4 +35,8 @@ class Advertisement extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function meets(): HasMany
+    {
+        return $this->hasMany(Meet::class);
+    }
 }
