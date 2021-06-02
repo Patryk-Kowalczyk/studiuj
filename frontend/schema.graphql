@@ -13,6 +13,7 @@ type Advertisement {
     description: String!
     id: ID!
     name: String!
+    orders: [Order!]!
     price: Float!
     rating: Float
     type: String!
@@ -65,9 +66,20 @@ type ForgotPasswordResponse {
     status: String!
 }
 
+type LastUnseenMessages {
+    messages: [Message!]
+    unseenChatsCounter: Int!
+}
+
 type LogoutResponse {
     message: String
     status: String!
+}
+
+type Meet {
+    id: ID!
+    order: Order!
+    zoom_link: String!
 }
 
 type Message {
@@ -87,15 +99,19 @@ type Mutation {
     ChangeUserPrimaryInfo(avatar: Upload, email: String!, name: String!): User!
     CreateAdvertisement(category_id: Int!, description: String!, name: String!, price: Int!, type: String!, user_id: Int!): Advertisement!
     CreateComment(advertisement_id: Int!, description: String!, rating: Int, user_id: Int!): Comment!
+    CreateMeet(order_id: ID!, zoom_link: String!): Meet
     CreateMessage(chat_id: ID!, receiver_id: ID!, sender_id: ID!, text: String!): Message!
     CreateOrChangeProfile(type_of_education: String!): Profile!
     CreateOrGetChat(id: ID!): Chat!
+    CreateOrder(advertisement_id: ID!, user_id: ID!): Order
+    CreatePaymentIntent(order_id: ID!): String!
     DeleteAdvertisement(id: ID!): Boolean
     DeleteComment(id: Int!): Boolean
     DeleteSchool(id: ID!): UserSchool
     DeleteUniversity(id: ID!): UserUniversity
     EditSchool(finished: Boolean!, id: ID!, major: String!, name: String!): UserSchool
     EditUniversity(finished: Boolean!, id: ID!, major: String!, name: String, university_id: String): UserUniversity
+    MarkMessagesAsSeen(chat_id: ID!): Boolean!
     UpdateAdvertisement(category_id: Int, description: String, id: ID!, name: String, price: Int, type: String, user_id: Int): Advertisement
     UpdateComment(description: String, id: Int!, rating: Int): Boolean
     forgotPassword(input: ForgotPasswordInput!): ForgotPasswordResponse!
@@ -107,6 +123,15 @@ type Mutation {
     updateForgottenPassword(input: NewPasswordWithCodeInput): ForgotPasswordResponse!
     updatePassword(input: UpdatePassword!): UpdatePasswordResponse!
     verifyEmail(input: VerifyEmailInput!): AuthPayload!
+}
+
+type Order {
+    advertisement: Advertisement!
+    created_at: DateTime!
+    id: ID!
+    meets: [Meet!]!
+    updated_at: DateTime!
+    user: User!
 }
 
 "Pagination information about the corresponding list of items."
@@ -159,6 +184,7 @@ type Profile {
 
 type Query {
     ChatMessages(id: ID!): Chat!
+    LastUnseenMessages: LastUnseenMessages!
     UserChats: [UserInChat!]
     advertisement(id: Int!): Advertisement
     advertisements(
@@ -172,6 +198,8 @@ type Query {
     categories: [Category!]!
     comments(id: Int!): Comment
     me: User!
+    meets: [Meet!]!
+    orders: [Order!]!
     user(uuid: String): User
     users(
         "Limits number of fetched elements."
@@ -199,16 +227,24 @@ type UpdatePasswordResponse {
 }
 
 type User {
-    advertisements: [Advertisement!]!
+    advertisements: [Advertisement!]
     avatar: String
     created_at: DateTime!
     email: String!
     id: ID!
     name: String!
+    orders: [Order!]!
     profile: Profile
     provider: String!
     updated_at: DateTime!
     uuid: String!
+}
+
+type UserChat {
+    lastMessageDate: DateTime
+    sender: User!
+    unseenMessagesCounter: Int!
+    userChat: UserInChat!
 }
 
 type UserInChat {
