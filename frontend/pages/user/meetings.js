@@ -12,44 +12,43 @@ const columns = [
         {
             field: 'advertisement',
             headerName: 'Nazwa',
-            width: 150,
+            width: 200,
         },
         {
             field: "link",
             headerName: "Link do spotkania",
-            width: 130,
+            width: 180,
 
             sortable: false,
             disableClickEventBubbling: true,
             renderCell: (params) => (
-                <ButtonLink color="primary" variant="contained" href={params.row.link}>Link</ButtonLink>
-
+                <ButtonLink target color="primary" variant="contained" href={params.row.link}>Link</ButtonLink>
             ),
         },
 
     ]
 ;
 
-
-export default function MeetingsPage() {
-    const GET_MEETINGS_INFO = gql`
-        query meets {
-            meets{
-                id
-                zoom_link
-                order{
-                    created_at
-                    advertisement{
-                        type
+export const GET_MEETINGS_INFO = gql`
+    query meets {
+        meets{
+            id
+            zoom_link
+            order{
+                created_at
+                advertisement{
+                    type
+                    name
+                    user{
+                        uuid
                         name
-                        user{
-                            uuid
-                            name
-                        }
                     }
-                }}
-        }
-    `;
+                }
+            }}
+    }
+`;
+export default function MeetingsPage() {
+
     const {loading, error, data} = useQuery(GET_MEETINGS_INFO);
     if (error) {
         console.log(error.graphQLErrors)

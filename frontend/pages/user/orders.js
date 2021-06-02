@@ -3,13 +3,32 @@ import * as React from 'react';
 import {DataGrid} from '@material-ui/data-grid';
 import {useDispatch} from "react-redux";
 import {Button} from "@material-ui/core";
-import {gql, useQuery} from "@apollo/client";
+import {gql, useMutation, useQuery} from "@apollo/client";
 import ButtonLink from "../../components/ButtonLink";
 import axios from "axios";
 import {setMessage} from "../../src/actions/message";
+import {GET_MEETINGS_INFO} from './meetings'
+
+const CREATE_MEET = gql`
+    mutation CREATE_MEET($order: ID!$zoom:String!) {
+        CreateMeet(order_id: $order,zoom_link:$zoom){
+            id
+        }
+    }
+`;
 
 function CreateButton({params}) {
     const dispatch = useDispatch();
+    const [CreateMeet, {loading: loadingCreate, error: errorCreate, data: dataCreate}] = useMutation(
+        CREATE_MEET, {refetchQueries: [{query: GET_MEETINGS_INFO}]});
+    const handleCreate = async (id, link) => {
+        const res = await CreateMeet({
+            variables: {
+                order: id,
+                zoom: link
+            }
+        });
+    };
     const handleClick = () => {
         const isSure = confirm("Jesteś pewny, że chcesz utworzyć spotkanie?");
         if (isSure) {
@@ -17,6 +36,7 @@ function CreateButton({params}) {
                 .post(process.env.BACKEND_HOST + "/api/meetings")
                 .then((res) => {
                     console.log(res.data.join_url)
+                    handleCreate(params.row.id, res.data.join_url).then(r => console.log("created"))
                     dispatch(setMessage("Pomyślnie utworzono spotkanie", "success"));
                 })
                 .catch((err) => {
@@ -27,7 +47,7 @@ function CreateButton({params}) {
     };
     if (params.row.advType === 'looking') return null
     return (
-        <Button variant="contained" color="secondary" onClick={handleClick}>
+        <Button disabled={loadingCreate} variant="contained" color="secondary" onClick={handleClick}>
             Utwórz
         </Button>
     );
@@ -55,7 +75,8 @@ const columns = [
             sortable: false,
             disableClickEventBubbling: true,
             renderCell: (params) => (
-                <ButtonLink color="primary" variant="contained" href={`/user/${params.row.uuid}`}>profil</ButtonLink>
+                <ButtonLink color="primary" variant="contained"
+                            href={`/user/${params.row.uuid}`}>profil</ButtonLink>
 
             ),
         },
@@ -99,7 +120,7 @@ export default function OrdersPage() {
     data.orders.forEach((order) => (
         rows.push({
             id: order.id,
-            type: order.advertisement.type === 'offer' ? 'oferuję' : 'zamawiam',
+            type: order.advertisement.type === 'offer' ? 'sprzedaję' : 'kupuję',
             name: order.advertisement.user.name,
             advertisement: order.advertisement.name,
             payment: '',
@@ -108,6 +129,8 @@ export default function OrdersPage() {
 
         })
     ))
+
+
     return (
         <div style={{height: 400, width: '100%'}}>
             <DataGrid rows={rows} columns={columns} pageSize={5}/>
