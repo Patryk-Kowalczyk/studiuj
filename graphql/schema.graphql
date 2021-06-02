@@ -189,6 +189,8 @@ type Mutation {
     CreateMessage(sender_id: ID!, receiver_id: ID!, chat_id: ID!, text: String!): Message! @guard
     MarkMessagesAsSeen(chat_id: ID!): Boolean! @guard(with: ["api"])
 
+    CreateMeet(order_id: ID!, zoom_link: String!): Meet @create
+
     CreateOrder(user_id: ID!, advertisement_id: ID!): Order @guard(with: ["api"])
     CreatePaymentIntent(order_id: ID!): String! @guard(with: ["api"])
 }

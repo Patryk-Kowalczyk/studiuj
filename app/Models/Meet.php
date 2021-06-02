@@ -10,6 +10,11 @@ class Meet extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'order_id',
+        'zoom_link'
+
+    ];
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
