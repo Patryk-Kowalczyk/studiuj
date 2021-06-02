@@ -8,7 +8,7 @@ import ButtonLink from "../../components/ButtonLink";
 import axios from "axios";
 import {setMessage} from "../../src/actions/message";
 
-function CreateButton({params, setRows}) {
+function CreateButton({params}) {
     const dispatch = useDispatch();
     const handleClick = () => {
         const isSure = confirm("Jesteś pewny, że chcesz utworzyć spotkanie?");
@@ -25,6 +25,7 @@ function CreateButton({params, setRows}) {
                 });
         }
     };
+    if (params.row.advType === 'looking') return null
     return (
         <Button variant="contained" color="secondary" onClick={handleClick}>
             Utwórz
@@ -102,7 +103,8 @@ export default function OrdersPage() {
             name: order.advertisement.user.name,
             advertisement: order.advertisement.name,
             payment: '',
-            uuid: order.advertisement.user.uuid
+            uuid: order.advertisement.user.uuid,
+            advType: order.advertisement.type,
 
         })
     ))
