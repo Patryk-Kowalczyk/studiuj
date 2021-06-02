@@ -22,10 +22,11 @@ function CreateButton({params}) {
     const [CreateMeet, {loading: loadingCreate, error: errorCreate, data: dataCreate}] = useMutation(
         CREATE_MEET, {refetchQueries: [{query: GET_MEETINGS_INFO}]});
     const handleCreate = async (id, link) => {
+        const zoomLink = String(link.start_url)
         const res = await CreateMeet({
             variables: {
                 order: id,
-                zoom: link
+                zoom: zoomLink,
             }
         });
     };
@@ -35,8 +36,8 @@ function CreateButton({params}) {
             axios
                 .post(process.env.BACKEND_HOST + "/api/meetings")
                 .then((res) => {
-                    console.log(res.data.join_url)
-                    handleCreate(params.row.id, res.data.join_url).then(r => console.log("created"))
+                    console.log(res)
+                    handleCreate(params.row.id, res.data).then(r => console.log("created"))
                     dispatch(setMessage("Pomyślnie utworzono spotkanie", "success"));
                 })
                 .catch((err) => {
