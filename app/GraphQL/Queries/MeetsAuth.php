@@ -1,14 +1,13 @@
 <?php
 
-
 namespace App\GraphQL\Queries;
 
-
+use App\Models\Meet;
 use App\Models\Order;
 use App\Models\Advertisement;
 use Illuminate\Support\Facades\Auth;
 
-class OrdersAuth
+class MeetsAuth
 {
     /**
      * @param null $_
@@ -16,10 +15,11 @@ class OrdersAuth
      */
     public function __invoke($_, array $args)
     {
-        $user = Auth::id();
-        $orders = Order::whereHas('advertisement', function ($query) use ($user) {
-            return $query->where('user_id', $user);
-        })->orWhere('user_id',$user)->get();
-        return $orders;
+        $orders = new OrdersAuth();
+        $result=[];
+        foreach($orders->__invoke([],[]) as $order){
+            $result = $order->meets()->get();
+        }
+        return $result;
     }
 }

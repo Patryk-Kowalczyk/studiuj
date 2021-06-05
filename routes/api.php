@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Zoom\MeetingController;
 use Illuminate\Http\Request;
@@ -23,7 +24,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('password/reset', 'App\Http\Controllers\Auth\ForgotPasswordController@reset');
 
 Route::post('/meetings', [MeetingController::class,'create']);
-
 
 Route::get('payments/handle-payment-response', [PaymentController::class, 'handle']);
 

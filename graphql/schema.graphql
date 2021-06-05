@@ -18,8 +18,9 @@ type Query {
     comments: [Comment!]! @all
     comments(id: Int! @eq): Comment @find
 
-    orders: [Order!]! @all
-    meets: [Meet!]! @all
+    OrdersAuth: [Order!]! @guard(with: ["api"])
+    MeetsAuth: [Meet!]! @guard(with: ["api"])
+
     UserChats: [UserInChat!] @guard(with: ["api"])
     ChatMessages(id: ID!): Chat! @guard(with: ["api"])
     LastUnseenMessages: LastUnseenMessages! @guard(with: ["api"])
@@ -62,6 +63,7 @@ type UserSchool{
     major: String!
     finished: Boolean!
 }
+
 input UserSchoolInput{
     id: ID
     name: String!
