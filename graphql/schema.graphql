@@ -21,7 +21,7 @@ type Query {
     OrdersAuth: [Order!]! @guard(with: ["api"])
     MeetsAuth: [Meet!]! @guard(with: ["api"])
 
-    UserChats: [UserInChat!] @guard(with: ["api"])
+    UserChats: [UserChat!] @guard(with: ["api"])
     ChatMessages(id: ID!): Chat! @guard(with: ["api"])
     LastUnseenMessages: LastUnseenMessages! @guard(with: ["api"])
 }
@@ -106,6 +106,8 @@ type Meet {
     id: ID!
     order: Order! @belongsTo
     zoom_link: String!
+    created_at: DateTime!
+    updated_at: DateTime!
 }
 
 type Comment {

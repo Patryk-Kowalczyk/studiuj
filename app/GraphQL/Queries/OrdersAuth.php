@@ -19,7 +19,7 @@ class OrdersAuth
         $user = Auth::id();
         $orders = Order::whereHas('advertisement', function ($query) use ($user) {
             return $query->where('user_id', $user);
-        })->orWhere('user_id',$user)->get();
+        })->orWhere('user_id',$user)->orderBy('created_at', 'DESC')->get();
         return $orders;
     }
 }
