@@ -46,7 +46,8 @@ function CreateButton({params}) {
                 });
         }
     };
-    if (params.row.advType === 'looking') return null
+    if (params.row.me !== params.row.name) return null
+
     return (
         <Button disabled={loadingCreate} variant="contained" color="secondary" onClick={handleClick}>
             Utwórz
@@ -58,6 +59,7 @@ const columns = [
         {field: 'id', headerName: 'ID', width: 90},
         {field: 'type', headerName: 'Typ', width: 100},
         {field: 'name', headerName: 'Odbiorca', width: 190},
+
         {
             field: 'advertisement',
             headerName: 'Nazwa',
@@ -99,7 +101,7 @@ const columns = [
 export default function OrdersPage() {
     const GET_ORDERS_INFO = gql`
         query orders {
-            orders{
+            orders:OrdersAuth{
                 id
                 advertisement{
                     type
@@ -110,6 +112,9 @@ export default function OrdersPage() {
                     }
                 }
             }
+            me{
+                name
+            }
         }
     `;
     const {loading, error, data} = useQuery(GET_ORDERS_INFO);
@@ -117,16 +122,18 @@ export default function OrdersPage() {
         console.log(error.graphQLErrors)
     }
     if (loading || !data) return <p>Loading...</p>;
+    console.log(data.me.name)
     let rows = []
     data.orders.forEach((order) => (
         rows.push({
             id: order.id,
-            type: order.advertisement.type === 'offer' ? 'sprzedaję' : 'kupuję',
+            type: data.me.name !== order.advertisement.user.name ? 'kupiłem' : 'sprzedałem',
             name: order.advertisement.user.name,
             advertisement: order.advertisement.name,
             payment: '',
             uuid: order.advertisement.user.uuid,
             advType: order.advertisement.type,
+            me: data.me.name
 
         })
     ))

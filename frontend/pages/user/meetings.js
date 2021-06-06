@@ -31,7 +31,7 @@ const columns = [
 
 export const GET_MEETINGS_INFO = gql`
     query meets {
-        meets{
+        meets:MeetsAuth{
             id
             zoom_link
             order{
@@ -45,6 +45,9 @@ export const GET_MEETINGS_INFO = gql`
                     }
                 }
             }}
+        me{
+            name
+        }
     }
 `;
 export default function MeetingsPage() {
@@ -58,7 +61,7 @@ export default function MeetingsPage() {
     data.meets.forEach((meet) => (
         rows.push({
             id: meet.id,
-            type: meet.order.advertisement.type === 'offer' ? 'oferuję' : 'zamawiam',
+            type: data.me.name !== meet.order.advertisement.user.name ? 'zamówiłem' : 'sprzedałem',
             name: meet.order.advertisement.user.name,
             advertisement: meet.order.advertisement.name,
             date: meet.order.created_at,

@@ -185,6 +185,8 @@ type Profile {
 type Query {
     ChatMessages(id: ID!): Chat!
     LastUnseenMessages: LastUnseenMessages!
+    MeetsAuth: [Meet!]!
+    OrdersAuth: [Order!]!
     UserChats: [UserInChat!]
     advertisement(id: Int!): Advertisement
     advertisements(
@@ -198,8 +200,6 @@ type Query {
     categories: [Category!]!
     comments(id: Int!): Comment
     me: User!
-    meets: [Meet!]!
-    orders: [Order!]!
     user(uuid: String): User
     users(
         "Limits number of fetched elements."
