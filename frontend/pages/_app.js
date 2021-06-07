@@ -16,7 +16,6 @@ import EmptyLayout from "../layouts/EmptyLayout";
 import NProgress from "nprogress";
 import "../styles/nprogress.css";
 import Router from "next/router";
-import { createSocketConnection } from "../lib/pusher";
 
 function Message() {
   const message = useSelector((state) => state.message);
@@ -76,8 +75,6 @@ function MyApp({ Component, pageProps }) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-
-  createSocketConnection();
 
   return (
     <ApolloProvider client={apolloClient}>

@@ -6,7 +6,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { TokenKind } from "graphql";
-import { createUploadLink } from 'apollo-upload-client'
+import { createUploadLink } from "apollo-upload-client";
 
 let apolloClient;
 
@@ -18,7 +18,7 @@ const authLink = setContext((_, { headers }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   let token = "";
   if (user) {
-    token = user.login.access_token;
+    token = user.login?.access_token;
   }
   return {
     headers: {
