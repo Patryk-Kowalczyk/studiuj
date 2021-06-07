@@ -21,7 +21,7 @@ type Query {
     OrdersAuth: [Order!]! @guard(with: ["api"])
     MeetsAuth: [Meet!]! @guard(with: ["api"])
 
-    UserChats: [UserInChat!] @guard(with: ["api"])
+    UserChats: [UserChat!] @guard(with: ["api"])
     ChatMessages(id: ID!): Chat! @guard(with: ["api"])
     LastUnseenMessages: LastUnseenMessages! @guard(with: ["api"])
 }
@@ -98,6 +98,7 @@ type Order {
     advertisement: Advertisement! @belongsTo
     meets: [Meet!]! @hasMany
     user: User! @belongsTo
+    status: String
     created_at: DateTime!
     updated_at: DateTime!
 }
