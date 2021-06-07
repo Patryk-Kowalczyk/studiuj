@@ -6,7 +6,6 @@ namespace App\GraphQL\Queries;
 
 use App\Enums\PaymentStatuses;
 use App\Models\Order;
-use App\Models\Advertisement;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,7 +37,6 @@ class OrdersAuth
             }
 
             $order['status'] = $payment->payment_status ?? null;
-
         }
         return $orders;
     }

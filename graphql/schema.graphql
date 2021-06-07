@@ -107,6 +107,8 @@ type Meet {
     id: ID!
     order: Order! @belongsTo
     zoom_link: String!
+    created_at: DateTime!
+    updated_at: DateTime!
 }
 
 type Comment {
