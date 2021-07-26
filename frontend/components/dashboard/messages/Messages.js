@@ -92,7 +92,7 @@ function SingleMessage({ data, user, receiver }) {
         {!isAuthUser ? (
           <Avatar
             alt="User Avatar"
-            src={`${process.env.BACKEND_HOST}/${receiver.user.avatar}` || ""}
+            src={`${process.env.NEXT_PUBLIC_BACKEND_HOST}/${receiver.user.avatar}` || ""}
           >
             {receiver.user.name[0]}
           </Avatar>

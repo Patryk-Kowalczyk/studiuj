@@ -183,7 +183,7 @@ const userPage = () => {
               {isUser ? (
                 <Avatar
                   className={classes.avatar}
-                  src={`${process.env.BACKEND_HOST}/${data.user.avatar}` || ""}
+                  src={`${process.env.NEXT_PUBLIC_BACKEND_HOST}/${data.user.avatar}` || ""}
                 >{`${data.user.name[0]}`}</Avatar>
               ) : (
                 <Skeleton variant="circle" width={150} height={150}></Skeleton>

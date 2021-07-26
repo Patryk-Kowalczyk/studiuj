@@ -1,3 +1,3 @@
 export default function handleGoogleLogin() {
-  window.location.assign(`${process.env.BACKEND_HOST}/redirect/google`);
+  window.location.assign(`${process.env.NEXT_PUBLIC_BACKEND_HOST}/redirect/google`);
 }

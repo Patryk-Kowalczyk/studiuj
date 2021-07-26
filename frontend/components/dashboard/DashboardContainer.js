@@ -216,7 +216,7 @@ function DashboardContainer({ children, ...props }) {
               <Avatar
                 aria-label="recipe"
                 className={classes.avatar}
-                src={`${process.env.BACKEND_HOST}/${item.sender.avatar}` || ""}
+                src={`${process.env.NEXT_PUBLIC_BACKEND_HOST}/${item.sender.avatar}` || ""}
               >
                 {`${item.sender.name[0]}`}
               </Avatar>

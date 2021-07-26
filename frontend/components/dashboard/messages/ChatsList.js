@@ -66,7 +66,7 @@ const ChatItem = ({ info }) => {
         })}
       >
         <Badge color="primary" badgeContent={info.counter}>
-          <Avatar src={`${process.env.BACKEND_HOST}/${info.user.avatar}` || ""}>
+          <Avatar src={`${process.env.NEXT_PUBLIC_BACKEND_HOST}/${info.user.avatar}` || ""}>
             {info.user.name[0]}
           </Avatar>
         </Badge>

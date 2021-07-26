@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const stripePromise = loadStripe(process.env.STRIPE_PK);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK);
 
 const P24_ELEMENT_OPTIONS = {
   // Custom styling can be passed to options when creating an Element
@@ -103,7 +103,7 @@ function CheckoutForm({ orderId, user, setLoading }) {
         },
       },
       return_url:
-        process.env.BACKEND_HOST + "/api/payments/handle-payment-response",
+        process.env.NEXT_PUBLIC_BACKEND_HOST + "/api/payments/handle-payment-response",
     });
 
     if (error) {

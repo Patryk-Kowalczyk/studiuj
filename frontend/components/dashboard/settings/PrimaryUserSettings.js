@@ -122,7 +122,7 @@ export default function PrimaryUserSettings({ user }) {
             <Avatar
               src={
                 newAvatar ||
-                (user.avatar && `${process.env.BACKEND_HOST}/${user.avatar}`) ||
+                (user.avatar && `${process.env.NEXT_PUBLIC_BACKEND_HOST}/${user.avatar}`) ||
                 ""
               }
               className={classes.avatar}

@@ -72,7 +72,7 @@ function Comment({ comment }) {
         <Avatar
           aria-label="recipe"
           className={classes.avatar}
-          src={`${process.env.BACKEND_HOST}/${comment.user.avatar}` || ""}
+          src={`${process.env.NEXT_PUBLIC_BACKEND_HOST}/${comment.user.avatar}` || ""}
         >
           {`${comment.user.name[0]}`}
         </Avatar>

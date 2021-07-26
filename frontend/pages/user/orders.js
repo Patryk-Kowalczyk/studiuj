@@ -39,7 +39,7 @@ function CreateButton({ params }) {
     const isSure = confirm("Jesteś pewny, że chcesz utworzyć spotkanie?");
     if (isSure) {
       axios
-        .post(process.env.BACKEND_HOST + "/api/meetings")
+        .post(process.env.NEXT_PUBLIC_BACKEND_HOST + "/api/meetings")
         .then((res) => {
           console.log(res);
           handleCreate(params.row.id, res.data).then((r) =>

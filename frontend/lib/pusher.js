@@ -17,11 +17,11 @@ const getOptions = () => {
 
   return {
     broadcaster: "pusher",
-    key: process.env.PUSHER_KEY,
-    cluster: process.env.CLUSTER,
+    key: process.env.NEXT_PUBLIC_PUSHER_KEY,
+    cluster: process.env.NEXT_PUBLIC_CLUSTER,
     forceTLS: true,
     //authEndpoint is your apiUrl + /broadcasting/auth
-    authEndpoint: process.env.BACKEND_HOST + "/broadcasting/auth",
+    authEndpoint: process.env.NEXT_PUBLIC_BACKEND_HOST + "/broadcasting/auth",
     // As I'm using JWT tokens, I need to manually set up the headers.
     auth: {
       headers: {

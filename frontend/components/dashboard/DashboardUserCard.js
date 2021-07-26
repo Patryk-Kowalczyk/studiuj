@@ -66,7 +66,7 @@ export default function DashboardUserCard({ userData }) {
         alt="User Image"
         src={
           (userData.avatar &&
-            `${process.env.BACKEND_HOST}/${userData.avatar}`) ||
+            `${process.env.NEXT_PUBLIC_BACKEND_HOST}/${userData.avatar}`) ||
           ""
         }
       >

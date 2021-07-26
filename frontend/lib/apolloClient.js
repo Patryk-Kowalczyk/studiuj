@@ -11,7 +11,7 @@ import { createUploadLink } from "apollo-upload-client";
 let apolloClient;
 
 const httpLink = createUploadLink({
-  uri: `${process.env.BACKEND_HOST}/graphql`,
+  uri: `${process.env.NEXT_PUBLIC_BACKEND_HOST}/graphql`,
 });
 
 const authLink = setContext((_, { headers }) => {

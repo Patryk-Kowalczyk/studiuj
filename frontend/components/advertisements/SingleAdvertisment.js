@@ -154,7 +154,7 @@ export default function SingleAdvertisement({
                                     <Avatar
                                         aria-label="recipe"
                                         className={classes.avatar}
-                                        src={`${process.env.BACKEND_HOST}/${user.avatar}` || ""}
+                                        src={`${process.env.NEXT_PUBLIC_BACKEND_HOST}/${user.avatar}` || ""}
                                     >
                                         {`${user.name[0]}`}
                                     </Avatar>
