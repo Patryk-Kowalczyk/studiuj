@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import SaveIcon from "@material-ui/icons/Save";
 import LoadingButton from "../../LoadingButton";
 import { gql, useMutation } from "@apollo/client";
-import { setMessage } from "../../../src/actions/message";
+import { setMessage } from "../../../lib/store/actions/message";
 import { useDispatch } from "react-redux";
 
 const UPDATE_PASSWORD = gql`

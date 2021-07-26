@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { login as loginAction } from "../../src/actions/auth";
+import { login as loginAction } from "../../lib/store/actions/auth";
 
 export default function token() {
   const dispatch = useDispatch();

@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserInfo } from "../../src/actions/auth";
 import { gql, useQuery } from "@apollo/client";
 import Router from "next/router";
-import DashboardContainer from "../../components/dashboard/DashboardContainer";
+import DashboardContainer from "./DashboardContainer";
 import { CircularProgress } from "@material-ui/core";
+import { setUserInfo } from "../../lib/store/actions/auth";
 
 const GET_USERS = gql`
   query users {

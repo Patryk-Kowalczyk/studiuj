@@ -6,7 +6,7 @@ import { Button, Chip } from "@material-ui/core";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import ButtonLink from "../../components/ButtonLink";
 import axios from "axios";
-import { setMessage } from "../../src/actions/message";
+import { setMessage } from "../../lib/store/actions/message";
 import { GET_MEETINGS_INFO } from "./meetings";
 import { blue, green, grey, orange, red } from "@material-ui/core/colors";
 
@@ -82,7 +82,6 @@ const columns = [
     headerName: "Status",
     width: 130,
     renderCell: (params) => {
-      console.log(params);
       let chip = {};
       switch (params.value) {
         case "CANCELED":

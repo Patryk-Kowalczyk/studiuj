@@ -2,7 +2,7 @@ import React from "react";
 import authService from "../lib/authService";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { setMessage } from "../src/actions/message";
+import { setMessage } from "../lib/store/actions/message";
 import { motion } from "framer-motion";
 import Router from "next/router";
 import GoogleLoginButton from "../components/GoogleLoginButton";
@@ -75,19 +75,11 @@ export default function SignInSide() {
   const classes = useStyles();
 
   const [loadingForm, setLoadingForm] = React.useState(false);
-  const {
-    register,
-    handleSubmit,
-    control,
-    errors,
-    setError,
-    clearErrors,
-  } = useForm();
+  const { register, handleSubmit, control, errors, setError, clearErrors } =
+    useForm();
 
-  const [
-    openedForgotPasswordDialog,
-    setOpenedForgotPasswordDialog,
-  ] = React.useState(false);
+  const [openedForgotPasswordDialog, setOpenedForgotPasswordDialog] =
+    React.useState(false);
 
   const handleClickOpen = () => {
     setOpenedForgotPasswordDialog(true);

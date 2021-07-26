@@ -16,7 +16,7 @@ module.exports = {
     BACKEND_HOST: BACKEND_DOMAIN + ":8000",
     STRIPE_PK:
       "",
-    PUSHER_KEY: "dcbfa94fcf2c3c32ad5e",
+    PUSHER_KEY: "",
     CLUSTER: "eu",
   },
 };

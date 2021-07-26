@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Paper } from "@material-ui/core";
-import ChatsList from "../../../components/dashboard/messages/ChatsList";
+import ChatsList from "./ChatsList";
 import { makeStyles } from "@material-ui/core/styles";
 import { grey } from "@material-ui/core/colors";
 

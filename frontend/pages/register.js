@@ -2,7 +2,6 @@ import React from "react";
 import authService from "../lib/authService";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { setMessage } from "../src/actions/message";
 import { motion } from "framer-motion";
 import GoogleLoginButton from "../components/GoogleLoginButton";
 import Link from "next/link";
@@ -15,6 +14,7 @@ import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import LoadingButton from "../components/LoadingButton";
+import {setMessage} from "../lib/store/actions/message";
 
 const useStyles = makeStyles((theme) => ({
   root: {

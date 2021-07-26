@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
-import useForm from "../../utils/useForm";
+import useForm from "../../lib/hooks/useForm"
 import {gql, useMutation} from "@apollo/client";
 import {ALL_ADVERTISEMENTS_IN_PAGE_QUERY} from "../advertisements/Advertisements";
 import {perPage} from "../../config";

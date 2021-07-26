@@ -6,7 +6,6 @@ import {
 import React, {useEffect, useState} from "react";
 import {useStyles} from './styles/SingleAdvertismentStyles';
 import Typography from "@material-ui/core/Typography";
-import useForm from "../../utils/useForm";
 import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
@@ -20,6 +19,7 @@ import {GET_ADV_INFO} from "../../pages/user/advertisement/[id]";
 import {MY_ADVERTISEMENTS} from "../../pages/user/my-advertisements";
 import {ALL_ADVERTISEMENTS_IN_PAGE_QUERY} from "./Advertisements";
 import {perPage} from "../../config";
+import useForm from "../../lib/hooks/useForm";
 
 const DELETE_ADVERTISEMENT = gql`
     mutation DELETE_ADVERTISEMENT(

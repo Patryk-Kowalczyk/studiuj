@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { setUserInfo } from "../../../src/actions/auth";
+import { setUserInfo } from "../../../lib/store/actions/auth";
 import useStyles from "./styles/Styles";
 import { useForm } from "react-hook-form";
 import ControlledInput from "../../ControlledInput";

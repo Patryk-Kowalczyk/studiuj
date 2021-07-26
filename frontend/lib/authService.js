@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import {
   login as loginAction,
   logout as logoutAction,
-} from "../src/actions/auth";
+} from "./store/actions/auth";
 import { useApollo } from "./apolloClient";
 
 //prettier-ignore
@@ -88,7 +88,7 @@ function authService() {
       .catch((err) => {
         console.log(err.graphQLErrors);
         if (
-          typeof err.graphQLErrors[0].extensions.validation["input.email"] !==
+          typeof err.graphQLErrors[0]?.extensions?.validation["input.email"] !==
           undefined
         ) {
           return [false, "emailError"];

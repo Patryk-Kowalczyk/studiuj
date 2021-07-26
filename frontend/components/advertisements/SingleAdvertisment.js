@@ -15,13 +15,13 @@ import React from "react";
 import {useStyles} from "./styles/SingleAdvertismentStyles";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
-import useForm from "../../utils/useForm";
 import {gql, useMutation} from "@apollo/client";
 import {GET_ADV_INFO} from "../../pages/user/advertisement/[id]";
 import SingleComment from "./SingleComment";
 import NextLink from "../ButtonLink";
 import PaymentDialog from "../common/PaymentDialog";
-import LoadingButton from "../../components/LoadingButton";
+import LoadingButton from "../LoadingButton";
+import useForm from "../../lib/hooks/useForm";
 
 export const labels = {
     0.5: "Słaby",

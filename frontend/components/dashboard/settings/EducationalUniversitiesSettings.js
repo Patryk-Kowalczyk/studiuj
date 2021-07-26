@@ -25,7 +25,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import useStyles from "./styles/Styles";
 import { useForm } from "react-hook-form";
-import ControlledInput from "./../../ControlledInput";
+import ControlledInput from "../../ControlledInput";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import LoadingButton from "../../LoadingButton";
 import Autocomplete from "@material-ui/lab/Autocomplete";

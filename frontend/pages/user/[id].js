@@ -18,7 +18,7 @@ import MessageIcon from "@material-ui/icons/Message";
 import DoneIcon from "@material-ui/icons/Done";
 import LoadingButton from "../../components/LoadingButton";
 import { useDispatch } from "react-redux";
-import { setMessage } from "../../src/actions/message";
+import { setMessage } from "../../lib/store/actions/message";
 import CardComponent from "../../components/advertisements/CardComponent";
 
 const useStyles = makeStyles((theme) => ({
