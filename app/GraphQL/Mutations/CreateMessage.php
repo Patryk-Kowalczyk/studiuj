@@ -17,7 +17,7 @@ class CreateMessage
         $sender_id = (int)$args['sender_id'];
         $receiver_id = (int)$args['receiver_id'];
         $chat_id = (int)$args['chat_id'];
-        $text = $args['text'];
+        $text = (string)$args['text'];
 
         $message = Message::create([
             'text' => $text,

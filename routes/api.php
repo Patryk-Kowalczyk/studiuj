@@ -26,4 +26,3 @@ Route::post('password/reset', 'App\Http\Controllers\Auth\ForgotPasswordControlle
 Route::post('/meetings', [MeetingController::class,'create']);
 
 Route::get('payments/handle-payment-response', [PaymentController::class, 'handle']);
-
