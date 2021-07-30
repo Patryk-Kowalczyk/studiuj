@@ -1,6 +1,6 @@
 import {Box, Typography} from "@material-ui/core";
 import {motion} from "framer-motion";
-import ButtonLink from "../ButtonLink";
+import ButtonLink from "../common/ButtonLink";
 import React from "react";
 import {BsBookHalf} from "react-icons/bs";
 import {headerStyles} from "./styles";

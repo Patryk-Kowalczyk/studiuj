@@ -1,5 +1,5 @@
 import Box from "@material-ui/core/Box";
-import { landingStyles } from "./styles/landingStyles";
+
 import {
   Header,
   FirstContent,
@@ -7,7 +7,8 @@ import {
   ThirdContent,
   FourthContent,
   Footer,
-} from "../components/landing";
+} from "./index";
+import {landingStyles} from "./styles";
 
 export default function LandingPage() {
   const classes = landingStyles();

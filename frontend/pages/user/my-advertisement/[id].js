@@ -1,4 +1,4 @@
-import DashboardAuth from "../../../components/dashboard/DashboardAuth";
+import DashboardAuth from "../../../layouts/PanelLayout/PanelAuth";
 import {useRouter} from 'next/dist/client/router';
 import {gql, useQuery} from "@apollo/client";
 import SingleMyAdvertisement from "../../../components/advertisements/SingleMyAdvertisement";

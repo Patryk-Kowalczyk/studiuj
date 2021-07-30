@@ -5,7 +5,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import EditIcon from "@material-ui/icons/Edit";
 import { labels } from "./SingleAdvertisment";
-import NextLink from "../ButtonLink";
+import NextLink from "../common/ButtonLink";
 import {
   AccordionActions,
   AccordionSummary,

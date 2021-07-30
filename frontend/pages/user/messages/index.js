@@ -1,7 +1,7 @@
 import React from "react";
-import DashboardAuth from "../../../components/dashboard/DashboardAuth";
+import DashboardAuth from "../../../layouts/PanelLayout/PanelAuth";
 import { Box } from "@material-ui/core";
-import MessagesContainer from "../../../components/dashboard/messages/MessagesContainer";
+import MessagesContainer from "../../../components/messages/MessagesContainer";
 
 const index = () => {
   return (

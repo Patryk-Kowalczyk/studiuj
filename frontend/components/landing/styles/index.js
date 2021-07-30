@@ -5,3 +5,4 @@ export {default as thirdContentStyles} from './thirdContentStyles';
 export {default as fourthContentStyles} from './fourthContentStyles';
 export {default as footerStyles} from './footerStyles';
 export {default as headerStyles} from './headerStyles';
+export {default as landingStyles} from './landingStyles';

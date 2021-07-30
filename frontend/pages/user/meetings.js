@@ -1,8 +1,8 @@
-import DashboardAuth from "../../components/dashboard/DashboardAuth";
+import DashboardAuth from "../../layouts/PanelLayout/PanelAuth";
 import * as React from 'react';
 import {DataGrid} from '@material-ui/data-grid';
 import {gql, useQuery} from "@apollo/client";
-import ButtonLink from "../../components/ButtonLink";
+import ButtonLink from "../../components/common/ButtonLink";
 
 
 const columns = [

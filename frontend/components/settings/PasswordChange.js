@@ -1,12 +1,12 @@
 import { Card, Divider, Grid, Typography } from "@material-ui/core";
 import React from "react";
-import ControlledInput from "../../ControlledInput";
+import ControlledInput from "../common/ControlledInput";
 import useStyles from "./styles/Styles";
 import { useForm } from "react-hook-form";
 import SaveIcon from "@material-ui/icons/Save";
-import LoadingButton from "../../LoadingButton";
+import LoadingButton from "../common/LoadingButton";
 import { gql, useMutation } from "@apollo/client";
-import { setMessage } from "../../../lib/store/actions/message";
+import { setMessage } from "../../lib/store/actions/message";
 import { useDispatch } from "react-redux";
 
 const UPDATE_PASSWORD = gql`

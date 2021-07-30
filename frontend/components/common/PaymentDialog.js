@@ -12,7 +12,7 @@ import { Elements, useElements, useStripe } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { P24BankElement } from "@stripe/react-stripe-js";
 import { gql, useMutation } from "@apollo/client";
-import LoadingButton from "../LoadingButton";
+import LoadingButton from "./LoadingButton";
 
 const CREATE_PAYMENT_INTENT = gql`
   mutation CREATE_PAYMENT_INTENT($order_id: ID!) {

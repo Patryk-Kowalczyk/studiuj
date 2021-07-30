@@ -1,11 +1,8 @@
 import React from "react";
-import DashboardUserCard from "./DashboardUserCard";
+import PanelUserCard from "./PanelUserCard";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import clsx from "clsx";
-import {makeStyles} from "@material-ui/core/styles";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -19,45 +16,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import ChatIcon from "@material-ui/icons/Chat";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import DuoIcon from '@material-ui/icons/Duo';
-
-const useStyles = makeStyles((theme) => ({
-    logo: {
-        padding: theme.spacing(2),
-    },
-    itemButton: {
-        color: theme.palette.lightFont.main,
-    },
-    nested: {
-        paddingLeft: theme.spacing(4),
-    },
-    selected: {
-        backgroundColor: theme.palette.primary.main,
-        "&:hover": {
-            backgroundColor: theme.palette.primary.dark,
-        },
-    },
-    subitem: {
-        position: "relative",
-        "&::before": {
-            content: "''",
-            position: "absolute",
-            display: "block",
-            top: "50%",
-            left: theme.spacing(2),
-            width: 8,
-            height: 8,
-            borderRadius: "50%",
-            backgroundColor: theme.palette.lightFont.main,
-            transform: "translateY(-50%)",
-        },
-    },
-    subitemActive: {
-        position: "relative",
-        "&::before": {
-            backgroundColor: theme.palette.primary.main,
-        },
-    },
-}));
+import {useStyles} from "./styles/DrawerStyles";
 
 const data = [
     {
@@ -188,20 +147,11 @@ export default function DashboardMenu({userData}) {
             <Typography variant="h3" component="h2" className={classes.logo}>
                 Studiuj
             </Typography>
-            <DashboardUserCard userData={userData}/>
+            <PanelUserCard userData={userData}/>
             <List>
                 {data.map((dataItem) => (
                     <LinkedItem data={dataItem} key={dataItem.name}/>
                 ))}
-
-                {/*{["Inbox", "Starred",].map((text, index) => (*/}
-                {/*    <ListItem button key={text}>*/}
-                {/*        <ListItemIcon className={classes.itemButton}>*/}
-                {/*            {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}*/}
-                {/*        </ListItemIcon>*/}
-                {/*        <ListItemText primary={text}/>*/}
-                {/*    </ListItem>*/}
-                {/*))}*/}
             </List>
         </div>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardAuth from "../../components/dashboard/DashboardAuth";
+import DashboardAuth from "../../layouts/PanelLayout/PanelAuth";
 import Checkout from "../../components/add/Checkout";
 import {gql, useQuery} from "@apollo/client";
 

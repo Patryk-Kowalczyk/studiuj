@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import gql from 'graphql-tag';
 import {useQuery} from '@apollo/client';
 import CardComponent from "../../components/advertisements/CardComponent";
-import DashboardAuth from "../../components/dashboard/DashboardAuth";
+import DashboardAuth from "../../layouts/PanelLayout/PanelAuth";
 
 export const MY_ADVERTISEMENTS = gql`
     query MY_ADVERTISEMENTS {

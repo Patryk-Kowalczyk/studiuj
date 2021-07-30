@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, makeStyles } from "@material-ui/core";
-import GoogleLogo from "./GoogleLogo";
-import handleGoogleLogin from "../lib/handleGoogleLogin";
+import GoogleLogo from "../common/GoogleLogo";
+import handleGoogleLogin from "../../lib/helpers/handleGoogleLogin";
 
 const useStyles = makeStyles((theme) => ({
   googleButton: {

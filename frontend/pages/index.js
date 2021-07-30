@@ -1,1 +1,1 @@
-export { default } from "../layouts/landing";
+export { default } from "../components/landing/landing";

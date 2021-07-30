@@ -24,9 +24,9 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import useStyles from "./styles/Styles";
 import { useForm, Controller } from "react-hook-form";
-import ControlledInput from "../../ControlledInput";
+import ControlledInput from "../common/ControlledInput";
 import { gql, useQuery, useMutation } from "@apollo/client";
-import LoadingButton from "../../LoadingButton";
+import LoadingButton from "../common/LoadingButton";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 const ADD_SCHOOL = gql`

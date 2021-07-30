@@ -1,9 +1,9 @@
 import React from "react";
-import authService from "../lib/authService";
+import authService from "../lib/services/authService";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
-import GoogleLoginButton from "../components/GoogleLoginButton";
+import GoogleLoginButton from "../components/login/GoogleLoginButton";
 import Link from "next/link";
 
 import Avatar from "@material-ui/core/Avatar";
@@ -13,7 +13,7 @@ import Grid from "@material-ui/core/Grid";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import LoadingButton from "../components/LoadingButton";
+import LoadingButton from "../components/common/LoadingButton";
 import {setMessage} from "../lib/store/actions/message";
 
 const useStyles = makeStyles((theme) => ({

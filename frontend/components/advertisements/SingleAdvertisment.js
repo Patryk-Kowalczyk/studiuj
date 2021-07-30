@@ -18,9 +18,9 @@ import Typography from "@material-ui/core/Typography";
 import {gql, useMutation} from "@apollo/client";
 import {GET_ADV_INFO} from "../../pages/user/advertisement/[id]";
 import SingleComment from "./SingleComment";
-import NextLink from "../ButtonLink";
+import NextLink from "../common/ButtonLink";
 import PaymentDialog from "../common/PaymentDialog";
-import LoadingButton from "../LoadingButton";
+import LoadingButton from "../common/LoadingButton";
 import useForm from "../../lib/hooks/useForm";
 
 export const labels = {

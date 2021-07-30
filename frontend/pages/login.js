@@ -1,110 +1,24 @@
 import React from "react";
-import authService from "../lib/authService";
-import { useForm, Controller } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { setMessage } from "../lib/store/actions/message";
 import { motion } from "framer-motion";
-import Router from "next/router";
-import GoogleLoginButton from "../components/GoogleLoginButton";
-import Link from "next/link";
-import ForgotPasswordDialog from "../components/ForgotPasswordDialog";
-
+import ForgotPasswordDialog from "../components/login/ForgotPasswordDialog";
 import Avatar from "@material-ui/core/Avatar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import LoadingButton from "../components/LoadingButton";
+import LoginForm from "../components/login/LoginForm";
+import {useStyles} from "../components/login/styles/loginPageStyles";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    height: "100vh",
-    overflow: "hidden",
-  },
-  imageSection: {
-    backgroundColor: theme.palette.primary.light,
-    backgroundRepeat: "no-repeat",
-    clipPath: "circle(80.9% at 19% 57%)",
-    position: "relative",
-    [theme.breakpoints.down("md")]: {
-      clipPath: "circle(80.9% at 6% 57%)",
-    },
-    [theme.breakpoints.down("sm")]: {
-      clipPath: "circle(80.9% at 0% 57%)",
-    },
-  },
-  image: {
-    position: "absolute",
-    width: "100%",
-    height: "50%",
-    left: "50%",
-    top: "50%",
-    transform: "translate(-50%,-35%)",
-  },
-  gridBox: {
-    display: "flex",
-    alignItems: "center",
-  },
-  paper: {
-    margin: theme.spacing(8, 4),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-  link: {
-    color: theme.palette.primary.main,
-    cursor: "pointer",
-    textDecoration: "none",
-  },
-}));
-
-export default function SignInSide() {
+export default function SignInSite() {
   const classes = useStyles();
-
-  const [loadingForm, setLoadingForm] = React.useState(false);
-  const { register, handleSubmit, control, errors, setError, clearErrors } =
-    useForm();
-
   const [openedForgotPasswordDialog, setOpenedForgotPasswordDialog] =
-    React.useState(false);
-
+      React.useState(false);
   const handleClickOpen = () => {
     setOpenedForgotPasswordDialog(true);
   };
 
   const handleClose = () => {
     setOpenedForgotPasswordDialog(false);
-  };
-
-  const { login } = authService();
-  const dispatch = useDispatch();
-
-  // Login
-  const onSubmit = async (data) => {
-    setLoadingForm(true);
-
-    const isSuccess = await login(data.email, data.password);
-    if (isSuccess) {
-      Router.push("/user/dashboard");
-      dispatch(setMessage("Pomyślnie się zalogowałeś."));
-    } else {
-      setError("serverError", "err");
-      dispatch(setMessage("Nieprawidłowe dane. Spróbuj jeszcze raz."));
-    }
-    setLoadingForm(false);
   };
 
   return (
@@ -142,87 +56,7 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             Zaloguj się
           </Typography>
-          <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-            <Controller
-              name="email"
-              control={control}
-              defaultValue={""}
-              render={(props) => (
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Adres email"
-                  autoComplete="email"
-                  onChange={(e) => {
-                    props.onChange(e.target.value);
-                    clearErrors();
-                  }}
-                  value={props.value}
-                  error={errors.serverError ? true : false}
-                />
-              )}
-            />
-            <Controller
-              name="password"
-              control={control}
-              defaultValue={""}
-              render={(props) => (
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  label="Hasło"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  ref={register}
-                  onChange={(e) => {
-                    props.onChange(e.target.value);
-                    clearErrors();
-                  }}
-                  value={props.value}
-                  error={errors.serverError ? true : false}
-                />
-              )}
-            />
-            <LoadingButton
-              loading={loadingForm || false}
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Zaloguj
-            </LoadingButton>
-            <GoogleLoginButton />
-            <Grid container spacing={3}>
-              <Grid item xs>
-                <Typography
-                  variant="body2"
-                  onClick={handleClickOpen}
-                  className={classes.link}
-                >
-                  Zapomniałeś hasła?
-                </Typography>
-              </Grid>
-              <Grid item xs style={{ textAlign: "right" }}>
-                <Link
-                  href="/register"
-                  variant="body2"
-                  style={{ textAlign: "right" }}
-                >
-                  <a className={classes.link}>
-                    Nie masz jeszcze konta? Dołącz do nas!
-                  </a>
-                </Link>
-              </Grid>
-            </Grid>
-          </form>
+        <LoginForm handleClickOpen={handleClickOpen}/>
         </div>
       </Grid>
       <ForgotPasswordDialog

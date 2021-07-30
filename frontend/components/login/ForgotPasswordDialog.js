@@ -1,8 +1,8 @@
 import React from "react";
 import { gql } from "@apollo/client";
-import { useApollo } from "../lib/apolloClient";
+import { useApollo } from "../../lib/graphql/apolloClient";
 import { useDispatch } from "react-redux";
-import LoadingButton from "./LoadingButton";
+import LoadingButton from "../common/LoadingButton";
 
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -11,7 +11,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { setMessage } from "../lib/store/actions/message";
+import { setMessage } from "../../lib/store/actions/message";
 
 const SEND_EMAIL = gql`
   mutation forgotPassword($email: String!) {

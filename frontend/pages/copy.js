@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import {makeStyles} from "@material-ui/core/styles";
-import ButtonLink from "../components/ButtonLink";
+import ButtonLink from "../components/common/ButtonLink";
 
 const useStyles = makeStyles((theme) => ({
         root: {

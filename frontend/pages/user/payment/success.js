@@ -1,6 +1,6 @@
 import { Box, Typography } from "@material-ui/core";
 import React from "react";
-import DashboardLayout from "../../../layouts/DashboardLayout";
+import PanelLayout from "../../../layouts/Index";
 import Image from "next/image";
 
 function success() {
@@ -25,5 +25,5 @@ function success() {
   );
 }
 
-success.Layout = DashboardLayout;
+success.Layout = PanelLayout;
 export default success;

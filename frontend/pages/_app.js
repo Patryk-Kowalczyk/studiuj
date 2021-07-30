@@ -7,7 +7,7 @@ import Head from "next/head";
 import { Provider } from "react-redux";
 import { useStore } from "../lib/store/store";
 import { ApolloProvider } from "@apollo/client";
-import { useApollo } from "../lib/apolloClient";
+import { useApollo } from "../lib/graphql/apolloClient";
 import { useSelector } from "react-redux";
 import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";

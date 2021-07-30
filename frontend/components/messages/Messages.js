@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
-import { useEcho } from "../../../lib/pusher";
+import { useEcho } from "../../lib/hooks/usePusher";
 
 const useStyles = makeStyles((theme) => ({
   root: {

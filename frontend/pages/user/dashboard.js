@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import DashboardAuth from "../../components/dashboard/DashboardAuth";
-import BestUserCard from "../../components/BestUserCard";
+import DashboardAuth from "../../layouts/PanelLayout/PanelAuth";
+import UserCard from "../../components/common/usercard/UserCard";
 import PlaylistAddCheckIcon from "@material-ui/icons/PlaylistAddCheck";
 
 import {
@@ -106,7 +106,7 @@ export default function dashboard() {
       </Typography>
       <div className={classes.bestUsers}>
         {[...Array(5)].map((_, index) => (
-          <BestUserCard key={index} />
+          <UserCard key={index} />
         ))}
       </div>
     </>

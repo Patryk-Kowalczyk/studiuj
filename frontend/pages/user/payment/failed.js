@@ -1,6 +1,6 @@
 import { Box, Typography } from "@material-ui/core";
 import React from "react";
-import DashboardLayout from "../../../layouts/DashboardLayout";
+import PanelLayout from "../../../layouts/Index";
 import Image from "next/image";
 
 function failed() {
@@ -20,5 +20,5 @@ function failed() {
   );
 }
 
-failed.Layout = DashboardLayout;
+failed.Layout = PanelLayout;
 export default failed;

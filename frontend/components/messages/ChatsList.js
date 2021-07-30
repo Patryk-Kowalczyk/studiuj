@@ -8,7 +8,7 @@ import { Skeleton } from "@material-ui/lab";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import clsx from "clsx";
-import { useEcho } from "../../../lib/pusher";
+import { useEcho } from "../../lib/hooks/usePusher";
 
 const useStyles = makeStyles((theme) => ({
   chatItem: {

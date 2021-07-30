@@ -1,6 +1,6 @@
 import React from "react";
 import { gql } from "@apollo/client";
-import { useApollo } from "../../../lib/apolloClient";
+import { useApollo } from "../../lib/graphql/apolloClient";
 import {
   Avatar,
   Button,
@@ -10,11 +10,11 @@ import {
   Typography,
 } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { setUserInfo } from "../../../lib/store/actions/auth";
+import { setUserInfo } from "../../lib/store/actions/auth";
 import useStyles from "./styles/Styles";
 import { useForm } from "react-hook-form";
-import ControlledInput from "../../ControlledInput";
-import LoadingButton from "../../LoadingButton";
+import ControlledInput from "../common/ControlledInput";
+import LoadingButton from "../common/LoadingButton";
 
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import SaveIcon from "@material-ui/icons/Save";

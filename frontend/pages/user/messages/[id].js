@@ -1,7 +1,7 @@
 import React from "react";
-import DashboardAuth from "../../../components/dashboard/DashboardAuth";
-import MessagesContainer from "../../../components/dashboard/messages/MessagesContainer";
-import Messages from "../../../components/dashboard/messages/Messages";
+import DashboardAuth from "../../../layouts/PanelLayout/PanelAuth";
+import MessagesContainer from "../../../components/messages/MessagesContainer";
+import Messages from "../../../components/messages/Messages";
 
 const chat = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import authService from "../../lib/authService";
+import authService from "../../lib/services/authService";
 import { useSelector } from "react-redux";
 
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DashboardUserCard({ userData }) {
+export default function PanelUserCard({ userData }) {
   const classes = useStyles();
   const router = useRouter();
   const { logout } = authService();

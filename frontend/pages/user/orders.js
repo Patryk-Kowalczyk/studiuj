@@ -1,10 +1,10 @@
-import DashboardAuth from "../../components/dashboard/DashboardAuth";
+import DashboardAuth from "../../layouts/PanelLayout/PanelAuth";
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch } from "react-redux";
 import { Button, Chip } from "@material-ui/core";
 import { gql, useMutation, useQuery } from "@apollo/client";
-import ButtonLink from "../../components/ButtonLink";
+import ButtonLink from "../../components/common/ButtonLink";
 import axios from "axios";
 import { setMessage } from "../../lib/store/actions/message";
 import { GET_MEETINGS_INFO } from "./meetings";

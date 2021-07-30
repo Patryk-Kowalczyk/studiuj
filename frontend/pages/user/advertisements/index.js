@@ -1,6 +1,6 @@
-import Pagination from "../../../components/Pagination";
+import Pagination from "../../../components/common/Pagination";
 import {useRouter} from 'next/dist/client/router';
-import DashboardAuth from "../../../components/dashboard/DashboardAuth";
+import DashboardAuth from "../../../layouts/PanelLayout/PanelAuth";
 import Advertisements from "../../../components/advertisements/Advertisements";
 import Filter from "../../../components/advertisements/Filter";
 import {gql, useQuery} from "@apollo/client";

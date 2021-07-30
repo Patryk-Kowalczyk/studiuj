@@ -3,55 +3,9 @@ import { useDispatch } from "react-redux";
 import {
   login as loginAction,
   logout as logoutAction,
-} from "./store/actions/auth";
-import { useApollo } from "./apolloClient";
-
-//prettier-ignore
-const LOGIN = gql`
-mutation login(
-    $username: String!
-    $password: String!
-){
-  login(input: {
-    username: $username,
-    password: $password
-  }) {
-    access_token
-  }
-}
-`;
-
-const REGISTER = gql`
-  mutation register(
-    $name: String!
-    $email: String!
-    $password: String!
-    $password_confirmation: String!
-  ) {
-    register(
-      input: {
-        name: $name
-        email: $email
-        password: $password
-        password_confirmation: $password_confirmation
-      }
-    ) {
-      tokens {
-        access_token
-      }
-      status
-    }
-  }
-`;
-
-const LOGOUT = gql`
-  mutation logout {
-    logout {
-      status
-      message
-    }
-  }
-`;
+} from "../store/actions/auth";
+import { useApollo } from "../graphql/apolloClient";
+import {LOGIN, LOGOUT, REGISTER} from "../graphql/mutations/authMutations";
 
 function authService() {
   const client = useApollo();

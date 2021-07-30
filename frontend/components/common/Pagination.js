@@ -5,7 +5,7 @@ import { useQuery } from "@apollo/client";
 import styled from "styled-components";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import IconButton from "@material-ui/core/IconButton";
-import { perPage } from "../config";
+import { perPage } from "../../config";
 
 const PaginationStyles = styled.div`
   text-align: center;

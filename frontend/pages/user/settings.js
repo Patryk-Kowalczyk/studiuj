@@ -1,11 +1,11 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
 import { useSelector } from "react-redux";
-import DashboardAuth from "../../components/dashboard/DashboardAuth";
+import DashboardAuth from "../../layouts/PanelLayout/PanelAuth";
 
-import PrimaryUserSettings from "../../components/dashboard/settings/PrimaryUserSettings";
-import EducationUserSettings from "../../components/dashboard/settings/EducationUserSettings";
-import PasswordChange from "../../components/dashboard/settings/PasswordChange";
+import PrimaryUserSettings from "../../components/settings/PrimaryUserSettings";
+import EducationUserSettings from "../../components/settings/EducationUserSettings";
+import PasswordChange from "../../components/settings/PasswordChange";
 
 export default function userSettings() {
   const userData = useSelector((state) => state.auth.user.data);

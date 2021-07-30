@@ -19,12 +19,12 @@ import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Skeleton from "@material-ui/lab/Skeleton";
 import UniverisiesSettings from "./UniverisiesSettings";
-import LoadingButton from "../../LoadingButton";
+import LoadingButton from "../common/LoadingButton";
 import EducationSchoolSettings from "./EducationSchoolSettings";
 import EducationalUniversitiesSettings from "./EducationalUniversitiesSettings";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import { useDispatch } from "react-redux";
-import { setUserInfo } from "../../../lib/store/actions/auth";
+import { setUserInfo } from "../../lib/store/actions/auth";
 
 const GET_PROFILE = gql`
   query profile {
